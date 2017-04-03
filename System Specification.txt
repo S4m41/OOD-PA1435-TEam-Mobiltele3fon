@@ -1,0 +1,20 @@
+An opening screen where you can start a new game or join an existing game.
+A screen where you can setup your player.
+A labyrinth where your character moves around. This may be represented in different ways:
+	The character may move around with the help of arrow keys inside each cave (ASCII-art version)
+	The character may move between different caves and interact via a GUI (Dialogue-based version)
+	The character may move around in a 3D world with an “over-the-shoulder” perspective (3D version)
+A selection of other characters that move freely in the labyrinth. (Note: the original NetHack is turn-based, you will have to modify this so that the characters move independently)
+	Interaction dialogues with other characters. For example you may enter into a philosophical debate with a troll, you may fight an ogre, you may play chess with a reaper, or you may ignore a boggart.
+A selection of other items to pick up and drop in the labyrinth.
+	Interaction dialogues with those other items. For example, you may view the history of a sword, mix a potion with other items.
+	Items also have a default action, “use”, that means e.g. “wield sword”, “throw rock”, or “drink potion”.
+	Items can be sub-types of other items. For example, you may have:
+		Weapons, with sub-types projectile weapons and cutting weapons. Cutting weapons, in turn, have sub-types such as knives and swords. Projectile weapons can for example be slingshots and crossbows. You would also need ammunition for some of your weapons.
+		On the topic of weapons, the damage inflicted by a weapon shall be a combination of the weapon itself, the wielder’s experience, the character type, and a certain element of randomness.
+Multiplayer. Several players shall be able to play in the same game at once.
+	Tip: You may implement this either with a common server, a common database, or in a distributed manner where one player is the owner of the game.
+	You shall be able to interact with other players through dialogues, but only when you are in the same cave. You shall minimally be able to:
+		chat with other players
+		use whatever you are carrying on them
+		give them items that you are carrying
