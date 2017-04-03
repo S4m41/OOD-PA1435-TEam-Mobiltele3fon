@@ -1,1 +1,29 @@
+Test Items.
+	Exam: May 25th
+	Sprint0:
+	Sprint_Use_Cases_and_Use_Case_Diagrams:
+	Release_Sprint_3_Week_Roll_Call:
+	Release_Sprint_Use_Cases:
+	:
+	Sprint5:
+	Sprint6:
+	Twitter_Nethack
+
+Features to be Tested.
+
+Approach.
+
+Item Pass/Fail Criteria.
+
+Schedule.
+
+Planning Risks and Contingencies.
+
+Glossary.
+
+
 Planning Poker for a system
+
+
+
+To be continued at home
