@@ -1,0 +1,39 @@
+classes (Player, monster, character , item,weapon, tile)
+##########
+
+Class Character{
+position, inventory
+move(direction);
+pickupItem();
+interact(character);
+attack();
+}
+############
+
+class Charater::player{
+craft()
+inspect()
+describe()
+}
+############
+
+class Charater::monster{
+type
+}
+############
+
+class item{
+type
+use();
+}
+############
+
+class item::weapon{
+weaponType,damage,isRanged, needsAmmunition , ammunition
+}
+############
+
+class tile{
+isSolid, position
+contains();
+}

@@ -1,0 +1,69 @@
+Use case: Move character
+
+Actor: player, monster
+
+Description:
+	A player requests movement in a direction
+		the system moves the players character in the requested direction if able
+	A monster requests movement in a direction
+		the system moves the players character in the requested direction if able
+########################
+Use case: Pickup item
+
+Actor: character, item
+
+Description:
+	A player requests pickup of item
+		the system places a nearby item into the players inventory
+	A monster requests pickup of item
+		the system places a nearby item into the monsters inventory
+
+#######################		
+Use Case: Interact with characters
+
+Actors: character, character
+
+Description:
+	A character requests an interaction with another character
+		the system relays the interaction to the players
+		the system makes the monster react
+
+#######################
+Use case: craft
+
+Actors: player, item , item
+
+Description:
+	A player wants to combine two items
+		The system checks if the combination is valid
+		The system creates a new item if the combination is valid
+
+
+######################
+Use case: describe
+
+Actors: player , item
+
+Description:
+	A player wants to know the details of an item
+		the system presents the items attributes
+
+######################
+Use case: inspect
+
+Actors: player, character
+
+Description:
+	A player wants to know the details of a character
+		the system presents the characters attributes 
+
+########################
+Use Case: attack
+
+Actors: character, character
+
+Description:
+	A character requests an attack towards a nearby target(player,monster, air/nothing)
+		the system calculates if the attack hit and how much damage it did
+	A character requests an attack towards a distant target
+		the system calculates if the attack hit and how much damage it did
