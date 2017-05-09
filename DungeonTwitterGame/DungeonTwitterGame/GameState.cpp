@@ -1,7 +1,7 @@
 #include "GameState.hpp"
 #include <SFML\Window.hpp>
 
-GameState::GameState()
+GameState::GameState() : State()
 {
 }
 
@@ -16,11 +16,19 @@ bool GameState::Initialize()
 
 void GameState::ProcessKeyDown(int i)
 {
-	switch (i)
+
+}
+
+void GameState::ProcessKeyPressed(int i)
+{
+}
+
+void GameState::UpdateObserver(int keyIndex)
+{
+	switch (keyIndex)
 	{
 	case sf::Keyboard::W:
 		// Move forward
-		ProcessKeyPressed(i);
 		break;
 	case sf::Keyboard::S:
 		// Move back
@@ -32,12 +40,4 @@ void GameState::ProcessKeyDown(int i)
 		// Move left
 		break;
 	}
-}
-
-void GameState::ProcessKeyPressed(int i)
-{
-}
-
-void GameState::Update()
-{
 }

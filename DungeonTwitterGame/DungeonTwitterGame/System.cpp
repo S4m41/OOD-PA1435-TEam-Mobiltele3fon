@@ -26,6 +26,10 @@ bool System::Initialize()
 	if (!m_currentState->Initialize())
 		return false;
 
+	m_currentState->SetSubject(m_input.get());
+
+	m_input->SetValue(41);
+
 	return true;
 }
 

@@ -13,7 +13,7 @@ public:
 	void ProcessKeyDown(int i);
 	void ProcessKeyPressed(int i);
 
-	void Update();
+	void UpdateObserver(int keyIndex);
 };
 
 #endif

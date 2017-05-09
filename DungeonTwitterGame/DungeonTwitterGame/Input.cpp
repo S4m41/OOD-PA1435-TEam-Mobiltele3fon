@@ -1,6 +1,6 @@
 #include "Input.hpp"
 
-Input::Input()
+Input::Input() : Subject::Subject()
 {
 	for (int i = 0; i < 101; i++)
 	{
@@ -36,4 +36,8 @@ bool Input::IsKeyDown(int index) const
 bool Input::IsKeyPressed(int index) const
 {
 	return (m_keys[index] && !m_keysPrevious[index]);
+}
+
+void Input::UpdateObserversSpecific()
+{
 }

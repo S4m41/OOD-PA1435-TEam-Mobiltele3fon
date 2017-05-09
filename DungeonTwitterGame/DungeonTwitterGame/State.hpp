@@ -1,7 +1,8 @@
 #ifndef STATE_HPP
 #define STATE_HPP
+#include "ObserverPattern.hpp"
 
-class State
+class State : public Observer
 {
 public:
 	State();
