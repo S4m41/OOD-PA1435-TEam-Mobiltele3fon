@@ -1,19 +1,25 @@
 #ifndef GAMESTATE_HPP
 #define GAMESTATE_HPP
-#include "State.hpp"
+#include "Input.hpp"
+#include "FiniteStateMachine.hpp"
+#include <memory>
+#include <SFML\Graphics\Drawable.hpp>
 
-class GameState final : public State
+class GameState : public sf::Drawable
 {
 public:
-	GameState();
-	~GameState();
+	GameState(FiniteStateMachine* fsm);
+	virtual ~GameState();
 
-	bool Initialize();
+	virtual bool Initialize() = 0;
+	virtual void Update() = 0;
+	void SetInput(std::shared_ptr<Input> input);
 
-	void ProcessKeyDown(int i);
-	void ProcessKeyPressed(int i);
+protected:
+	std::shared_ptr<Input> m_input;
+	FiniteStateMachine* m_FSM;
 
-	void UpdateObserver(int keyIndex);
+	virtual void ProcessInput() = 0;
 };
 
 #endif

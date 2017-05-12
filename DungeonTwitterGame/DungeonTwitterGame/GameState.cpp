@@ -1,43 +1,25 @@
 #include "GameState.hpp"
-#include <SFML\Window.hpp>
 
-GameState::GameState() : State()
+GameState::GameState(FiniteStateMachine* fsm)
 {
+	m_FSM = fsm;
 }
-
 GameState::~GameState()
 {
+
 }
 
-bool GameState::Initialize()
+void GameState::SetInput(std::shared_ptr<Input> input)
 {
-	return true;
+	m_input = input;
 }
 
-void GameState::ProcessKeyDown(int i)
-{
-
-}
-
-void GameState::ProcessKeyPressed(int i)
-{
-}
-
-void GameState::UpdateObserver(int keyIndex)
-{
-	switch (keyIndex)
-	{
-	case sf::Keyboard::W:
-		// Move forward
-		break;
-	case sf::Keyboard::S:
-		// Move back
-		break;
-	case sf::Keyboard::D:
-		// Move right
-		break;
-	case sf::Keyboard::A:
-		// Move left
-		break;
-	}
-}
+//void GameState::SetNextState(GameState::State nextState)
+//{
+//	m_nextState = nextState;
+//}
+//
+//GameState::State GameState::GetNextState() const
+//{
+//	return m_nextState;
+//}

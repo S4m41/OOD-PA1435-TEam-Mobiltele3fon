@@ -1,43 +1,31 @@
 #include "Input.hpp"
+#include <SFML\Window\Keyboard.hpp>
 
-Input::Input() : Subject::Subject()
+Input::Input()
 {
 	for (int i = 0; i < 101; i++)
 	{
-		m_keys[i] = false;
-		m_keysPrevious[i] = false;
+		m_keys[i] = m_keysPrevious[i] = false;
 	}
 }
 Input::~Input()
 {
 }
 
-void Input::UpdatePreviousKeys()
+void Input::Update()
 {
-	for (int i = 0; i < 101; i++)
+	for (int i = 0; i < NR_OF_KEYS; i++)
 	{
 		m_keysPrevious[i] = m_keys[i];
+		m_keys[i] = sf::Keyboard::isKeyPressed(sf::Keyboard::Key(i));
 	}
 }
 
-void Input::KeyDown(int index)
+bool Input::IsKeyDown(int key) const
 {
-	m_keys[index] = true;
+	return m_keys[key];
 }
-void Input::KeyUp(int index)
+bool Input::IsKeyPressed(int key) const
 {
-	m_keys[index] = false;
-}
-
-bool Input::IsKeyDown(int index) const
-{
-	return m_keys[index];
-}
-bool Input::IsKeyPressed(int index) const
-{
-	return (m_keys[index] && !m_keysPrevious[index]);
-}
-
-void Input::UpdateObserversSpecific()
-{
+	return (m_keys[key] && !m_keysPrevious[key]);
 }

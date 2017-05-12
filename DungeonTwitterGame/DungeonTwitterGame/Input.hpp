@@ -1,27 +1,23 @@
 #ifndef INPUT_HPP
 #define INPUT_HPP
-#include <SFML\Window.hpp>
-#include "ObserverPattern.hpp"
 
-class Input final : public Subject
+#define NR_OF_KEYS 101
+
+class Input final
 {
 public:
 	Input();
 	~Input();
 
-	void UpdatePreviousKeys();
+	void Update();
 
-	void KeyDown(int index);
-	void KeyUp(int index);
-
-	bool IsKeyDown(int index) const;
-	bool IsKeyPressed(int index) const;
+	bool IsKeyDown(int key) const;
+	bool IsKeyPressed(int key) const;
 
 private:
-	bool m_keys[101];			// Highest index is KeyCount at 101 (Lowest is Unknown at -1, but ignored for now)
-	bool m_keysPrevious[101];
 
-	void UpdateObserversSpecific();
+	bool m_keys[NR_OF_KEYS];
+	bool m_keysPrevious[NR_OF_KEYS];
 };
 
 #endif

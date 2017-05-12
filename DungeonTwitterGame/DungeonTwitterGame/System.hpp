@@ -1,9 +1,10 @@
 #ifndef SYSTEM_HPP
 #define SYSTEM_HPP
 #include <memory>
-#include <SFML\Graphics.hpp>
+#include <SFML\Graphics\RenderWindow.hpp>
 #include "Input.hpp"
-#include "GameState.hpp"
+#include "GamePlayState.hpp"
+
 
 class System final
 {
@@ -15,11 +16,9 @@ public:
 	void Run();
 
 private:
-	std::unique_ptr<sf::RenderWindow> m_window;
-	std::unique_ptr<Input> m_input;
-	std::unique_ptr<State> m_currentState;
-
-	void UpdateCurrentState();
+	sf::RenderWindow* m_window;
+	std::shared_ptr<Input> m_input;
+	FiniteStateMachine m_FSM;
 };
 
 #endif
