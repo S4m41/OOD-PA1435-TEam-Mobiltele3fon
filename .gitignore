@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DungeonTwitterGame/DungeonTwitterGame/ClassDiagram.cd
+/DungeonTwitterGame/DungeonTwitterGame.VC.VC.opendb
+/DungeonTwitterGame/DungeonTwitterGame.VC.db

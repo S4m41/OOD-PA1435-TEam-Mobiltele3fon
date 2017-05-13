@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="GamePauseMenuState.cpp" />
     <ClCompile Include="GamePlayState.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -173,9 +174,15 @@
     <ClInclude Include="FiniteStateMachine.hpp" />
     <ClInclude Include="GamePauseMenuState.hpp" />
     <ClInclude Include="GamePlayState.hpp" />
+    <ClInclude Include="Item.hpp" />
+    <ClInclude Include="Room.hpp" />
     <ClInclude Include="Input.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="System.hpp" />
+    <ClInclude Include="TwitterReader.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
