@@ -31,6 +31,12 @@
     <Filter Include="Source Files\SystemFiles">
       <UniqueIdentifier>{e9b44941-863e-41c3-8f99-4ad8d3db9b67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\States\MenuStates">
+      <UniqueIdentifier>{93f6199e-c45b-4a75-bc7f-670930ad1577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\MenuStates">
+      <UniqueIdentifier>{3013cec6-d69b-4270-8e82-078c4bef44d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Character.cpp">
@@ -63,10 +69,16 @@
     <ClCompile Include="PlayerHandler.cpp">
       <Filter>Source Files\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="PauseMenuState.cpp">
+    <ClCompile Include="PlayState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="PlayState.cpp">
+    <ClCompile Include="PauseMenuState.cpp">
+      <Filter>Source Files\States\MenuStates</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuState.cpp">
+      <Filter>Source Files\States\MenuStates</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,11 +113,20 @@
     <ClInclude Include="EnemyHandler.hpp">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="PauseMenuState.hpp">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
     <ClInclude Include="PlayState.hpp">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuState.hpp">
+      <Filter>Header Files\States\MenuStates</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.hpp">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMenuState.hpp">
+      <Filter>Header Files\States\MenuStates</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemSettings.hpp">
+      <Filter>Header Files\SystemFiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
