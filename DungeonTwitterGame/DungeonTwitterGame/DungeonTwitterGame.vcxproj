@@ -166,9 +166,13 @@
     <ClCompile Include="CharacterHandler.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyHandler.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="PauseMenuState.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -176,18 +180,24 @@
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alternative.hpp" />
     <ClInclude Include="Character.hpp" />
     <ClInclude Include="CharacterHandler.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="EnemyHandler.hpp" />
     <ClInclude Include="FiniteStateMachine.hpp" />
+    <ClInclude Include="MainMenuState.hpp" />
+    <ClInclude Include="MenuState.hpp" />
     <ClInclude Include="PauseMenuState.hpp" />
     <ClInclude Include="PlayState.hpp" />
     <ClInclude Include="Input.hpp" />
     <ClInclude Include="GameState.hpp" />
+    <ClInclude Include="Inventory.hpp" />
+    <ClInclude Include="Item.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="PlayerHandler.hpp" />
     <ClInclude Include="System.hpp" />
+    <ClInclude Include="SystemSettings.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

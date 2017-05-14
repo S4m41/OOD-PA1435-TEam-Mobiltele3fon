@@ -18,6 +18,7 @@ Character::~Character()
 void Character::Update()
 {
 	sf::Vector2f move = m_movement * m_walkingSpeed;
+
 	m_position += move;
 
 	// Reset movement

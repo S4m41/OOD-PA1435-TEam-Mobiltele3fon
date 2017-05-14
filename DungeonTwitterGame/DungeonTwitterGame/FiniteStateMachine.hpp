@@ -1,6 +1,8 @@
 #ifndef FINITE_STATE_MACHINE_HPP
 #define FINITE_STATE_MACHINE_HPP
 
+#include <iostream>
+
 class GameState;
 
 class FiniteStateMachine final
@@ -22,16 +24,29 @@ public:
 		newNode->next = m_top;
 		m_top = newNode;
 	}
-	void Pop()
+
+	void Pop(int x = 1)
 	{
-		if (m_top)
+		if (m_top && x > 0 )
 		{
-			Node* next = m_top->next;
-			delete m_top->state;
-			delete m_top;
-			m_top = next;
+			Node* active = m_top;
+			m_top = m_top->next;
+
+			for (int i = 1; i < x; i++)
+			{
+				if (m_top) {
+					Node* next = m_top->next;
+					delete m_top->state;
+					delete m_top;
+					m_top = next;
+				}
+			}
+
+			delete active->state;
+			delete active;
 		}
 	}
+
 	GameState* Peek() const
 	{
 		return m_top ? m_top->state : nullptr;

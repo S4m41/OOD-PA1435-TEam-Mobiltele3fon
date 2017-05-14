@@ -1,5 +1,4 @@
-#include "PauseMenuState.hpp"
-
+#include "MainMenuState.hpp"
 #include "Input.hpp"
 #include "SystemSettings.hpp"
 #include "FiniteStateMachine.hpp"
@@ -13,11 +12,12 @@
 
 #include<iostream>
 
-PauseMenuState::PauseMenuState(FiniteStateMachine* fsm) : MenuState(fsm)
+MainMenuState::MainMenuState(FiniteStateMachine * fsm) : MenuState(fsm)
 {
 	m_font = new sf::Font;
 	m_text = new sf::Text;
-	m_title = "Game Paused";
+
+	m_title = "Main Menu";
 
 	if (!m_font->loadFromFile("./Graphics/Fonts/ALGER.TTF"))
 	{
@@ -25,71 +25,66 @@ PauseMenuState::PauseMenuState(FiniteStateMachine* fsm) : MenuState(fsm)
 	}
 	else
 	{
-		std::cout << "Font Loaded!" << std::endl;
+		std::cout <<  "Font Loaded!" << std::endl;
 	}
 	m_text->setFont(*m_font);
 }
 
-PauseMenuState::~PauseMenuState()
+MainMenuState::~MainMenuState()
 {
 	delete m_text;
 	delete m_font;
 }
 
-void PauseMenuState::Update()
+void MainMenuState::Update()
 {
-	MenuState::Update();//Up and Down key checked in baseClass!
+	MenuState::Update();
 
-	if (m_input->IsKeyPressed(sf::Keyboard::Key::Escape))
-	{
-		m_FSM->Pop();		// Exit pause state, return to play state
-		return;
-	}
-	else if (m_input->IsKeyPressed(sf::Keyboard::Return)) {
+	if (m_input->IsKeyPressed(sf::Keyboard::Return)) {
 		switch (m_selectedOption)
 		{
-		case Resume:
-			m_FSM->Pop();		// Exit pause state, return to play state
-			return;
+		case Start:
+			m_FSM->Push<PlayState>();		// Enter GamePlay state
+			m_FSM->Peek()->SetInput(m_input);
 			break;
 		case Quit:
-			m_FSM->Pop(2);		// Exit pause state, return to MainMenu state
-			return;
+			m_FSM->Pop();//Close Window
+			break;
 		default:
 			break;
 		}
 	}
 }
 
-void PauseMenuState::ClampSelecton()
+void MainMenuState::ClampSelecton()
 {
-	m_selectedOption += _NR_OF_OPTIONS_PAUSEMENU;
-	m_selectedOption %= _NR_OF_OPTIONS_PAUSEMENU;
+	m_selectedOption += _NR_OF_OPTIONS_MAINMENU;
+	m_selectedOption %= _NR_OF_OPTIONS_MAINMENU;
 }
 
-void PauseMenuState::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void MainMenuState::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	/*Draw Title*/
 	m_text->setString(m_title);
 	m_text->setCharacterSize(46); // in pixels, not points!							  
 	m_text->setColor(sf::Color::Red);// set the color
-
+	
 	sf::FloatRect textRect = m_text->getLocalBounds();
 
 	m_text->setPosition(WINDOW_WIDTH / 2 - textRect.width / 2, 10);
 	m_text->setStyle(sf::Text::Bold);
 	target.draw(*m_text, states);
 
-	for (int i = 0; i < _NR_OF_OPTIONS_PAUSEMENU; i++)
+	/*Draw Options*/
+	for (int i = 0; i < _NR_OF_OPTIONS_MAINMENU; i++)
 	{
 		m_text->setString(m_options_string[i]);
-		m_text->setCharacterSize(24); // in pixels, not points!
-
+		m_text->setCharacterSize(24); // in pixels, not points!							  
 		m_text->setColor(sf::Color::Red);// set the color
 
 		sf::FloatRect textRect = m_text->getLocalBounds();
 
-		m_text->setPosition(WINDOW_WIDTH * 0.5f - textRect.width * 0.5f, WINDOW_HEIGHT * 0.5f - _NR_OF_OPTIONS_PAUSEMENU * 25 + 50 * i);
+		m_text->setPosition(WINDOW_WIDTH * 0.5f - textRect.width * 0.5f, WINDOW_HEIGHT * 0.5f - _NR_OF_OPTIONS_MAINMENU *25 + 50*i);
 		// set the text style
 		m_text->setStyle((m_selectedOption == i) ? sf::Text::Bold | sf::Text::Underlined : sf::Text::Bold);
 		target.draw(*m_text, states);
