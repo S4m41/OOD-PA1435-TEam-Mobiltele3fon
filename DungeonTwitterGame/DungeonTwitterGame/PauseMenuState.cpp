@@ -1,4 +1,4 @@
-#include "GamePauseMenuState.hpp"
+#include "PauseMenuState.hpp"
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
 #include <SFML\Window\Keyboard.hpp>
@@ -6,11 +6,11 @@
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
 
-GamePauseMenuState::GamePauseMenuState(FiniteStateMachine* fsm) : GameState(fsm)
+PauseMenuState::PauseMenuState(FiniteStateMachine* fsm) : GameState(fsm)
 {
 }
 
-GamePauseMenuState::~GamePauseMenuState()
+PauseMenuState::~PauseMenuState()
 {
 }
 
@@ -19,7 +19,7 @@ GamePauseMenuState::~GamePauseMenuState()
 //	return false;
 //}
 
-void GamePauseMenuState::Update()
+void PauseMenuState::Update()
 {
 	if (m_input->IsKeyPressed(sf::Keyboard::Key::Escape))
 	{
@@ -33,7 +33,7 @@ void GamePauseMenuState::Update()
 	// .
 }
 
-void GamePauseMenuState::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void PauseMenuState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::CircleShape circle(100.0f);
 	circle.setFillColor(sf::Color::Green);

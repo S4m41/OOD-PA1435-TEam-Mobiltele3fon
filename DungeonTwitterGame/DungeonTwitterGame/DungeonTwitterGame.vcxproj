@@ -166,8 +166,8 @@
     <ClCompile Include="CharacterHandler.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyHandler.cpp" />
-    <ClCompile Include="GamePauseMenuState.cpp" />
-    <ClCompile Include="GamePlayState.cpp" />
+    <ClCompile Include="PauseMenuState.cpp" />
+    <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameState.cpp" />
@@ -181,8 +181,8 @@
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="EnemyHandler.hpp" />
     <ClInclude Include="FiniteStateMachine.hpp" />
-    <ClInclude Include="GamePauseMenuState.hpp" />
-    <ClInclude Include="GamePlayState.hpp" />
+    <ClInclude Include="PauseMenuState.hpp" />
+    <ClInclude Include="PlayState.hpp" />
     <ClInclude Include="Input.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="Player.hpp" />

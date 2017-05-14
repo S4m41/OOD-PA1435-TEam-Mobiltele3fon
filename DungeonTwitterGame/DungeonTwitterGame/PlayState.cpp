@@ -1,5 +1,5 @@
-#include "GamePlayState.hpp"
-#include "GamePauseMenuState.hpp"
+#include "PlayState.hpp"
+#include "PauseMenuState.hpp"
 #include "CharacterHandler.hpp"
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
@@ -8,11 +8,11 @@
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
 
-GamePlayState::GamePlayState(FiniteStateMachine* fsm) : GameState(fsm)
+PlayState::PlayState(FiniteStateMachine* fsm) : GameState(fsm)
 {
 	m_characterHandler = new CharacterHandler;
 }
-GamePlayState::~GamePlayState()
+PlayState::~PlayState()
 {
 	if (m_characterHandler)
 	{
@@ -21,7 +21,7 @@ GamePlayState::~GamePlayState()
 	}
 }
 
-void GamePlayState::SetInput(Input* input)
+void PlayState::SetInput(Input* input)
 {
 	GameState::SetInput(input);
 	m_characterHandler->SetInput(input);
@@ -37,18 +37,18 @@ void GamePlayState::SetInput(Input* input)
 //	return true;
 //}
 
-void GamePlayState::Update()
+void PlayState::Update()
 {
 	if (m_input->IsKeyPressed(sf::Keyboard::Escape))
 	{
-		m_FSM->Push<GamePauseMenuState>();		// Enter pause state
+		m_FSM->Push<PauseMenuState>();		// Enter pause state
 		m_FSM->Peek()->SetInput(m_input);
 	}
 
 	m_characterHandler->Update();
 }
 
-void GamePlayState::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void PlayState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::CircleShape circle(100.0f);
 	circle.setFillColor(sf::Color::Blue);

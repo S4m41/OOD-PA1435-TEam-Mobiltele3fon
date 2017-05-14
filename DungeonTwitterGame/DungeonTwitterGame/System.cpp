@@ -1,5 +1,5 @@
 #include "System.hpp"
-#include "GamePlayState.hpp"
+#include "PlayState.hpp"
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
 #include <SFML\Window\Event.hpp>
@@ -46,7 +46,7 @@ bool System::Initialize()
 	m_FSM = new FiniteStateMachine;
 	if (!m_FSM)
 		return false;
-	m_FSM->Push<GamePlayState>();
+	m_FSM->Push<PlayState>();
 	m_FSM->Peek()->SetInput(m_input);
 
 	return true;

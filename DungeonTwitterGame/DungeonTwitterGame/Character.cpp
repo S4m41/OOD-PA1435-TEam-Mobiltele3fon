@@ -2,7 +2,6 @@
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
 #include <SFML\Graphics\CircleShape.hpp>
-//#include <SFML\Graphics\Color.hpp>
 
 Character::Character(sf::Color color)
 {
