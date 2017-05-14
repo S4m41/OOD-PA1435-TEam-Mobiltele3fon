@@ -12,6 +12,7 @@ GamePlayState::GamePlayState(FiniteStateMachine* fsm) : GameState(fsm)
 {
 	m_characterHandler = new CharacterHandler;
 	m_characterHandler->AddPlayer();
+	m_characterHandler->AddEnemy();
 }
 GamePlayState::~GamePlayState()
 {

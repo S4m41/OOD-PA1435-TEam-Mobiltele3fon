@@ -95,5 +95,8 @@
     <ClInclude Include="Input.hpp">
       <Filter>Header Files\SystemFiles</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerHandler.hpp">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

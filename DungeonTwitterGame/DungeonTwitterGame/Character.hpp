@@ -1,6 +1,7 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 #include <SFML\Graphics\Drawable.hpp>
+#include <SFML\Graphics\Color.hpp>
 
 class Character : public sf::Drawable
 {
@@ -12,23 +13,25 @@ public:
 	void SetPosition(sf::Vector2f position);
 	sf::Vector2f GetPosition() const;
 
-	void SetMoveUp();
-	void SetMoveDown();
-	void SetMoveRight();
-	void SetMoveLeft();
+	void SetMovement(sf::Vector2f movement);
+	sf::Vector2f GetMovement() const;
+
+	void SetWalkingSpeed(float speed);
+	float GetWalkingSpeed() const;
 
 	void SetHealth(int health);
 	int GetHealth() const;
 
 protected:
-	Character();
+	Character(sf::Color color);
 
 private:
 	sf::Vector2f m_position;
+	sf::Vector2f m_movement;
 	float m_walkingSpeed;
 	int m_health;
 
-	bool m_moveUp, m_moveDown, m_moveRight, m_moveLeft;
+	sf::Color m_color;
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

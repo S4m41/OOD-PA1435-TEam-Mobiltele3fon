@@ -183,6 +183,7 @@
     <ClInclude Include="Input.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="PlayerHandler.hpp" />
     <ClInclude Include="System.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
