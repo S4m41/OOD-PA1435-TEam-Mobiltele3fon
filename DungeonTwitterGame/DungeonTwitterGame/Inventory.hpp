@@ -6,13 +6,17 @@ public:
 	Inventory();
 	~Inventory();
 	bool addItem(Item* itemToAdd);
-	//disowns item caller beware
+	/*disowns item caller beware!, 
+	only checks pointer not object, removes first pointer encoutered not caring for duplicates
+	returns false if no item in slot */
 	bool dropItem(Item* itemToDrop);
+	//disowns item caller beware!, returns false if no item in slot 
+	bool dropItem(int slotID);
 	Item* itemInSlot(int slotID);
 protected:
 private:
 	bool isSlotEmpty(int slotID);
-	//erases the item on slotID, no delete on item called!!
+	//erases the item on slotID, no delete on item called!! returns false if empty
 	bool removeItem(int slotID);
 
 	Item** items;//storebetter

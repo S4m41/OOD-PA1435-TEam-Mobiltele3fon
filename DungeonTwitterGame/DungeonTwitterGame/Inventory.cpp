@@ -37,13 +37,43 @@ bool Inventory::addItem(Item * itemToAdd)
 	return !fail;
 }
 
+bool Inventory::dropItem(Item * itemToDrop)
+{
+	for (int i = 0; i < Storageinfo.vectormax; i++) {
+		if (itemToDrop == items[i]) {
+			return dropItem(i);
+		}
+	}
+	return false;
+}
+
+bool Inventory::dropItem(int slotID)
+{
+	bool succsess = false;
+	succsess = removeItem(slotID);
+	return succsess;
+}
+
 bool Inventory::isSlotEmpty(int slotID)
 {
-	if (slotID> Storageinfo.vectormax)
+	if (slotID > Storageinfo.vectormax)
 		return true;
 	if (items[slotID] == nullptr)
 		return true;
 	return false;
+}
+
+bool Inventory::removeItem(int slotID)
+{
+	if (isSlotEmpty(slotID))
+		return false;
+	
+	items[slotID] = nullptr;
+
+	if (isSlotEmpty(slotID))
+		return true;
+	return false;
+
 }
 
 bool Inventory::expand()//expand
