@@ -2,14 +2,14 @@
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
 #include <SFML\Graphics\CircleShape.hpp>
-#include <SFML\Graphics\Color.hpp>
 
-Character::Character()
+Character::Character(sf::Color color)
 {
+	m_position = sf::Vector2f(200.0f, 200.0f);
+	m_movement = sf::Vector2f(0.0f, 0.0f);
+	m_walkingSpeed = 5.0f;
 	m_health = 100;
-	m_walkingSpeed = 1;
-	m_position = sf::Vector2f(200, 200);
-	m_moveUp = m_moveDown = m_moveRight = m_moveLeft = false;
+	m_color = color;
 }
 Character::~Character()
 {
@@ -17,9 +17,11 @@ Character::~Character()
 
 void Character::Update()
 {
-	sf::Vector2f move = sf::Vector2f(m_moveRight - m_moveLeft, m_moveDown - m_moveUp) * m_walkingSpeed;
+	sf::Vector2f move = m_movement * m_walkingSpeed;
 	m_position += move;
-	m_moveUp = m_moveDown = m_moveRight = m_moveLeft = false;
+
+	// Reset movement
+	m_movement = sf::Vector2f(0.0f, 0.0f);
 }
 
 void Character::SetPosition(sf::Vector2f position)
@@ -31,21 +33,26 @@ sf::Vector2f Character::GetPosition() const
 	return m_position;
 }
 
-void Character::SetMoveUp()
+void Character::SetMovement(sf::Vector2f movement)
 {
-	m_moveUp = true;
+	m_movement = movement;
+	float length = std::sqrtf(movement.x * movement.x + movement.y * movement.y);
+	m_movement *= length > 0 ? 1 / length : 0;			// Normalize movement
 }
-void Character::SetMoveDown()
+
+sf::Vector2f Character::GetMovement() const
 {
-	m_moveDown = true;
+	return m_movement;
 }
-void Character::SetMoveRight()
+
+void Character::SetWalkingSpeed(float speed)
 {
-	m_moveRight = true;
+	m_walkingSpeed = std::fmaxf(0.5f, speed);
 }
-void Character::SetMoveLeft()
+
+float Character::GetWalkingSpeed() const
 {
-	m_moveLeft = true;
+	return m_walkingSpeed;
 }
 
 void Character::SetHealth(int health)
@@ -59,8 +66,8 @@ int Character::GetHealth() const
 
 void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	sf::CircleShape circle(50.0f);
-	circle.setFillColor(sf::Color::Red);
+	sf::CircleShape circle(20.0f);
+	circle.setFillColor(m_color);
 	circle.setPosition(m_position);
 	target.draw(circle, states);
 }
