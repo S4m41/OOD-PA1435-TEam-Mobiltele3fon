@@ -21,21 +21,16 @@ GamePauseMenuState::~GamePauseMenuState()
 
 void GamePauseMenuState::Update()
 {
-	ProcessInput();
+	if (m_input->IsKeyPressed(sf::Keyboard::Key::Escape))
+	{
+		m_FSM->Pop();		// Exit pause state, return to play state
+	}
 	// .
 	// .
 	// .
 	// Do stuff
 	// .
 	// .
-}
-
-void GamePauseMenuState::ProcessInput()
-{
-	if (m_input->IsKeyPressed(sf::Keyboard::Key::Escape))
-	{
-		m_FSM->Pop();		// Exit pause state, return to play state
-	}
 }
 
 void GamePauseMenuState::draw(sf::RenderTarget& target, sf::RenderStates states) const

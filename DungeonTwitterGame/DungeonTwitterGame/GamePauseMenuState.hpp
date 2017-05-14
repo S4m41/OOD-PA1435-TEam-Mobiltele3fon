@@ -25,8 +25,6 @@ private:
 	// .
 	// .
 
-	void ProcessInput() override;
-
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 

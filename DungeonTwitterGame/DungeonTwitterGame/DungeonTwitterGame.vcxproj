@@ -165,18 +165,21 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CharacterHandler.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyHandler.cpp" />
     <ClCompile Include="GamePauseMenuState.cpp" />
     <ClCompile Include="GamePlayState.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerHandler.cpp" />
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.hpp" />
     <ClInclude Include="CharacterHandler.hpp" />
     <ClInclude Include="Enemy.hpp" />
+    <ClInclude Include="EnemyHandler.hpp" />
     <ClInclude Include="FiniteStateMachine.hpp" />
     <ClInclude Include="GamePauseMenuState.hpp" />
     <ClInclude Include="GamePlayState.hpp" />

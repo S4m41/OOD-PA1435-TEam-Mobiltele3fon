@@ -63,6 +63,12 @@
     <ClCompile Include="System.cpp">
       <Filter>Source Files\SystemFiles</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyHandler.cpp">
+      <Filter>Source Files\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHandler.cpp">
+      <Filter>Source Files\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.hpp">
@@ -96,6 +102,9 @@
       <Filter>Header Files\SystemFiles</Filter>
     </ClInclude>
     <ClInclude Include="PlayerHandler.hpp">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyHandler.hpp">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,8 +19,6 @@ public:
 protected:
 	Input* m_input;
 	FiniteStateMachine* m_FSM;
-
-	virtual void ProcessInput() = 0;
 };
 
 #endif

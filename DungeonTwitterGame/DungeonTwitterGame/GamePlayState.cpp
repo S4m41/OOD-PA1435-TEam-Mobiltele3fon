@@ -11,8 +11,6 @@
 GamePlayState::GamePlayState(FiniteStateMachine* fsm) : GameState(fsm)
 {
 	m_characterHandler = new CharacterHandler;
-	m_characterHandler->AddPlayer();
-	m_characterHandler->AddEnemy();
 }
 GamePlayState::~GamePlayState()
 {
@@ -41,22 +39,13 @@ void GamePlayState::SetInput(Input* input)
 
 void GamePlayState::Update()
 {
-	ProcessInput();
-
-	m_characterHandler->Update();
-}
-void GamePlayState::ProcessInput()
-{
-	/*m_moveNorth = m_input->IsKeyDown(sf::Keyboard::W);
-	m_moveEast = m_input->IsKeyDown(sf::Keyboard::D);
-	m_moveSouth = m_input->IsKeyDown(sf::Keyboard::S);
-	m_moveWest = m_input->IsKeyDown(sf::Keyboard::A);*/
-
 	if (m_input->IsKeyPressed(sf::Keyboard::Escape))
 	{
 		m_FSM->Push<GamePauseMenuState>();		// Enter pause state
 		m_FSM->Peek()->SetInput(m_input);
 	}
+
+	m_characterHandler->Update();
 }
 
 void GamePlayState::draw(sf::RenderTarget& target, sf::RenderStates states) const

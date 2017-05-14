@@ -1,78 +1,50 @@
 #include "CharacterHandler.hpp"
-#include "Input.hpp"
-#include "Enemy.hpp"
-#include "Player.hpp"
+#include "PlayerHandler.hpp"
+#include "EnemyHandler.hpp"
 #include <SFML\Window\Keyboard.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
 
 CharacterHandler::CharacterHandler()
 {
-	m_input = nullptr;
+	m_playerHandler = new PlayerHandler;
+	m_enemyHandler = new EnemyHandler;
+
+	m_playerHandler->CreatePlayer();
+
+	for (int i = 0; i < 5; i++)
+	{
+		m_enemyHandler->CreateEnemy();
+	}
 }
 
 CharacterHandler::~CharacterHandler()
 {
-	for (unsigned int i = 0; i < m_characters.size(); i++)
+	if (m_playerHandler)
 	{
-		if (m_characters[i])
-		{
-			delete m_characters[i];
-			m_characters[i] = nullptr;
-		}
+		delete m_playerHandler;
+		m_playerHandler = nullptr;
+	}
+	if (m_enemyHandler)
+	{
+		delete m_enemyHandler;
+		m_enemyHandler = nullptr;
 	}
 }
 
 void CharacterHandler::SetInput(Input* input)
 {
-	m_input = input;
-}
-
-void CharacterHandler::AddPlayer()
-{
-	if (!m_characters.empty())	// If player exists
-		return;
-	m_characters.push_back(new Player);
-}
-
-void CharacterHandler::AddEnemy()
-{
-	if (m_characters.empty())	// If no player exists
-		return;
-	m_characters.push_back(new Enemy);
+	m_playerHandler->SetInput(input);
 }
 
 void CharacterHandler::Update()
 {
-	if (m_characters[0])
-	{
-		Player* player = dynamic_cast<Player*>(m_characters[0]);
-
-		if (m_input->IsKeyDown(sf::Keyboard::Key::W))
-			player->SetMoveUp();
-		if (m_input->IsKeyDown(sf::Keyboard::Key::S))
-			player->SetMoveDown();
-		if (m_input->IsKeyDown(sf::Keyboard::Key::D))
-			player->SetMoveRight();
-		if (m_input->IsKeyDown(sf::Keyboard::Key::A))
-			player->SetMoveLeft();
-
-		player->Update();
-	}
-
-
-	for (unsigned int i = 0; i < m_characters.size(); i++)
-	{
-		// Move towards player
-		m_characters[i]->SetMovement(m_characters[0]->GetPosition() - m_characters[i]->GetPosition());
-		m_characters[i]->Update();
-	}
+	m_playerHandler->Update();
+	m_enemyHandler->Update(m_playerHandler->GetPlayerPosition());
 }
 
 void CharacterHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	for (unsigned int i = 0; i < m_characters.size(); i++)
-	{
-		target.draw(*m_characters[i], states);
-	}
+	target.draw(*m_enemyHandler, states);
+	target.draw(*m_playerHandler, states);
 }

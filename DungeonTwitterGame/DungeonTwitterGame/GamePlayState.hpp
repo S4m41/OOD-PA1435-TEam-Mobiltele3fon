@@ -23,8 +23,6 @@ public:
 private:
 	CharacterHandler* m_characterHandler;
 
-	void ProcessInput() override;
-
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 
