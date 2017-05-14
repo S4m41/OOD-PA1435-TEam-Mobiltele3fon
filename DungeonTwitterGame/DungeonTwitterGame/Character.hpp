@@ -1,13 +1,18 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 #include <SFML\Graphics\Drawable.hpp>
-
+#include "Alternative.hpp"
 class Character : public sf::Drawable
 {
 public:
 	virtual ~Character();
 
 	virtual void Update();
+
+	bool Hit(int damage);
+	bool TryMoveCharacter(sf::Vector2f* direction);
+	Alternative* Interact();//TODO change return type
+	Alternative SelectAlternative(Alternative* alternative);
 
 	void SetPosition(sf::Vector2f position);
 	sf::Vector2f GetPosition() const;
@@ -22,6 +27,8 @@ public:
 
 protected:
 	Character();
+	void Die();//TODO remove this? should be in characterhandler
+	void MoveCharacter(sf::Vector2f direction);
 
 private:
 	sf::Vector2f m_position;
