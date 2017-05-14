@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -31,6 +31,12 @@
     <Filter Include="Source Files\SystemFiles">
       <UniqueIdentifier>{e9b44941-863e-41c3-8f99-4ad8d3db9b67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\States\Menus">
+      <UniqueIdentifier>{58540175-ce00-4967-9b99-1340e8196558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\Menus">
+      <UniqueIdentifier>{173c1e7c-4335-4798-afda-e33d907ffa6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Character.cpp">
@@ -45,6 +51,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="GamePlayState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
@@ -57,11 +66,14 @@
     <ClCompile Include="System.cpp">
       <Filter>Source Files\SystemFiles</Filter>
     </ClCompile>
+    <ClCompile Include="GamePauseMenuState.cpp">
+      <Filter>Source Files\States\Menus</Filter>
+    </ClCompile>
     <ClCompile Include="MainMenuState.cpp">
-      <Filter>Source Files\States</Filter>
+      <Filter>Source Files\States\Menus</Filter>
     </ClCompile>
     <ClCompile Include="MenuState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="PauseMenuState.cpp">
       <Filter>Source Files\States</Filter>
@@ -86,6 +98,9 @@
     <ClInclude Include="FiniteStateMachine.hpp">
       <Filter>Header Files\States</Filter>
     </ClInclude>
+    <ClInclude Include="GamePlayState.hpp">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
     <ClInclude Include="GameState.hpp">
       <Filter>Header Files\States</Filter>
     </ClInclude>
@@ -108,7 +123,6 @@
       <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="SystemSettings.hpp">
-      <Filter>Header Files\SystemFiles</Filter>
-    </ClInclude>
+      <Filter>Header Files\SystemFiles</Filter>    </ClInclude>
   </ItemGroup>
 </Project>

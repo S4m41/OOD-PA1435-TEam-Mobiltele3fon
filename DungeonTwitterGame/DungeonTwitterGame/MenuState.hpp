@@ -8,6 +8,7 @@ Abstrakt Klass
 #ifndef MENU_STATE_H
 #define MENU_STATE_H
 #include "GameState.hpp"
+#include <String>
 
 namespace sf
 {
@@ -27,6 +28,7 @@ private:
 protected:
 	void ProcessInput();
 	int m_selectedOption = 0;
+	std::string m_title;
 };
 
 #endif // !MENUSTATE_H
