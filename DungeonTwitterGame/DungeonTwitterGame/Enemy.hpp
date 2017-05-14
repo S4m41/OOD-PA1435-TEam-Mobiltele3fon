@@ -8,7 +8,7 @@ public:
 	Enemy();
 	~Enemy();
 
-	//UpdateAI();
+	void Update();
 
 private:
 	// AI

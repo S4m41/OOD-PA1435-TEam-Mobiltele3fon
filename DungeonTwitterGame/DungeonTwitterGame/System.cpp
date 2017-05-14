@@ -1,9 +1,10 @@
 #include "System.hpp"
-#include "GamePlayState.hpp"
+#include "PlayState.hpp"
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
 #include <SFML\Window\Event.hpp>
 #include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML\System\Clock.hpp>
 
 System::System()
 {
@@ -45,7 +46,7 @@ bool System::Initialize()
 	m_FSM = new FiniteStateMachine;
 	if (!m_FSM)
 		return false;
-	m_FSM->Push<GamePlayState>();
+	m_FSM->Push<PlayState>();
 	m_FSM->Peek()->SetInput(m_input);
 
 	return true;
@@ -53,6 +54,10 @@ bool System::Initialize()
 
 void System::Run()
 {
+	sf::Clock clock;
+	float frameRateDelay = 1.0f / FRAME_RATE;
+	float timePassed = 0.0f;
+
 	while (m_window->isOpen())
 	{
 		sf::Event event;
@@ -66,8 +71,14 @@ void System::Run()
 			}
 		}
 
-		m_input->Update();
+		// Delay program
+		timePassed += clock.restart().asSeconds();
+		if (timePassed < frameRateDelay)
+			continue;	
+		timePassed = 0.0f;
 
+
+		m_input->Update();
 		m_FSM->Peek()->Update();
 
 		m_window->clear();

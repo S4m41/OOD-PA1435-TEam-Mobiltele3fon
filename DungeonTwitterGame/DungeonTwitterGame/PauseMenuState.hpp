@@ -1,5 +1,5 @@
-#ifndef GAME_PAUSE_MENU_STATE_HPP
-#define GAME_PAUSE_MENU_STATE_HPP
+#ifndef PAUSE_MENU_STATE_HPP
+#define PAUSE_MENU_STATE_HPP
 #include "GameState.hpp"
 
 namespace sf
@@ -8,11 +8,11 @@ namespace sf
 	class RenderStates;
 }
 
-class GamePauseMenuState final : public GameState
+class PauseMenuState final : public GameState
 {
 public:
-	GamePauseMenuState(FiniteStateMachine* fsm);
-	~GamePauseMenuState();
+	PauseMenuState(FiniteStateMachine* fsm);
+	~PauseMenuState();
 
 	//bool Initialize() override;
 	void Update() override;
@@ -24,8 +24,6 @@ private:
 	// Data
 	// .
 	// .
-
-	void ProcessInput() override;
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
