@@ -171,6 +171,8 @@
     <ClCompile Include="PauseMenuState.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -178,6 +180,7 @@
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alternative.hpp" />
     <ClInclude Include="Character.hpp" />
     <ClInclude Include="CharacterHandler.hpp" />
     <ClInclude Include="Enemy.hpp" />
@@ -189,6 +192,8 @@
     <ClInclude Include="PlayState.hpp" />
     <ClInclude Include="Input.hpp" />
     <ClInclude Include="GameState.hpp" />
+    <ClInclude Include="Inventory.hpp" />
+    <ClInclude Include="Item.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="PlayerHandler.hpp" />
     <ClInclude Include="System.hpp" />

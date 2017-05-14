@@ -31,11 +31,19 @@
     <Filter Include="Source Files\SystemFiles">
       <UniqueIdentifier>{e9b44941-863e-41c3-8f99-4ad8d3db9b67}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="Source Files\States\MenuStates">
       <UniqueIdentifier>{93f6199e-c45b-4a75-bc7f-670930ad1577}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\States\MenuStates">
       <UniqueIdentifier>{3013cec6-d69b-4270-8e82-078c4bef44d3}</UniqueIdentifier>
+=======
+    <Filter Include="Header Files\Inventory">
+      <UniqueIdentifier>{3431a691-90c1-4326-9090-d45260ad1747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Inventory">
+      <UniqueIdentifier>{cdcc4b0b-2383-44b3-8bc9-42ed5d4d6593}</UniqueIdentifier>
+>>>>>>> Inventory
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +71,7 @@
     <ClCompile Include="System.cpp">
       <Filter>Source Files\SystemFiles</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="EnemyHandler.cpp">
       <Filter>Source Files\Characters</Filter>
     </ClCompile>
@@ -80,6 +89,13 @@
     </ClCompile>
     <ClCompile Include="MenuState.cpp">
       <Filter>Source Files\States</Filter>
+=======
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files\Inventory</Filter>
+>>>>>>> Inventory
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +123,7 @@
     <ClInclude Include="Input.hpp">
       <Filter>Header Files\SystemFiles</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="PlayerHandler.hpp">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
@@ -127,6 +144,16 @@
     </ClInclude>
     <ClInclude Include="SystemSettings.hpp">
       <Filter>Header Files\SystemFiles</Filter>
+=======
+    <ClInclude Include="Alternative.hpp">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.hpp">
+      <Filter>Header Files\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.hpp">
+      <Filter>Header Files\Inventory</Filter>
+>>>>>>> Inventory
     </ClInclude>
   </ItemGroup>
 </Project>
