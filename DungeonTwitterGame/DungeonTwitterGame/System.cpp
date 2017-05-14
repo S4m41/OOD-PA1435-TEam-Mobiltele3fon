@@ -1,5 +1,8 @@
 #include "System.hpp"
 #include "GamePlayState.hpp"
+#include "MainMenuState.h"
+#include "SystemSettings.h"
+
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
 #include <SFML\Window\Event.hpp>
@@ -34,7 +37,7 @@ System::~System()
 
 bool System::Initialize()
 {
-	m_window = new sf::RenderWindow(sf::VideoMode(512, 512), "Dungeon Twitter Game");
+	m_window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Dungeon Twitter Game");
 	if (!m_window)
 		return false;
 	
@@ -45,7 +48,7 @@ bool System::Initialize()
 	m_FSM = new FiniteStateMachine;
 	if (!m_FSM)
 		return false;
-	m_FSM->Push<GamePlayState>();
+	m_FSM->Push<MainMenuState>();
 	m_FSM->Peek()->SetInput(m_input);
 
 	return true;
