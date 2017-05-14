@@ -1,6 +1,8 @@
 #ifndef PLAY_STATE_HPP
 #define PLAY_STATE_HPP
+
 #include "GameState.hpp"
+#include "RoomHandler.hpp"
 
 class CharacterHandler;
 namespace sf
@@ -22,6 +24,7 @@ public:
 
 private:
 	CharacterHandler* m_characterHandler;
+	RoomHandler* m_RoomHandler;
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
