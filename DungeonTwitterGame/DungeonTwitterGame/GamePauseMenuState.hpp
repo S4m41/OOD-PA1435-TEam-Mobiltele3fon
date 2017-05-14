@@ -1,8 +1,12 @@
 #ifndef GAME_PAUSE_MENU_STATE_HPP
 #define GAME_PAUSE_MENU_STATE_HPP
 #include "GameState.hpp"
-#include <SFML\Graphics\RenderTarget.hpp>
-#include <SFML\Graphics\RenderStates.hpp>
+
+namespace sf
+{
+	class RenderTarget;
+	class RenderStates;
+}
 
 class GamePauseMenuState final : public GameState
 {
@@ -10,7 +14,7 @@ public:
 	GamePauseMenuState(FiniteStateMachine* fsm);
 	~GamePauseMenuState();
 
-	bool Initialize() override;
+	//bool Initialize() override;
 	void Update() override;
 
 private:

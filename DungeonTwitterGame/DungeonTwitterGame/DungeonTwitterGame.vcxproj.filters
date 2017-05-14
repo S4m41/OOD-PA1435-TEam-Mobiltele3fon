@@ -13,45 +13,87 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\States">
+      <UniqueIdentifier>{195f5fe3-ed28-4ceb-af24-e8e5472d3af7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Characters">
+      <UniqueIdentifier>{7fcf67d3-4f64-4949-8b77-84e5fc2bb56e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Characters">
+      <UniqueIdentifier>{7776486e-fce3-45b8-82c5-7114922b6bc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{5503085b-51f4-471f-900e-5beec4d091a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SystemFiles">
+      <UniqueIdentifier>{7a5f3f06-5ce2-49d1-86a3-285ca4cb2641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SystemFiles">
+      <UniqueIdentifier>{e9b44941-863e-41c3-8f99-4ad8d3db9b67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="System.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CharacterHandler.cpp">
+      <Filter>Source Files\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="GamePlayState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Characters</Filter>
     </ClCompile>
     <ClCompile Include="GamePauseMenuState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlayState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files\SystemFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files\SystemFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>Source Files\SystemFiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="System.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Character.hpp">
+      <Filter>Header Files\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Input.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CharacterHandler.hpp">
+      <Filter>Header Files\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="GamePlayState.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Enemy.hpp">
+      <Filter>Header Files\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="GameState.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Player.hpp">
+      <Filter>Header Files\Characters</Filter>
     </ClInclude>
     <ClInclude Include="FiniteStateMachine.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="GamePauseMenuState.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlayState.hpp">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.hpp">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="System.hpp">
+      <Filter>Header Files\SystemFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.hpp">
+      <Filter>Header Files\SystemFiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

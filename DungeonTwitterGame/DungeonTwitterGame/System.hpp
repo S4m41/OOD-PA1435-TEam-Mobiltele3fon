@@ -1,10 +1,12 @@
 #ifndef SYSTEM_HPP
 #define SYSTEM_HPP
-#include <memory>
-#include <SFML\Graphics\RenderWindow.hpp>
-#include "Input.hpp"
-#include "GamePlayState.hpp"
 
+class Input;
+class FiniteStateMachine;
+namespace sf
+{
+	class RenderWindow;
+}
 
 class System final
 {
@@ -17,8 +19,8 @@ public:
 
 private:
 	sf::RenderWindow* m_window;
-	std::shared_ptr<Input> m_input;
-	FiniteStateMachine m_FSM;
+	Input* m_input;
+	FiniteStateMachine* m_FSM;
 };
 
 #endif

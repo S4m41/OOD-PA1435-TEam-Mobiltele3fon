@@ -1,6 +1,10 @@
+#include "GamePauseMenuState.hpp"
+#include "Input.hpp"
+#include "FiniteStateMachine.hpp"
 #include <SFML\Window\Keyboard.hpp>
 #include <SFML\Graphics\CircleShape.hpp>
-#include "GamePauseMenuState.hpp"
+#include <SFML\Graphics\RenderTarget.hpp>
+#include <SFML\Graphics\RenderStates.hpp>
 
 GamePauseMenuState::GamePauseMenuState(FiniteStateMachine* fsm) : GameState(fsm)
 {
@@ -10,10 +14,10 @@ GamePauseMenuState::~GamePauseMenuState()
 {
 }
 
-bool GamePauseMenuState::Initialize()
-{
-	return false;
-}
+//bool GamePauseMenuState::Initialize()
+//{
+//	return false;
+//}
 
 void GamePauseMenuState::Update()
 {

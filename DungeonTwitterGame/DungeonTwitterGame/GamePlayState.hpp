@@ -1,8 +1,13 @@
 #ifndef GAMEPLAYSTATE_HPP
 #define GAMEPLAYSTATE_HPP
 #include "GameState.hpp"
-#include <SFML\Graphics\RenderTarget.hpp>
-#include <SFML\Graphics\RenderStates.hpp>
+
+class CharacterHandler;
+namespace sf
+{
+	class RenderTarget;
+	class RenderStates;
+}
 
 class GamePlayState final : public GameState
 {
@@ -10,11 +15,13 @@ public:
 	GamePlayState(FiniteStateMachine* fsm);
 	~GamePlayState();
 
-	bool Initialize() override;
+	void SetInput(Input* input) override;
+
+	//bool Initialize() override;
 	void Update() override;
 
 private:
-	bool m_moveNorth, m_moveEast, m_moveSouth, m_moveWest;
+	CharacterHandler* m_characterHandler;
 
 	void ProcessInput() override;
 

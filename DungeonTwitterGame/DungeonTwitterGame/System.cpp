@@ -1,10 +1,15 @@
 #include "System.hpp"
+#include "GamePlayState.hpp"
+#include "Input.hpp"
+#include "FiniteStateMachine.hpp"
 #include <SFML\Window\Event.hpp>
+#include <SFML\Graphics\RenderWindow.hpp>
 
 System::System()
 {
 	m_window = nullptr;
 	m_input = nullptr;
+	m_FSM = nullptr;
 }
 
 System::~System()
@@ -15,6 +20,16 @@ System::~System()
 		delete m_window;
 		m_window = nullptr;
 	}
+	if (m_input)
+	{
+		delete m_input;
+		m_input = nullptr;
+	}
+	if (m_FSM)
+	{
+		delete m_FSM;
+		m_FSM = nullptr;
+	}
 }
 
 bool System::Initialize()
@@ -23,12 +38,15 @@ bool System::Initialize()
 	if (!m_window)
 		return false;
 	
-	m_input = std::make_shared<Input>();
+	m_input = new Input;
 	if (!m_input)
 		return false;
 
-	m_FSM.Push<GamePlayState>();
-	m_FSM.Peek()->SetInput(m_input);
+	m_FSM = new FiniteStateMachine;
+	if (!m_FSM)
+		return false;
+	m_FSM->Push<GamePlayState>();
+	m_FSM->Peek()->SetInput(m_input);
 
 	return true;
 }
@@ -50,10 +68,10 @@ void System::Run()
 
 		m_input->Update();
 
-		m_FSM.Peek()->Update();
+		m_FSM->Peek()->Update();
 
 		m_window->clear();
-		m_window->draw(*m_FSM.Peek());
+		m_window->draw(*m_FSM->Peek());
 		m_window->display();
 	}
 }
