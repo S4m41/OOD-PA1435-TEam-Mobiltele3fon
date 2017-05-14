@@ -17,7 +17,7 @@ Character::~Character()
 
 void Character::Update()
 {
-	sf::Vector2f move = sf::Vector2f(m_moveRight - m_moveLeft, m_moveDown - m_moveUp) * m_walkingSpeed;
+	sf::Vector2f move = sf::Vector2f(float(m_moveRight - m_moveLeft), float(m_moveDown - m_moveUp)) * m_walkingSpeed;
 	m_position += move;
 	m_moveUp = m_moveDown = m_moveRight = m_moveLeft = false;
 }

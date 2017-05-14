@@ -1,8 +1,8 @@
-#include "MainMenuState.h"
+#include "MainMenuState.hpp"
 #include "Input.hpp"
-#include "SystemSettings.h"
+#include "SystemSettings.hpp"
 #include "FiniteStateMachine.hpp"
-#include "GamePlayState.hpp"
+#include "PlayState.hpp"
 
 #include <SFML\Window\Keyboard.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
@@ -47,7 +47,7 @@ void MainMenuState::ProcessInput()
 		switch (m_selectedOption)
 		{
 		case Start:
-			m_FSM->Push<GamePlayState>();		// Enter GamePlay state
+			m_FSM->Push<PlayState>();		// Enter GamePlay state
 			m_FSM->Peek()->SetInput(m_input);
 			break;
 		case Quit:
@@ -76,7 +76,7 @@ void MainMenuState::draw(sf::RenderTarget & target, sf::RenderStates states) con
 
 		sf::FloatRect textRect = m_text->getLocalBounds();
 
-		m_text->setPosition(WINDOW_WIDTH/2 - textRect.width/2, WINDOW_HEIGHT/2 - _NR_OF_OPTIONS_MAINMENU *25 + 50*i);
+		m_text->setPosition(WINDOW_WIDTH * 0.5f - textRect.width * 0.5f, WINDOW_HEIGHT * 0.5f - _NR_OF_OPTIONS_MAINMENU *25 + 50*i);
 		// set the text style
 		m_text->setStyle((m_selectedOption == i) ? sf::Text::Bold | sf::Text::Underlined : sf::Text::Bold);
 		target.draw(*m_text, states);

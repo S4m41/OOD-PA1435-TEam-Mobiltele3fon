@@ -1,6 +1,6 @@
-#ifndef GAME_PAUSE_MENU_STATE_HPP
-#define GAME_PAUSE_MENU_STATE_HPP
-#include "MenuState.h"
+#ifndef PAUSE_MENU_STATE_HPP
+#define PAUSE_MENU_STATE_HPP
+#include "MenuState.hpp"
 /*
 @author Tobias F
 @version 1.0 2017/05/14
@@ -17,11 +17,11 @@ namespace sf
 	class Font;
 }
 
-class GamePauseMenuState final : public MenuState
+class PauseMenuState final : public MenuState
 {
 public:
-	GamePauseMenuState(FiniteStateMachine* fsm);
-	~GamePauseMenuState();
+	PauseMenuState(FiniteStateMachine* fsm);
+	~PauseMenuState();
 
 	//bool Initialize() override;
 	void Update() override;

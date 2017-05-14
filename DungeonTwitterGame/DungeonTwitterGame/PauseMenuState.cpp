@@ -1,9 +1,9 @@
-#include "GamePauseMenuState.hpp"
+#include "PauseMenuState.hpp"
 
 #include "Input.hpp"
-#include "SystemSettings.h"
+#include "SystemSettings.hpp"
 #include "FiniteStateMachine.hpp"
-#include "GamePlayState.hpp"
+#include "PlayState.hpp"
 
 #include <SFML\Window\Keyboard.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
@@ -13,7 +13,7 @@
 
 #include<iostream>
 
-GamePauseMenuState::GamePauseMenuState(FiniteStateMachine* fsm) : MenuState(fsm)
+PauseMenuState::PauseMenuState(FiniteStateMachine* fsm) : MenuState(fsm)
 {
 	m_font = new sf::Font;
 	m_text = new sf::Text;
@@ -29,18 +29,18 @@ GamePauseMenuState::GamePauseMenuState(FiniteStateMachine* fsm) : MenuState(fsm)
 	m_text->setFont(*m_font);
 }
 
-GamePauseMenuState::~GamePauseMenuState()
+PauseMenuState::~PauseMenuState()
 {
 	delete m_text;
 	delete m_font;
 }
 
-void GamePauseMenuState::Update()
+void PauseMenuState::Update()
 {
 	ProcessInput();
 }
 
-void GamePauseMenuState::ProcessInput()
+void PauseMenuState::ProcessInput()
 {
 	if (m_input->IsKeyPressed(sf::Keyboard::Key::Escape))
 	{
@@ -67,13 +67,13 @@ void GamePauseMenuState::ProcessInput()
 	}
 }
 
-void GamePauseMenuState::ClampSelecton()
+void PauseMenuState::ClampSelecton()
 {
 	m_selectedOption += _NR_OF_OPTIONS_PAUSEMENU;
 	m_selectedOption %= _NR_OF_OPTIONS_PAUSEMENU;
 }
 
-void GamePauseMenuState::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void PauseMenuState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (int i = 0; i < _NR_OF_OPTIONS_PAUSEMENU; i++)
 	{
@@ -84,7 +84,7 @@ void GamePauseMenuState::draw(sf::RenderTarget& target, sf::RenderStates states)
 
 		sf::FloatRect textRect = m_text->getLocalBounds();
 
-		m_text->setPosition(WINDOW_WIDTH / 2 - textRect.width / 2, WINDOW_HEIGHT / 2 - _NR_OF_OPTIONS_PAUSEMENU * 25 + 50 * i);
+		m_text->setPosition(WINDOW_WIDTH * 0.5f - textRect.width * 0.5f, WINDOW_HEIGHT * 0.5f - _NR_OF_OPTIONS_PAUSEMENU * 25 + 50 * i);
 		// set the text style
 		m_text->setStyle((m_selectedOption == i) ? sf::Text::Bold | sf::Text::Underlined : sf::Text::Bold);
 		target.draw(*m_text, states);

@@ -1,4 +1,4 @@
-#include "MenuState.h"
+#include "MenuState.hpp"
 #include "Input.hpp"
 #include <SFML\Window\Keyboard.hpp>
 #include <iostream>

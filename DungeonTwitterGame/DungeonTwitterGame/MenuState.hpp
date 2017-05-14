@@ -5,8 +5,8 @@ Abstrakt Klass
 @version 1.0 2017/05/14
 */
 
-#ifndef MENUSTATE_H
-#define MENUSTATE_H
+#ifndef MENU_STATE_H
+#define MENU_STATE_H
 #include "GameState.hpp"
 
 namespace sf

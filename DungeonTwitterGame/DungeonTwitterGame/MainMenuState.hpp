@@ -3,10 +3,10 @@
 @version 1.0 2017/05/14
 */
 
-#ifndef MAINMENUSTATE_HPP
-#define MAINMENUSTATE_HPP
+#ifndef MAIN_MENU_STATE_HPP
+#define MAIN_MENU_STATE_HPP
 
-#include "MenuState.h"
+#include "MenuState.hpp"
 #include <string>
 
 #define _NR_OF_OPTIONS_MAINMENU 3

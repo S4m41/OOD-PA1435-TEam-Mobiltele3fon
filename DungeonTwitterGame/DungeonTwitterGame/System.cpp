@@ -1,7 +1,7 @@
 #include "System.hpp"
-#include "GamePlayState.hpp"
-#include "MainMenuState.h"
-#include "SystemSettings.h"
+#include "PlayState.hpp"
+#include "MainMenuState.hpp"
+#include "SystemSettings.hpp"
 
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
@@ -81,6 +81,5 @@ void System::Run()
 		{
 			m_window->close();
 		}
-
 	}
 }

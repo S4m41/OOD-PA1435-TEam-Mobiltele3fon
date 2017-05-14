@@ -1,5 +1,5 @@
-#ifndef GAMEPLAYSTATE_HPP
-#define GAMEPLAYSTATE_HPP
+#ifndef PLAY_STATE_HPP
+#define PLAY_STATE_HPP
 #include "GameState.hpp"
 
 class CharacterHandler;
@@ -9,11 +9,11 @@ namespace sf
 	class RenderStates;
 }
 
-class GamePlayState final : public GameState
+class PlayState final : public GameState
 {
 public:
-	GamePlayState(FiniteStateMachine* fsm);
-	~GamePlayState();
+	PlayState(FiniteStateMachine* fsm);
+	~PlayState();
 
 	void SetInput(Input* input) override;
 
