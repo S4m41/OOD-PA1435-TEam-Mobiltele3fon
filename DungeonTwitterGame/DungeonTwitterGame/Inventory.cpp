@@ -54,6 +54,13 @@ bool Inventory::dropItem(int slotID)
 	return succsess;
 }
 
+Item * Inventory::itemInSlot(int slotID)
+{
+	if(isSlotEmpty(slotID))
+		return nullptr;
+	return items[slotID];
+}
+
 bool Inventory::isSlotEmpty(int slotID)
 {
 	if (slotID > Storageinfo.vectormax)
@@ -63,7 +70,7 @@ bool Inventory::isSlotEmpty(int slotID)
 	return false;
 }
 
-bool Inventory::removeItem(int slotID)
+bool Inventory::removeItem(int slotID)//call delete?
 {
 	if (isSlotEmpty(slotID))
 		return false;
@@ -76,7 +83,7 @@ bool Inventory::removeItem(int slotID)
 
 }
 
-bool Inventory::expand()//expand
+bool Inventory::expand()//expand container, no failure route throw perhaps? 
 {
 	Item** items_new = new Item*[Storageinfo.vectormax];
 	int i = 0;
