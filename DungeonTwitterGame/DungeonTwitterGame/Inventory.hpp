@@ -6,18 +6,22 @@ public:
 	Inventory();
 	~Inventory();
 	bool addItem(Item* itemToAdd);
+	//disowns item caller beware
 	bool dropItem(Item* itemToDrop);
 	Item* itemInSlot(int slotID);
 protected:
 private:
 	bool isSlotEmpty(int slotID);
+	//erases the item on slotID, no delete on item called!!
 	bool removeItem(int slotID);
-	(Item*)* items;//storebetter
 
-
+	Item** items;//storebetter
+	//expand container
+	bool expand();
 	struct 
 	{
 		int vectormax = 10;
+		int _INCREMENT = 5;
 	}Storageinfo;//överflödigt? till information om items arrayen
 };
 
