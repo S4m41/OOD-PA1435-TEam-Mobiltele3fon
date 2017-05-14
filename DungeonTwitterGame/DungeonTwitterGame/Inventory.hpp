@@ -1,16 +1,23 @@
 #pragma once
 #include "Item.hpp"
-#include <vector>
 class Inventory
 {
 public:
 	Inventory();
 	~Inventory();
+	bool addItem(Item* itemToAdd);
+	bool dropItem(Item* itemToDrop);
+	Item* itemInSlot(int slotID);
 protected:
 private:
 	bool isSlotEmpty(int slotID);
 	bool removeItem(int slotID);
-	std::vector<Item*> items;//storebetter
+	(Item*)* items;//storebetter
 
+
+	struct 
+	{
+		int vectormax = 10;
+	}Storageinfo;//överflödigt? till information om items arrayen
 };
 
