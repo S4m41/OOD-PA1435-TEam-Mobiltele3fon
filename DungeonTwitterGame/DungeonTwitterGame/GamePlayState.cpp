@@ -10,22 +10,22 @@
 
 GamePlayState::GamePlayState(FiniteStateMachine* fsm) : GameState(fsm)
 {
-	m_characterHandler = new CharacterHandler;
-	m_characterHandler->AddPlayer();
+	//m_characterHandler = new CharacterHandler;
+	//m_characterHandler->AddPlayer();
 }
 GamePlayState::~GamePlayState()
 {
-	if (m_characterHandler)
+	/*if (m_characterHandler)
 	{
 		delete m_characterHandler;
 		m_characterHandler = nullptr;
-	}
+	}*/
 }
 
 void GamePlayState::SetInput(Input* input)
 {
 	GameState::SetInput(input);
-	m_characterHandler->SetInput(input);
+	//m_characterHandler->SetInput(input);
 }
 
 //bool GamePlayState::Initialize()
@@ -42,7 +42,7 @@ void GamePlayState::Update()
 {
 	ProcessInput();
 
-	m_characterHandler->Update();
+	//m_characterHandler->Update();
 }
 void GamePlayState::ProcessInput()
 {
@@ -64,5 +64,5 @@ void GamePlayState::draw(sf::RenderTarget& target, sf::RenderStates states) cons
 	circle.setFillColor(sf::Color::Blue);
 	target.draw(circle, states);
 
-	target.draw(*m_characterHandler, states);
+	//target.draw(*m_characterHandler, states);
 }

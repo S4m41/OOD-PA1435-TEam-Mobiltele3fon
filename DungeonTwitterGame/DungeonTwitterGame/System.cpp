@@ -40,7 +40,7 @@ bool System::Initialize()
 	m_window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Dungeon Twitter Game");
 	if (!m_window)
 		return false;
-	
+
 	m_input = new Input;
 	if (!m_input)
 		return false;
@@ -70,11 +70,17 @@ void System::Run()
 		}
 
 		m_input->Update();
-
 		m_FSM->Peek()->Update();
 
-		m_window->clear();
-		m_window->draw(*m_FSM->Peek());
-		m_window->display();
+		if (m_FSM->Peek()) {
+			m_window->clear();
+			m_window->draw(*m_FSM->Peek());
+			m_window->display();
+		}
+		else
+		{
+			m_window->close();
+		}
+
 	}
 }
