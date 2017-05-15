@@ -121,7 +121,7 @@
       <Filter>Source Files\Entities\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="ItemEntity.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
