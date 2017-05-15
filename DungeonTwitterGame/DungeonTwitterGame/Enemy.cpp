@@ -1,9 +1,8 @@
 #include "Enemy.hpp"
 #include <SFML\Graphics\Color.hpp>
 
-Enemy::Enemy() : Character(sf::Color::Blue)
+Enemy::Enemy(float speed) : Character(sf::Color::Blue,speed)
 {
-	SetWalkingSpeed(1.0f);
 }
 
 Enemy::~Enemy()

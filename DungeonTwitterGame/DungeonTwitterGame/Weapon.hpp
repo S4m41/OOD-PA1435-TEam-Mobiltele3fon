@@ -10,10 +10,12 @@ public:
 
 	int GetDamage() const;
 	float GetCooldown() const;
+	float GetRange() const;
 
 private:
 	int m_damage;
 	float m_attackCooldown;
+	float m_range;
 };
 
 #endif

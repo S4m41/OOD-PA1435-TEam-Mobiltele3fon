@@ -33,9 +33,10 @@ public:
 	int GetHealth() const;
 
 	float GetRadius() const;
-
+	Weapon* GetActiveWeapon() const;
+	bool Attack();
 protected:
-	Character(sf::Color color);
+	Character(sf::Color color,float speed=1.0f);
 
 private:
 	sf::Vector2f m_movement;
@@ -46,7 +47,7 @@ private:
 
 	HealthBar* m_healthBar;
 	Weapon* m_activeWeapon;
-
+	float m_timeSinceAttack;
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 
