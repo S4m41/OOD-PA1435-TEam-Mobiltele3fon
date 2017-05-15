@@ -1,3 +1,4 @@
+//TODO: remove includes of headers that are already used in Room.hpp
 #include "Room.hpp"
 #include "Item.hpp"
 
@@ -18,15 +19,17 @@ Room::Room(std::wstring seedName) : Room(new Door(seedName, nullptr))
 //		Will just be random in the first iteration
 Room::Room(Door* door)
 {
-	door->toRoom = this;
+	//Move the entry door to the other side of the room
+	unsigned int entryPos = door->m_doorPositionIndex = (door->m_doorPositionIndex + 2) % 4;
+	door->m_toRoom = this;
 	m_entryDoor = door;
 
 	//Get the names of the other doors in the room
-	m_rightDoor = new Door(L"testNameRight", this);
-	m_middleDoor = new Door(L"testNameMiddle", this);
 
-	// leftDoor is a nullptr (aka locked) for the sake of testing
-	//Door leftDoor = Door(L"testNameLeft", this);
+	// leftDoor is a nullptr (aka m_locked) for the sake of testing
+	//Door leftDoor = Door(L"testNameLeft", this, (entryPos + 1) % 4);
+	m_middleDoor = new Door(L"testNameMiddle", this, (entryPos + 2) % 4);
+	m_rightDoor = new Door(L"testNameRight", this, (entryPos + 3) % 4);
 
 	//m_leftDoor = &leftDoor;
 	/*m_middleDoor = &middleDoor;
@@ -65,7 +68,7 @@ bool Room::IsLegal() const
 
 std::wstring Room::GetRoomName() const
 {
-	return m_entryDoor->name;
+	return m_entryDoor->m_name;
 }
 
 
@@ -84,4 +87,21 @@ void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	roomShape.setPosition(sf::Vector2f(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f));
 
 	target.draw(roomShape, states);
+
+	if (m_entryDoor)
+	{
+		target.draw(*m_entryDoor, states);
+	}
+	if (m_leftDoor)
+	{
+		target.draw(*m_leftDoor, states);
+	}
+	if (m_middleDoor)
+	{
+		target.draw(*m_middleDoor, states);
+	}
+	if (m_rightDoor)
+	{
+		target.draw(*m_rightDoor, states);
+	}
 }
