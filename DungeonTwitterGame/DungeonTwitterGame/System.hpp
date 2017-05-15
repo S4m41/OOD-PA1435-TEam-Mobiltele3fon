@@ -3,6 +3,7 @@
 
 #define FRAME_RATE 60
 
+
 class Input;
 class FiniteStateMachine;
 namespace sf

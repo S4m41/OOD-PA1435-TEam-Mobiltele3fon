@@ -11,7 +11,9 @@
 PlayState::PlayState(FiniteStateMachine* fsm) : GameState(fsm)
 {
 	m_characterHandler = new CharacterHandler;
+	m_RoomHandler = new RoomHandler(L"seedName");
 }
+
 PlayState::~PlayState()
 {
 	if (m_characterHandler)
