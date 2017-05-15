@@ -19,7 +19,7 @@ MainMenuState::MainMenuState(FiniteStateMachine * fsm) : MenuState(fsm)
 
 	m_title = "Main Menu";
 
-	if (!m_font->loadFromFile("./Graphics/Fonts/ALGER.TTF"))
+	if (!m_font->loadFromFile("./Assets/Fonts/ALGER.TTF"))
 	{
 		std::cout << "Failed to load Font" << std::endl;
 	}

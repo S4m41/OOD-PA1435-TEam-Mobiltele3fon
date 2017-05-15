@@ -19,7 +19,7 @@ PauseMenuState::PauseMenuState(FiniteStateMachine* fsm) : MenuState(fsm)
 	m_text = new sf::Text;
 	m_title = "Game Paused";
 
-	if (!m_font->loadFromFile("./Graphics/Fonts/ALGER.TTF"))
+	if (!m_font->loadFromFile("./Assets/Fonts/ALGER.TTF"))
 	{
 		std::cout << "Failed to load Font" << std::endl;
 	}
