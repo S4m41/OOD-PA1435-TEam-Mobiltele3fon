@@ -3,14 +3,13 @@
 #include "Entity.hpp"
 //#include "Alternative.hpp"
 
-
+class Weapon;
 class HealthBar;
 namespace sf
 {
 	class Color;
 	class RectangleShape;
 }
-
 
 class Character : public Entity
 {
@@ -33,6 +32,8 @@ public:
 	float GetWalkingSpeed() const;
 	int GetHealth() const;
 
+	float GetRadius() const;
+
 protected:
 	Character(sf::Color color);
 
@@ -41,7 +42,12 @@ private:
 	float m_walkingSpeed;
 
 	sf::Color* m_color;
+	float m_radius;
+
 	HealthBar* m_healthBar;
+	Weapon* m_activeWeapon;
+
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 
 #endif

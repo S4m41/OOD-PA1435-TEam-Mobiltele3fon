@@ -60,5 +60,4 @@ void CharacterHandler::draw(sf::RenderTarget& target, sf::RenderStates states) c
 {
 	target.draw(*m_enemyHandler, states);
 	target.draw(*m_playerHandler, states);
-
 }

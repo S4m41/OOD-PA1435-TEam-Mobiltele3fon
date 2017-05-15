@@ -4,6 +4,7 @@
 Player::Player() : Character(sf::Color::Cyan)
 {
 	m_moveUp = m_moveDown = m_moveRight = m_moveLeft = false;
+	m_position = sf::Vector2f(200.0f, 200.0f);
 }
 Player::~Player()
 {

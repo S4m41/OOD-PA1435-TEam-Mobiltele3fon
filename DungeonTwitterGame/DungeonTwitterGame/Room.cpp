@@ -1,5 +1,6 @@
 #include "Room.hpp"
-#include "Item.hpp"
+//#include "Item.hpp"
+#include "Weapon.hpp"
 
 #include "ItemEntity.hpp"
 #include <SFML\Graphics\Color.hpp>
@@ -28,7 +29,7 @@ Room::Room(Door* door)
 	m_rightDoor = &rightDoor;*/
 
 	// Spawn an item
-	Item testItem;
+	Weapon testItem("Axe.png");
 	SpawnItem(&testItem);
 }
 
@@ -44,7 +45,7 @@ void Room::SpawnItem(Item* item)
 	// TODO: make these values random within the boundries of the room
 	int xLocation = 0;
 	int yLocation = 0;
-	ItemEntity newItem = ItemEntity(sf::Color::Cyan, item);
+	ItemEntity newItem = ItemEntity(item);
 	newItem.SetPosition(sf::Vector2f(xLocation, yLocation));
 
 	m_itemsInRoom.push_back(newItem);
