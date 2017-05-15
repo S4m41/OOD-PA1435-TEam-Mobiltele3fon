@@ -13,7 +13,10 @@ public:
 
 	void CreateEnemy();
 
-	void Update(sf::Vector2f playerPosition);
+	void Update();
+
+	Enemy* GetEnemy(int i);
+	int GetNrOfEnemies() const;
 
 private:
 	std::vector<Enemy*> m_enemies;

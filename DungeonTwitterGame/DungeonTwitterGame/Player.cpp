@@ -1,7 +1,7 @@
 #include "Player.hpp"
 #include <SFML\Graphics\Color.hpp>
 
-Player::Player() : Character(sf::Color::Green)
+Player::Player() : Character(sf::Color::Cyan)
 {
 	m_moveUp = m_moveDown = m_moveRight = m_moveLeft = false;
 }

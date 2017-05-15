@@ -166,6 +166,9 @@
     <ClCompile Include="CharacterHandler.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyHandler.cpp" />
+    <ClCompile Include="Fight.cpp" />
+    <ClCompile Include="FightHandler.cpp" />
+    <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
@@ -185,7 +188,10 @@
     <ClInclude Include="CharacterHandler.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="EnemyHandler.hpp" />
+    <ClInclude Include="Fight.hpp" />
+    <ClInclude Include="FightHandler.hpp" />
     <ClInclude Include="FiniteStateMachine.hpp" />
+    <ClInclude Include="HealthBar.hpp" />
     <ClInclude Include="Inventory.hpp" />
     <ClInclude Include="Item.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
