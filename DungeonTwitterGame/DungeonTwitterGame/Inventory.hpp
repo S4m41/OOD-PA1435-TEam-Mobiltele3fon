@@ -5,7 +5,7 @@ class Inventory
 public:
 	Inventory();
 	~Inventory();
-	bool addItem(Item* itemToAdd);
+	int addItem(Item* itemToAdd);
 	/*disowns item caller beware!, 
 	only checks pointer not object, removes first pointer encoutered not caring for duplicates
 	returns false if no item in slot or fail to find*/
