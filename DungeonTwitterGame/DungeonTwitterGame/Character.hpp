@@ -1,6 +1,6 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
-#include <SFML\Graphics\Drawable.hpp>
+#include "Entity.hpp"
 //#include "Alternative.hpp"
 
 
@@ -11,12 +11,11 @@ namespace sf
 	class RectangleShape;
 }
 
-class Character : public sf::Drawable
+
+class Character : public Entity
 {
 public:
 	virtual ~Character();
-
-	virtual void Update();
 
 	//bool Hit(int damage);
 	//bool TryMoveCharacter(sf::Vector2f* direction);
@@ -24,31 +23,25 @@ public:
 	//Alternative SelectAlternative(Alternative* alternative);
 	//void Die();//TODO remove this? should be in characterhandler
 
-	void SetPosition(sf::Vector2f position);
 	void SetMovement(sf::Vector2f movement);
 	void SetWalkingSpeed(float speed);
 	void ChangeHealth(int health);
 
-	sf::Vector2f GetPosition() const;
+	void Update();
+
 	sf::Vector2f GetMovement() const;
 	float GetWalkingSpeed() const;
 	int GetHealth() const;
-	int GetRadius() const;
 
 protected:
 	Character(sf::Color color);
 
 private:
-	sf::Vector2f m_position;
 	sf::Vector2f m_movement;
 	float m_walkingSpeed;
 
-	int m_radius;
-
 	sf::Color* m_color;
 	HealthBar* m_healthBar;
-
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 
 #endif

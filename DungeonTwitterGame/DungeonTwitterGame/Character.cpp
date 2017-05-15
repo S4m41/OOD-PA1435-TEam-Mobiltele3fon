@@ -1,20 +1,16 @@
 #include "Character.hpp"
 #include "HealthBar.hpp"
-#include <SFML\Graphics\RenderTarget.hpp>
-#include <SFML\Graphics\RenderStates.hpp>
-#include <SFML\Graphics\CircleShape.hpp>
 #include <SFML\Graphics\Color.hpp>
 
-Character::Character(sf::Color color)
+Character::Character(sf::Color color) : Entity(color, color == sf::Color::Cyan ? 20 : 15)
 {
 	m_position = sf::Vector2f(200.0f, 200.0f);
 	m_movement = sf::Vector2f(0.0f, 0.0f);
 	m_walkingSpeed = 5.0f;
 
-	m_radius = color == sf::Color::Cyan ? 20 : 15;
-
 	m_color = new sf::Color(color);
 	m_healthBar = new HealthBar(m_radius * 2);
+
 }
 Character::~Character()
 {
@@ -40,10 +36,6 @@ void Character::Update()
 	m_movement = sf::Vector2f(0.0f, 0.0f);
 }
 
-void Character::SetPosition(sf::Vector2f position)
-{
-	m_position = position;
-}
 void Character::SetMovement(sf::Vector2f movement)
 {
 	m_movement = movement;
@@ -59,10 +51,6 @@ void Character::ChangeHealth(int health)
 	m_healthBar->ChangeHealth(health);
 }
 
-sf::Vector2f Character::GetPosition() const
-{
-	return m_position;
-}
 sf::Vector2f Character::GetMovement() const
 {
 	return m_movement;
@@ -74,20 +62,4 @@ float Character::GetWalkingSpeed() const
 int Character::GetHealth() const
 {
 	return m_healthBar->GetHealth();
-}
-
-int Character::GetRadius() const
-{
-	return m_radius;
-}
-
-void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	sf::CircleShape circle(m_radius);
-	circle.setFillColor(*m_color);
-	circle.setOrigin(sf::Vector2f(m_radius, m_radius));		// Because they're balls!
-	circle.setPosition(m_position);
-	target.draw(circle, states);
-
-	target.draw(*m_healthBar, states);
 }

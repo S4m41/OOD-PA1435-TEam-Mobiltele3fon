@@ -1,4 +1,8 @@
 #include "Room.hpp"
+#include "Item.hpp"
+
+#include "ItemEntity.hpp"
+#include <SFML\Graphics\Color.hpp>
 
 Room::Room(std::wstring seedName) : Room(new Door(seedName, nullptr))
 {
@@ -25,7 +29,7 @@ Room::Room(Door* door)
 
 	// Spawn an item
 	Item testItem;
-	SpawnItem(testItem);
+	SpawnItem(&testItem);
 }
 
 // TODO: Recursively delete the entire tree of rooms
@@ -35,12 +39,14 @@ Room::~Room()
 }
 
 
-void Room::SpawnItem(Item item)
+void Room::SpawnItem(Item* item)
 {
 	// TODO: make these values random within the boundries of the room
 	int xLocation = 0;
 	int yLocation = 0;
-	RoomItem newItem = RoomItem(item, xLocation, yLocation);
+	ItemEntity newItem = ItemEntity(sf::Color::Cyan, item);
+	newItem.SetPosition(sf::Vector2f(xLocation, yLocation));
+
 	m_itemsInRoom.push_back(newItem);
 }
 
