@@ -1,8 +1,14 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 #include <SFML\Graphics\Drawable.hpp>
-#include <SFML\Graphics\Color.hpp>
 //#include "Alternative.hpp"
+
+class HealthBar;
+namespace sf
+{
+	class Color;
+	class RectangleShape;
+}
 
 class Character : public sf::Drawable
 {
@@ -18,15 +24,13 @@ public:
 	//void Die();//TODO remove this? should be in characterhandler
 
 	void SetPosition(sf::Vector2f position);
-	sf::Vector2f GetPosition() const;
-
 	void SetMovement(sf::Vector2f movement);
-	sf::Vector2f GetMovement() const;
-
 	void SetWalkingSpeed(float speed);
-	float GetWalkingSpeed() const;
+	void ChangeHealth(int health);
 
-	void SetHealth(int health);
+	sf::Vector2f GetPosition() const;
+	sf::Vector2f GetMovement() const;
+	float GetWalkingSpeed() const;
 	int GetHealth() const;
 
 protected:
@@ -36,9 +40,11 @@ private:
 	sf::Vector2f m_position;
 	sf::Vector2f m_movement;
 	float m_walkingSpeed;
-	int m_health;
 
-	sf::Color m_color;
+	int m_radius;
+
+	sf::Color* m_color;
+	HealthBar* m_healthBar;
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

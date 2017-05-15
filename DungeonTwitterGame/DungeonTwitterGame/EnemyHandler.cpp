@@ -24,14 +24,21 @@ void EnemyHandler::CreateEnemy()
 	m_enemies.back()->SetPosition(sf::Vector2f(float(rand() % 20), float(rand() % 20)) * 20.0f);
 }
 
-void EnemyHandler::Update(sf::Vector2f playerPosition)
+void EnemyHandler::Update()
 {
 	for (unsigned int i = 0; i < m_enemies.size(); i++)
 	{
-		// Move towards player position
-		m_enemies[i]->SetMovement(playerPosition - m_enemies[i]->GetPosition());
 		m_enemies[i]->Update();
 	}
+}
+
+Enemy* EnemyHandler::GetEnemy(int i)
+{
+	return i >= 0 && i < m_enemies.size() ? m_enemies[i] : nullptr;
+}
+int EnemyHandler::GetNrOfEnemies() const
+{
+	return m_enemies.size();
 }
 
 void EnemyHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const

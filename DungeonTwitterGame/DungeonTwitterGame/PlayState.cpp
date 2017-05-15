@@ -50,9 +50,5 @@ void PlayState::Update()
 
 void PlayState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	sf::CircleShape circle(100.0f);
-	circle.setFillColor(sf::Color::Blue);
-	target.draw(circle, states);
-
 	target.draw(*m_characterHandler, states);
 }

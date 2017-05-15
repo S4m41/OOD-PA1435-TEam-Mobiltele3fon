@@ -5,6 +5,7 @@
 class Input;
 class PlayerHandler;
 class EnemyHandler;
+class FightHandler;
 
 class CharacterHandler final : public sf::Drawable
 {
@@ -21,6 +22,7 @@ public:
 private:
 	PlayerHandler* m_playerHandler;
 	EnemyHandler* m_enemyHandler;
+	FightHandler* m_fightHandler;
 };
 
 #endif

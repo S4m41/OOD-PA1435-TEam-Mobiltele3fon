@@ -37,12 +37,27 @@
     <Filter Include="Header Files\States\MenuStates">
       <UniqueIdentifier>{3013cec6-d69b-4270-8e82-078c4bef44d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Characters\Handlers">
+      <UniqueIdentifier>{217d1b5d-77c0-44f2-b372-2a928fd6a953}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Items">
+      <UniqueIdentifier>{e91fefe4-e185-4a30-8e56-76f5828c1459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Characters\Fight">
+      <UniqueIdentifier>{fa575d25-83a3-47be-afa1-331fb811090f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Characters\Handlers">
+      <UniqueIdentifier>{c8994df3-d2ac-4e59-9340-00a4f317379f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Characters\Fight">
+      <UniqueIdentifier>{01265991-0cea-4ef8-886e-5366a54b098a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Items">
+      <UniqueIdentifier>{4eaa9f31-d94b-4db3-b2dc-87e13bd0c139}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Character.cpp">
-      <Filter>Source Files\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterHandler.cpp">
       <Filter>Source Files\Characters</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
@@ -63,12 +78,6 @@
     <ClCompile Include="System.cpp">
       <Filter>Source Files\SystemFiles</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyHandler.cpp">
-      <Filter>Source Files\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerHandler.cpp">
-      <Filter>Source Files\Characters</Filter>
-    </ClCompile>
     <ClCompile Include="PlayState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
@@ -81,18 +90,33 @@
     <ClCompile Include="MenuState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <Filter>Source Files\Characters</Filter>
+    <ClCompile Include="CharacterHandler.cpp">
+      <Filter>Source Files\Characters\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyHandler.cpp">
+      <Filter>Source Files\Characters\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHandler.cpp">
+      <Filter>Source Files\Characters\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Fight.cpp">
+      <Filter>Source Files\Characters\Fight</Filter>
+    </ClCompile>
+    <ClCompile Include="FightHandler.cpp">
+      <Filter>Source Files\Characters\Fight</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
-      <Filter>Source Files\Characters</Filter>
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthBar.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.hpp">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterHandler.hpp">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.hpp">
@@ -113,20 +137,11 @@
     <ClInclude Include="Input.hpp">
       <Filter>Header Files\SystemFiles</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerHandler.hpp">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyHandler.hpp">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="PlayState.hpp">
       <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="MainMenuState.hpp">
       <Filter>Header Files\States\MenuStates</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuState.hpp">
-      <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="PauseMenuState.hpp">
       <Filter>Header Files\States\MenuStates</Filter>
@@ -137,11 +152,32 @@
     <ClInclude Include="Alternative.hpp">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
+    <ClInclude Include="CharacterHandler.hpp">
+      <Filter>Header Files\Characters\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyHandler.hpp">
+      <Filter>Header Files\Characters\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHandler.hpp">
+      <Filter>Header Files\Characters\Handlers</Filter>
+    </ClInclude>
     <ClInclude Include="Inventory.hpp">
-      <Filter>Header Files\Characters</Filter>
+      <Filter>Header Files\Items</Filter>
     </ClInclude>
     <ClInclude Include="Item.hpp">
-      <Filter>Header Files\Characters</Filter>
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="FightHandler.hpp">
+      <Filter>Header Files\Characters\Fight</Filter>
+    </ClInclude>
+    <ClInclude Include="Fight.hpp">
+      <Filter>Header Files\Characters\Fight</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.hpp">
+      <Filter>Header Files\States\MenuStates</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthBar.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
