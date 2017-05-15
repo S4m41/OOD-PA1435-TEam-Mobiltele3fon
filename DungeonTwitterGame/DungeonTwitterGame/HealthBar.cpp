@@ -31,7 +31,8 @@ HealthBar::~HealthBar()
 
 void HealthBar::SetPosition(sf::Vector2f characterPosition)
 {
-	sf::Vector2f position = characterPosition - sf::Vector2f(0.0f, HEALTH_BAR_HEIGHT);		// Health bar slightly above character
+	float radius = m_maxHealth->getSize().x * 0.5f;
+	sf::Vector2f position = characterPosition - sf::Vector2f(radius, radius + HEALTH_BAR_HEIGHT);
 	m_maxHealth->setPosition(position);
 	m_currentHealth->setPosition(position);
 }

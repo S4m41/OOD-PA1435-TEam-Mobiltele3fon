@@ -33,9 +33,7 @@ Character::~Character()
 
 void Character::Update()
 {
-	sf::Vector2f move = m_movement * m_walkingSpeed;
-
-	m_position += move;
+	m_position += m_movement * m_walkingSpeed;
 
 	m_healthBar->SetPosition(m_position);
 
@@ -88,6 +86,7 @@ void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::CircleShape circle(m_radius);
 	circle.setFillColor(*m_color);
+	circle.setOrigin(sf::Vector2f(m_radius, m_radius));		// Because they're balls!
 	circle.setPosition(m_position);
 	target.draw(circle, states);
 
