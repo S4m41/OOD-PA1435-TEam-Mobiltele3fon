@@ -47,9 +47,26 @@ void PlayState::Update()
 		m_FSM->Push<PauseMenuState>();		// Enter pause state
 		m_FSM->Peek()->SetInput(m_input);
 	}
+	if (m_input->IsKeyPressed(sf::Keyboard::Key::E))
+	{
+		std::cout << "E pressed" << std::endl;
 
+		sf::Vector2f currentPosition = m_characterHandler->GetPlayerPosition();
+		for (unsigned int i = 0; i < 4; i++)
+		{
+			sf::Vector2f distance = currentPosition - DoorPositionArray[i];
+			if (abs(distance.x) < 50.0f && abs(distance.y) < 50.0f)
+			{
+				if (m_RoomHandler->EnterRoom(i))
+				{
+					m_characterHandler->SetPlayerPosition(DoorPositionArray[(i + 2) % 4]);
+				}
+			}
+		}
+	}
 	m_characterHandler->Update();
 }
+
 
 void PlayState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {

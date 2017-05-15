@@ -18,7 +18,8 @@ public:
 	void Update();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates) const override;
-
+	sf::Vector2f GetPlayerPosition() const;
+	void SetPlayerPosition(sf::Vector2f position);
 private:
 	PlayerHandler* m_playerHandler;
 	EnemyHandler* m_enemyHandler;

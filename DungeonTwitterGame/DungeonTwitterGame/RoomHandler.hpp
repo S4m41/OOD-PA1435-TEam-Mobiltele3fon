@@ -11,7 +11,7 @@ public:
 	RoomHandler(std::wstring seedName = L"seed");
 	~RoomHandler();
 
-	void EnterRoom(Door* door);
+	bool EnterRoom(int doorPositionIndex);
 	Room* GetCurrentRoom() const;
 private:
 	bool TestDoor(Door* door) const;

@@ -62,3 +62,13 @@ void CharacterHandler::draw(sf::RenderTarget& target, sf::RenderStates states) c
 	target.draw(*m_playerHandler, states);
 
 }
+
+sf::Vector2f CharacterHandler::GetPlayerPosition() const
+{
+	return m_playerHandler->GetPlayerPosition();
+}
+
+void CharacterHandler::SetPlayerPosition(sf::Vector2f position)
+{
+	m_playerHandler->SetPlayerPosition(position);
+}

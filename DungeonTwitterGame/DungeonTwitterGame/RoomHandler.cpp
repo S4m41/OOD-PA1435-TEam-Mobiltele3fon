@@ -16,10 +16,12 @@ RoomHandler::~RoomHandler()
 
 //TODO: Implement a way to select a door
 //TODO: Update player m_position and comment
-void RoomHandler::EnterRoom(Door* door)
+bool RoomHandler::EnterRoom(int doorPositionIndex)
 {
+	Door* door = m_currentRoom->GetDoor(doorPositionIndex);
 	if (TestDoor(door)) 
 	{
+		door->MoveDoorToOppositeWall();
 		if (door->m_fromRoom == m_currentRoom)
 		{
 			if (door->m_toRoom == nullptr) {
@@ -31,16 +33,17 @@ void RoomHandler::EnterRoom(Door* door)
 		{
 			m_currentRoom = door->m_fromRoom;
 		}
-
-
-		//TODO: Update player m_position. 
-		//Might make this function return a bool and move the player in another class.
+		int doorArrayIndex = m_currentRoom->GetDoorArrayIndex((doorPositionIndex + 2) % 4);
+		m_currentRoom->ResetDoorColors(doorArrayIndex);
+		return true;
 	}
 	else 
 	{
 		DisplayDoorLockedMessage();
+		return false;
 	}
 }
+
 
 Room* RoomHandler::GetCurrentRoom() const
 {
@@ -64,7 +67,7 @@ bool RoomHandler::TestDoor(Door* door) const
 
 void RoomHandler::DisplayDoorLockedMessage() const
 {
-
+	std::cout << "DOOR IS LOCKED" << std::endl;
 }
 
 void RoomHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const

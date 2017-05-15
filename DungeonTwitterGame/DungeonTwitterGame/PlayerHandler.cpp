@@ -52,6 +52,12 @@ sf::Vector2f PlayerHandler::GetPlayerPosition() const
 	return m_player ? m_player->GetPosition() : sf::Vector2f(0, 0);
 }
 
+void PlayerHandler::SetPlayerPosition(sf::Vector2f position) const
+{
+	m_player->SetPosition(position);
+}
+
+
 Player* PlayerHandler::GetPlayer() const
 {
 	return m_player;

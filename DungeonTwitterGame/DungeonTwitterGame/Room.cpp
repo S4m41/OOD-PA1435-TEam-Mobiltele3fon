@@ -19,26 +19,34 @@ Room::Room(std::wstring seedName) : Room(new Door(seedName, nullptr))
 //		Will just be random in the first iteration
 Room::Room(Door* door)
 {
-	//Move the entry door to the other side of the room
-	unsigned int entryPos = door->m_doorPositionIndex = (door->m_doorPositionIndex + 2) % 4;
-	door->m_toRoom = this;
-	m_entryDoor = door;
+	int entryPos = door->m_doorPositionIndex;
 
-	//Get the names of the other doors in the room
+	door->m_toRoom = this;
+	m_doors[0] = door;
 
 	// leftDoor is a nullptr (aka m_locked) for the sake of testing
 	// name = L" " == locked door
-	m_leftDoor = new Door(L" ", this, (entryPos + 1) % 4);
-	m_middleDoor = new Door(L"testNameMiddle", this, (entryPos + 2) % 4);
-	m_rightDoor = new Door(L"testNameRight", this, (entryPos + 3) % 4);
+	m_doors[1] = new Door(L" ", this, (entryPos + 1) % 4);
+	m_doors[2] = new Door(L"testNameMiddle", this, (entryPos + 2) % 4);
+	m_doors[3] = new Door(L"testNameRight", this, (entryPos + 3) % 4);
 
-	//m_leftDoor = &leftDoor;
-	/*m_middleDoor = &middleDoor;
-	m_rightDoor = &rightDoor;*/
 
 	// Spawn an item
 	Item testItem;
 	SpawnItem(&testItem);
+}
+
+void Room::ResetDoorColors(int doorEnteredArrayIndex)
+{
+	m_doors[doorEnteredArrayIndex]->m_doorShape.setFillColor(sf::Color::Blue);
+	for (int i = 1; i < 4; i++)
+	{
+		m_doors[(doorEnteredArrayIndex + i) % 4]->m_doorShape.setFillColor(sf::Color::Green);
+		if (m_doors[(doorEnteredArrayIndex + i) % 4]->m_locked)
+		{
+			m_doors[(doorEnteredArrayIndex + i) % 4]->m_doorShape.setFillColor(sf::Color::Red);
+		}
+	}
 }
 
 // TODO: Recursively delete the entire tree of rooms
@@ -59,7 +67,7 @@ void Room::SpawnItem(Item* item)
 	m_itemsInRoom.push_back(newItem);
 }
 
-// TODO
+// TODO: Remove
 bool Room::IsLegal() const
 {
 	bool legal = true;
@@ -69,9 +77,23 @@ bool Room::IsLegal() const
 
 std::wstring Room::GetRoomName() const
 {
-	return m_entryDoor->m_name;
+	return m_doors[0]->m_name;
 }
 
+int Room::GetDoorArrayIndex(int doorPositionIndex) const
+{
+	// % is not modulus but the remainer which means it can have a negative value. Hence + 4
+	return (doorPositionIndex - m_doors[0]->m_doorPositionIndex + 4) % 4;
+}
+
+Door* Room::GetDoor(int doorPositionIndex) const
+{
+	int doorArrayIndex = GetDoorArrayIndex(doorPositionIndex);
+	//std::cout << "DOOR ARRAY INDEX:" << doorArrayIndex << std::endl;
+	//std::cout << "DOOR POSITION INDEX:" << doorPositionIndex << std::endl;
+
+	return m_doors[doorArrayIndex];
+}
 
 
 // ------------------ Private -------------------
@@ -89,20 +111,11 @@ void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	target.draw(roomShape, states);
 
-	if (m_entryDoor)
+	for (int i = 0; i < 4; i++)
 	{
-		target.draw(*m_entryDoor, states);
-	}
-	if (m_leftDoor)
-	{
-		target.draw(*m_leftDoor, states);
-	}
-	if (m_middleDoor)
-	{
-		target.draw(*m_middleDoor, states);
-	}
-	if (m_rightDoor)
-	{
-		target.draw(*m_rightDoor, states);
+		if (m_doors[i])
+		{
+			target.draw(*m_doors[i], states);
+		}
 	}
 }
