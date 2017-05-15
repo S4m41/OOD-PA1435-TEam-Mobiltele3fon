@@ -53,5 +53,6 @@ void PlayState::Update()
 
 void PlayState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	target.draw(*m_RoomHandler, states);
 	target.draw(*m_characterHandler, states);
 }

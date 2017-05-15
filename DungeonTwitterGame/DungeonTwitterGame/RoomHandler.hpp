@@ -2,8 +2,10 @@
 #define ROOMHANDLER_HPP
 
 #include "Room.hpp"
+#include <SFML\Graphics\Drawable.hpp>
 
-class RoomHandler
+
+class RoomHandler : public sf::Drawable
 {
 public:
 	RoomHandler(std::wstring seedName = L"seed");
@@ -17,6 +19,8 @@ private:
 
 	Room* m_root;
 	Room* m_currentRoom;
+
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 
 #endif // !ROOMHANDLER_HPP

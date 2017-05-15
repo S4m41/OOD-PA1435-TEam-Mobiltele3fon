@@ -1,8 +1,13 @@
 #include "Room.hpp"
 #include "Item.hpp"
 
+#include "SystemSettings.hpp"
 #include "ItemEntity.hpp"
+#include <SFML\Graphics\RenderTarget.hpp>
+
 #include <SFML\Graphics\Color.hpp>
+#include <SFML\Graphics\RectangleShape.hpp>
+
 
 Room::Room(std::wstring seedName) : Room(new Door(seedName, nullptr))
 {
@@ -67,3 +72,16 @@ std::wstring Room::GetRoomName() const
 
 // ------------------ Private -------------------
 
+void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	//TODO: Move to constructor since this does not need to be redone on every render
+	sf::RectangleShape roomShape;
+	roomShape.setSize(sf::Vector2f(WINDOW_WIDTH*0.9f, WINDOW_HEIGHT*0.9f));
+	roomShape.setFillColor(m_roomColor);
+	roomShape.setOutlineThickness(5.0f);
+	roomShape.setOutlineColor(m_roomOutlineColor);
+	roomShape.setOrigin(sf::Vector2f(WINDOW_WIDTH*0.45f, WINDOW_HEIGHT*0.45f));
+	roomShape.setPosition(sf::Vector2f(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f));
+
+	target.draw(roomShape, states);
+}

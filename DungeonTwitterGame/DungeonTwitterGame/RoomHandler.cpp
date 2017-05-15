@@ -1,5 +1,6 @@
 #include "RoomHandler.hpp"
-
+#include <SFML\Graphics\RenderTarget.hpp>
+#include <SFML\Graphics\RenderStates.hpp>
 // ------ public ---------
 
 RoomHandler::RoomHandler(std::wstring seedName)
@@ -64,4 +65,12 @@ bool RoomHandler::TestDoor(Door* door) const
 void RoomHandler::DisplayDoorLockedMessage() const
 {
 
+}
+
+void RoomHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	if (m_currentRoom)
+	{
+		target.draw(*m_currentRoom, states);
+	}
 }
