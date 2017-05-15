@@ -38,8 +38,8 @@ void HealthBar::SetPosition(sf::Vector2f characterPosition)
 
 void HealthBar::ChangeHealth(int health)
 {
-	float newWidth = m_currentHealth->getSize().x + health / HEALTH_POINTS_PER_PIXEL;
-	newWidth = std::max(std::min(newWidth, m_maxHealth->getSize().x), 0.0f);			// Clamp
+	float newWidth = m_currentHealth->getSize().x + float(health) / HEALTH_POINTS_PER_PIXEL;
+	newWidth = std::max(std::min(newWidth, m_maxHealth->getSize().x), 0.0f);				// Clamp
 
 	m_currentHealth->setSize(sf::Vector2f(newWidth, HEALTH_BAR_HEIGHT));
 }

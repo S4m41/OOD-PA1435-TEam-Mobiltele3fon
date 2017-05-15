@@ -79,6 +79,11 @@ int Character::GetHealth() const
 	return m_healthBar->GetHealth();
 }
 
+int Character::GetRadius() const
+{
+	return m_radius;
+}
+
 void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::CircleShape circle(m_radius);

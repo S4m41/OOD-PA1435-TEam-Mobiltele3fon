@@ -32,6 +32,7 @@ public:
 	sf::Vector2f GetMovement() const;
 	float GetWalkingSpeed() const;
 	int GetHealth() const;
+	int GetRadius() const;
 
 protected:
 	Character(sf::Color color);
