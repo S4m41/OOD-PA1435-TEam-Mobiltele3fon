@@ -6,6 +6,7 @@
 #include <SFML\Graphics\RectangleShape.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
 
+#include "SystemSettings.hpp"
 
 #include <string>
 #include <vector>
@@ -13,10 +14,10 @@
 
 namespace DoorPosition
 {
-	static const sf::Vector2f DOOR_POS_LEFT   = sf::Vector2f(256.0f, 256.0f) + 150.0f * sf::Vector2f(-1.0f, 0.0f);
-	static const sf::Vector2f DOOR_POS_RIGHT  = sf::Vector2f(256.0f, 256.0f) + 150.0f * sf::Vector2f(1.0f, 0.0f);
-	static const sf::Vector2f DOOR_POS_TOP    = sf::Vector2f(256.0f, 256.0f) + 150.0f * sf::Vector2f(0.0f, -1.0f);
-	static const sf::Vector2f DOOR_POS_BOTTOM = sf::Vector2f(256.0f, 256.0f) + 150.0f * sf::Vector2f(0.0f, 1.0f);
+	static const sf::Vector2f DOOR_POS_LEFT   = sf::Vector2f(256.0f, 256.0f) + WINDOW_WIDTH*0.45f * sf::Vector2f(-1.0f, 0.0f);
+	static const sf::Vector2f DOOR_POS_RIGHT  = sf::Vector2f(256.0f, 256.0f) + WINDOW_WIDTH*0.45f * sf::Vector2f(1.0f, 0.0f);
+	static const sf::Vector2f DOOR_POS_TOP    = sf::Vector2f(256.0f, 256.0f) + WINDOW_WIDTH*0.45f * sf::Vector2f(0.0f, -1.0f);
+	static const sf::Vector2f DOOR_POS_BOTTOM = sf::Vector2f(256.0f, 256.0f) + WINDOW_WIDTH*0.45f * sf::Vector2f(0.0f, 1.0f);
 }
 
 static const sf::Vector2f DoorPositionArray[4] = 
@@ -47,10 +48,11 @@ struct Door : public sf::Drawable
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override
 	{
 		sf::RectangleShape doorShape;
-		doorShape.setSize(sf::Vector2f(20, 40));
+		doorShape.setSize(sf::Vector2f(80, 10));
 		doorShape.setFillColor(sf::Color::Blue);
 		doorShape.setOutlineThickness(0.0f);
-		doorShape.setOrigin(sf::Vector2f(10, 20));
+		doorShape.setOrigin(sf::Vector2f(40, 4));
+		doorShape.rotate(90 * m_doorPositionIndex);
 		
 		doorShape.setPosition(DoorPositionArray[m_doorPositionIndex]);
 

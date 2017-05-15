@@ -27,7 +27,8 @@ Room::Room(Door* door)
 	//Get the names of the other doors in the room
 
 	// leftDoor is a nullptr (aka m_locked) for the sake of testing
-	//Door leftDoor = Door(L"testNameLeft", this, (entryPos + 1) % 4);
+	// name = L" " == locked door
+	m_leftDoor = new Door(L" ", this, (entryPos + 1) % 4);
 	m_middleDoor = new Door(L"testNameMiddle", this, (entryPos + 2) % 4);
 	m_rightDoor = new Door(L"testNameRight", this, (entryPos + 3) % 4);
 
