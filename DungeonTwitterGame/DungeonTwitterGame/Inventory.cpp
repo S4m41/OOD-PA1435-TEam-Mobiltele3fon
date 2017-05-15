@@ -19,22 +19,28 @@ Inventory::~Inventory()
 	delete items;
 }
 
-bool Inventory::addItem(Item * itemToAdd)
+int Inventory::addItem(Item * itemToAdd)
 {
-	bool fail = false;
+	int index = -1;//default value
+
 	int i = 0;
 	for (; items[i] != nullptr; i++) {
 		if (i < Storageinfo.vectormax) {
-			fail = fail || !expand();
+			if (!expand()) {
+				index = -2;//cant expand
+			}
 			i++;
 			break;
 		}
 	}
-	if (!isSlotEmpty(i))
-		fail = fail || true;
-	else
+
+	if (!isSlotEmpty(i) || index < -1)//dont add to full slot or when container fails
+		index = -1;
+	else {
 		items[i] = itemToAdd;
-	return !fail;
+		index = i;
+	}
+	return index;
 }
 
 bool Inventory::dropItem(Item * itemToDrop)
@@ -56,7 +62,7 @@ bool Inventory::dropItem(int slotID)
 
 Item * Inventory::itemInSlot(int slotID)
 {
-	if(isSlotEmpty(slotID))
+	if (isSlotEmpty(slotID))
 		return nullptr;
 	return items[slotID];
 }
@@ -74,7 +80,7 @@ bool Inventory::removeItem(int slotID)//call delete?
 {
 	if (isSlotEmpty(slotID))
 		return false;
-	
+
 	items[slotID] = nullptr;
 
 	if (isSlotEmpty(slotID))
