@@ -21,12 +21,12 @@ public:
 
 	MenuState(FiniteStateMachine* fsm);
 	virtual ~MenuState();
+	void Update() override;
 
 private:
 	virtual void ClampSelecton() = 0;
 
 protected:
-	void Update() override;
 	int m_selectedOption = 0;
 	std::string m_title;
 };
