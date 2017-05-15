@@ -16,12 +16,6 @@
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{195f5fe3-ed28-4ceb-af24-e8e5472d3af7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Characters">
-      <UniqueIdentifier>{7fcf67d3-4f64-4949-8b77-84e5fc2bb56e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Characters">
-      <UniqueIdentifier>{7776486e-fce3-45b8-82c5-7114922b6bc8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{5503085b-51f4-471f-900e-5beec4d091a2}</UniqueIdentifier>
     </Filter>
@@ -37,20 +31,38 @@
     <Filter Include="Header Files\States\MenuStates">
       <UniqueIdentifier>{3013cec6-d69b-4270-8e82-078c4bef44d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UnSorted">
+      <UniqueIdentifier>{89217c97-a4e9-4fc1-aa07-f4f0b013c237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unsorted">
+      <UniqueIdentifier>{9d20a106-6078-4cf0-a22d-ccdbf59e4390}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{ae6027ce-a498-41b8-a44e-bcdb8712babc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{2737e55a-44ef-4af0-a5d0-fda36c973069}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Characters">
+      <UniqueIdentifier>{d8b70622-b497-4604-a83e-97479abbc496}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Handlers">
+      <UniqueIdentifier>{e42fe144-c588-4229-a644-8cda04a0c308}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Handlers">
+      <UniqueIdentifier>{0e495491-83fc-41ef-b8b5-047f58457c39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Characters">
+      <UniqueIdentifier>{e56b3a80-b10f-4be6-9ccc-199b9ab38a73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Items">
+      <UniqueIdentifier>{7776486e-fce3-45b8-82c5-7114922b6bc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Items">
+      <UniqueIdentifier>{7fcf67d3-4f64-4949-8b77-84e5fc2bb56e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Character.cpp">
-      <Filter>Source Files\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterHandler.cpp">
-      <Filter>Source Files\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Characters</Filter>
-    </ClCompile>
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
@@ -62,12 +74,6 @@
     </ClCompile>
     <ClCompile Include="System.cpp">
       <Filter>Source Files\SystemFiles</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyHandler.cpp">
-      <Filter>Source Files\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerHandler.cpp">
-      <Filter>Source Files\Characters</Filter>
     </ClCompile>
     <ClCompile Include="PlayState.cpp">
       <Filter>Source Files\States</Filter>
@@ -82,25 +88,43 @@
       <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
-      <Filter>Source Files\Characters</Filter>
+      <Filter>Source Files\Items</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
-      <Filter>Source Files\Characters</Filter>
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Source Files\Unsorted</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomHandler.cpp">
+      <Filter>Source Files\Unsorted</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\Entities\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Entities\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Entities\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterHandler.cpp">
+      <Filter>Source Files\Entities\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyHandler.cpp">
+      <Filter>Source Files\Entities\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHandler.cpp">
+      <Filter>Source Files\Entities\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemEntity.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Character.hpp">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterHandler.hpp">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.hpp">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.hpp">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="FiniteStateMachine.hpp">
       <Filter>Header Files\States</Filter>
     </ClInclude>
@@ -112,12 +136,6 @@
     </ClInclude>
     <ClInclude Include="Input.hpp">
       <Filter>Header Files\SystemFiles</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerHandler.hpp">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyHandler.hpp">
-      <Filter>Header Files\Characters</Filter>
     </ClInclude>
     <ClInclude Include="PlayState.hpp">
       <Filter>Header Files\States</Filter>
@@ -134,14 +152,44 @@
     <ClInclude Include="SystemSettings.hpp">
       <Filter>Header Files\SystemFiles</Filter>
     </ClInclude>
-    <ClInclude Include="Alternative.hpp">
-      <Filter>Header Files\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="Inventory.hpp">
-      <Filter>Header Files\Characters</Filter>
+      <Filter>Header Files\Items</Filter>
     </ClInclude>
     <ClInclude Include="Item.hpp">
-      <Filter>Header Files\Characters</Filter>
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.hpp">
+      <Filter>Header Files\UnSorted</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomHandler.hpp">
+      <Filter>Header Files\UnSorted</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.hpp">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.hpp">
+      <Filter>Header Files\Entities\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.hpp">
+      <Filter>Header Files\Entities\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterHandler.hpp">
+      <Filter>Header Files\Entities\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHandler.hpp">
+      <Filter>Header Files\Entities\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyHandler.hpp">
+      <Filter>Header Files\Entities\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.hpp">
+      <Filter>Header Files\Entities\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Alternative.hpp">
+      <Filter>Header Files\UnSorted</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemEntity.hpp">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

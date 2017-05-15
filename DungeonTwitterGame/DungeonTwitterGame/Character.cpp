@@ -1,16 +1,13 @@
 #include "Character.hpp"
-#include <SFML\Graphics\RenderTarget.hpp>
-#include <SFML\Graphics\RenderStates.hpp>
-#include <SFML\Graphics\CircleShape.hpp>
+
 #include <SFML\Graphics\Color.hpp>
 
-Character::Character(sf::Color color)
+Character::Character(sf::Color color) : Entity(color)
 {
 	m_position = sf::Vector2f(200.0f, 200.0f);
 	m_movement = sf::Vector2f(0.0f, 0.0f);
 	m_walkingSpeed = 5.0f;
 	m_health = 100;
-	m_color = new sf::Color(color);
 }
 Character::~Character()
 {
@@ -29,15 +26,6 @@ void Character::Update()
 
 	// Reset movement
 	m_movement = sf::Vector2f(0.0f, 0.0f);
-}
-
-void Character::SetPosition(sf::Vector2f position)
-{
-	m_position = position;
-}
-sf::Vector2f Character::GetPosition() const
-{
-	return m_position;
 }
 
 void Character::SetMovement(sf::Vector2f movement)
@@ -69,12 +57,4 @@ void Character::SetHealth(int health)
 int Character::GetHealth() const
 {
 	return m_health;
-}
-
-void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	sf::CircleShape circle(20.0f);
-	circle.setFillColor(*m_color);
-	circle.setPosition(m_position);
-	target.draw(circle, states);
 }

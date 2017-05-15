@@ -1,11 +1,13 @@
 #ifndef ROOM_HPP
 #define ROOM_HPP
 
-#include "Item.hpp"
 #include <string>
 #include <vector>
 
 class Room;
+
+class Item;
+class ItemEntity;
 
 struct Door
 {
@@ -17,15 +19,6 @@ struct Door
 	Door(std::wstring n, Room* from) : name(n), fromRoom(from), locked(from != nullptr) {}
 };
 
-struct RoomItem
-{
-	Item item;
-	int x_location;
-	int y_location;
-
-	RoomItem(Item i, int x = 0, int y = 0) : item(i), x_location(x), y_location(y) {}
-};
-
 class Room
 {
 public:
@@ -33,7 +26,7 @@ public:
 	Room(Door* door);
 	~Room();
 
-	void SpawnItem(Item item);
+	void SpawnItem(Item* item);
 
 	bool IsLegal(/*position*/) const;
 
@@ -44,7 +37,7 @@ private:
 	Door* m_middleDoor = nullptr;
 	Door* m_rightDoor = nullptr;
 
-	std::vector<RoomItem> m_itemsInRoom;
+	std::vector<ItemEntity> m_itemsInRoom;
 
 };
 
