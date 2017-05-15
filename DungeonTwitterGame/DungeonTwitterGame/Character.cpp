@@ -2,6 +2,7 @@
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
 #include <SFML\Graphics\CircleShape.hpp>
+#include <SFML\Graphics\Color.hpp>
 
 Character::Character(sf::Color color)
 {
@@ -9,10 +10,15 @@ Character::Character(sf::Color color)
 	m_movement = sf::Vector2f(0.0f, 0.0f);
 	m_walkingSpeed = 5.0f;
 	m_health = 100;
-	m_color = color;
+	m_color = new sf::Color(color);
 }
 Character::~Character()
 {
+	if (m_color)
+	{
+		delete m_color;
+		m_color = nullptr;
+	}
 }
 
 void Character::Update()
@@ -68,7 +74,7 @@ int Character::GetHealth() const
 void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::CircleShape circle(20.0f);
-	circle.setFillColor(m_color);
+	circle.setFillColor(*m_color);
 	circle.setPosition(m_position);
 	target.draw(circle, states);
 }

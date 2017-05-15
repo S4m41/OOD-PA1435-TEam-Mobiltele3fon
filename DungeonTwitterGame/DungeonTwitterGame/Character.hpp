@@ -1,8 +1,12 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 #include <SFML\Graphics\Drawable.hpp>
-#include <SFML\Graphics\Color.hpp>
 //#include "Alternative.hpp"
+
+namespace sf
+{
+	class Color;
+}
 
 class Character : public sf::Drawable
 {
@@ -38,7 +42,7 @@ private:
 	float m_walkingSpeed;
 	int m_health;
 
-	sf::Color m_color;
+	sf::Color* m_color;
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
