@@ -2,8 +2,8 @@
 #define PLAY_STATE_HPP
 
 #include "GameState.hpp"
-#include "RoomHandler.hpp"
 
+class RoomHandler;
 class CharacterHandler;
 namespace sf
 {

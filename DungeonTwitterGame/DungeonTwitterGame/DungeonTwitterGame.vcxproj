@@ -180,6 +180,8 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerHandler.cpp" />
+    <ClCompile Include="Room.cpp" />
+    <ClCompile Include="RoomHandler.cpp" />
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +204,8 @@
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="PlayerHandler.hpp" />
+    <ClInclude Include="Room.hpp" />
+    <ClInclude Include="RoomHandler.hpp" />
     <ClInclude Include="System.hpp" />
     <ClInclude Include="SystemSettings.hpp" />
   </ItemGroup>

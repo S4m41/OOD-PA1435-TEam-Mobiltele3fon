@@ -1,6 +1,7 @@
 #include "PlayState.hpp"
 #include "PauseMenuState.hpp"
 #include "CharacterHandler.hpp"
+#include "RoomHandler.hpp"
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
 #include <SFML\Window\Keyboard.hpp>
