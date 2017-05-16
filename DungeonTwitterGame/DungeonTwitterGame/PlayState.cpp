@@ -74,6 +74,20 @@ void PlayState::Update()
 			m_RoomHandler->CheckItemPickUp(m_characterHandler->GetPlayer());
 		}
 	}
+
+	if(m_input->IsKeyPressed(sf::Keyboard::Num1)) {
+		std::cout << "Inventory Slot 1 Selected" << std::endl;
+		m_characterHandler->GetPlayer()->SetActiveItem(0);
+	}
+	else if (m_input->IsKeyPressed(sf::Keyboard::Num2)) {
+		std::cout << "Inventory Slot 2 Selected" << std::endl;
+		m_characterHandler->GetPlayer()->SetActiveItem(1);
+	}
+	else if (m_input->IsKeyPressed(sf::Keyboard::Num3)) {
+		std::cout << "Inventory Slot 3 Selected" << std::endl;
+		m_characterHandler->GetPlayer()->SetActiveItem(2);
+	}
+
 	m_characterHandler->Update();
 }
 

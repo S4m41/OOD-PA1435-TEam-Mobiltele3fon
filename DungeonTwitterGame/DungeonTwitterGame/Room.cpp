@@ -34,8 +34,12 @@ Room::Room(Door* door)
 
 
 	// Spawn an item
-	Weapon testItem("Axe.png");
-	SpawnItem(&testItem, sf::Vector2f(50,50));
+	Weapon* testItem = new Weapon("Axe.png");
+	Weapon* testItem2 = new Weapon("Bow.png");
+
+	SpawnItem(testItem, sf::Vector2f(50,50));
+	SpawnItem(testItem2, sf::Vector2f(450, 50));
+
 }
 
 void Room::ResetDoorColors(int doorEnteredArrayIndex)
