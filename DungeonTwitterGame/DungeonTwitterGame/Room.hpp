@@ -32,7 +32,6 @@ class Room;
 class Item;
 class ItemEntity;
 
-
 struct Door : public sf::Drawable
 {
 	std::wstring m_name = L" ";
@@ -82,7 +81,7 @@ public:
 	Room(Door* door);
 	~Room();
 
-	void SpawnItem(Item* item);
+	void SpawnItem(Item* item, sf::Vector2f pos);
 
 	bool IsLegal(/*m_position*/) const;
 

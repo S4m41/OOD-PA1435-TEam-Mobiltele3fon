@@ -34,7 +34,7 @@ Room::Room(Door* door)
 
 	// Spawn an item
 	Weapon testItem("Axe.png");
-	SpawnItem(&testItem);
+	SpawnItem(&testItem, sf::Vector2f(50,50));
 }
 
 void Room::ResetDoorColors(int doorEnteredArrayIndex)
@@ -57,13 +57,11 @@ Room::~Room()
 }
 
 
-void Room::SpawnItem(Item* item)
+void Room::SpawnItem(Item* item, sf::Vector2f pos)
 {
 	// TODO: make these values random within the boundries of the room
-	int xLocation = 0;
-	int yLocation = 0;
 	ItemEntity newItem = ItemEntity(item);
-	newItem.SetPosition(sf::Vector2f(xLocation, yLocation));
+	newItem.SetPosition(pos);
 
 	m_itemsInRoom.push_back(newItem);
 }
@@ -118,5 +116,11 @@ void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		{
 			target.draw(*m_doors[i], states);
 		}
+	}
+
+	/*Draw Items*/
+	for (int i = 0; i < m_itemsInRoom.size(); i++)
+	{
+		target.draw(m_itemsInRoom.at(i), states);
 	}
 }
