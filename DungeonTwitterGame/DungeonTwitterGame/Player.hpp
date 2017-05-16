@@ -5,7 +5,7 @@
 class Player final : public Character
 {
 public:
-	Player();
+	Player(bool isRanged=true);
 	~Player();
 
 	void Update();

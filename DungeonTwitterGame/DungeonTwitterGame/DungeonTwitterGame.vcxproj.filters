@@ -132,6 +132,9 @@
     <ClCompile Include="HealthBar.cpp">
       <Filter>Source Files\Unsorted</Filter>
     </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FiniteStateMachine.hpp">
@@ -208,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="HealthBar.hpp">
       <Filter>Header Files\UnSorted</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.hpp">
+      <Filter>Header Files\Items</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

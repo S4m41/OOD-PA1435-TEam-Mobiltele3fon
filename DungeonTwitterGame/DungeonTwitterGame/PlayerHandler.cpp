@@ -27,7 +27,7 @@ void PlayerHandler::CreatePlayer()
 {
 	if (m_player)
 		return;
-	m_player = new Player;
+	m_player = new Player(true);
 }
 
 void PlayerHandler::Update()

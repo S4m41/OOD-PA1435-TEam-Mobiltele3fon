@@ -51,8 +51,9 @@ void CharacterHandler::SetInput(Input* input)
 
 void CharacterHandler::Update()
 {
-	m_playerHandler->Update();
+	
 	m_fightHandler->Update();
+	m_playerHandler->Update();
 	m_enemyHandler->Update();
 }
 
@@ -60,15 +61,13 @@ void CharacterHandler::draw(sf::RenderTarget& target, sf::RenderStates states) c
 {
 	target.draw(*m_enemyHandler, states);
 	target.draw(*m_playerHandler, states);
-
 }
 
 sf::Vector2f CharacterHandler::GetPlayerPosition() const
 {
-	return m_playerHandler->GetPlayerPosition();
+	return sf::Vector2f();
 }
 
 void CharacterHandler::SetPlayerPosition(sf::Vector2f position)
 {
-	m_playerHandler->SetPlayerPosition(position);
 }
