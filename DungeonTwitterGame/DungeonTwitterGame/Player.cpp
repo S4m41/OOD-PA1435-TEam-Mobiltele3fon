@@ -1,9 +1,10 @@
 #include "Player.hpp"
 #include <SFML\Graphics\Color.hpp>
 
-Player::Player() : Character(sf::Color::Cyan)
+Player::Player(bool isRanged) : Character(sf::Color::Cyan,1, isRanged)
 {
 	m_moveUp = m_moveDown = m_moveRight = m_moveLeft = false;
+	m_position = sf::Vector2f(200.0f, 200.0f);
 }
 Player::~Player()
 {

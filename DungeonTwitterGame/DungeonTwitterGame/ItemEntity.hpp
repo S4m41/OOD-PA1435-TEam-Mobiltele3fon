@@ -7,11 +7,14 @@ class Item;
 class ItemEntity : public Entity
 {
 public:
-	ItemEntity(sf::Color color, Item* item);
+	ItemEntity(Item* item);
 	~ItemEntity();
 	void Update() {};
 protected:
 	Item* m_containedItem;
+
+private:
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 #endif
 

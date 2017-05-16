@@ -1,16 +1,37 @@
 #include "Character.hpp"
 #include "HealthBar.hpp"
+#include "Weapon.hpp"
 #include <SFML\Graphics\Color.hpp>
+#include <SFML\Graphics\Sprite.hpp>
+#include <SFML\Graphics\RenderTarget.hpp>
+#include <SFML\Graphics\RenderStates.hpp>
+#include <SFML\Graphics\CircleShape.hpp>
+#include <string>
 
-Character::Character(sf::Color color) : Entity(color, color == sf::Color::Cyan ? 20 : 15)
+Character::Character(sf::Color color,float speed,bool isRanged) : Entity()
 {
-	m_position = sf::Vector2f(200.0f, 200.0f);
 	m_movement = sf::Vector2f(0.0f, 0.0f);
-	m_walkingSpeed = 5.0f;
-
 	m_color = new sf::Color(color);
-	m_healthBar = new HealthBar(m_radius * 2);
 
+	if (color == sf::Color::Cyan)
+	{
+		m_radius = 20.0f;
+		m_walkingSpeed = 5.0f;
+	}
+	else
+	{
+		m_radius = 15.0f;
+		m_walkingSpeed = speed;
+	}
+
+	m_healthBar = new HealthBar(m_radius * 2);
+	if (isRanged) {
+		m_activeWeapon = new Weapon("Bow.png");
+	}
+	else {
+		m_activeWeapon = new Weapon("Axe.png");
+	}
+	m_timeSinceAttack = 0;
 }
 Character::~Character()
 {
@@ -24,6 +45,11 @@ Character::~Character()
 		delete m_healthBar;
 		m_healthBar = nullptr;
 	}
+	if (m_activeWeapon)
+	{
+		delete m_activeWeapon;
+		m_activeWeapon = nullptr;
+	}
 }
 
 void Character::Update()
@@ -32,6 +58,8 @@ void Character::Update()
 
 	m_healthBar->SetPosition(m_position);
 
+	m_activeWeapon->GetSprite()->setPosition(m_position);
+	m_timeSinceAttack += 0.1f;
 	// Reset movement
 	m_movement = sf::Vector2f(0.0f, 0.0f);
 }
@@ -62,4 +90,36 @@ float Character::GetWalkingSpeed() const
 int Character::GetHealth() const
 {
 	return m_healthBar->GetHealth();
+}
+float Character::GetRadius() const
+{
+	return m_radius;
+}
+Weapon* Character::GetActiveWeapon()const {
+	return m_activeWeapon;
+}
+bool Character::Attack() {
+	bool attackAllowed = false;
+	if(((m_activeWeapon->GetWeaponType()&&m_activeWeapon->GetAmmunition()>0)||!m_activeWeapon->GetWeaponType())
+		&& m_activeWeapon->GetCooldown() < m_timeSinceAttack) {
+		m_timeSinceAttack --;
+		attackAllowed = true;
+		if (m_activeWeapon->GetWeaponType()) {
+			m_activeWeapon->ChangeAmmunition();
+		}
+	}
+	return attackAllowed;
+}
+void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	sf::CircleShape circle(m_radius);
+	circle.setFillColor(*m_color);
+	circle.setOrigin(m_radius, m_radius);
+	circle.setPosition(m_position);
+	target.draw(circle, states);
+
+	if (m_activeWeapon)
+		target.draw(*m_activeWeapon, states);
+
+	target.draw(*m_healthBar, states);
 }

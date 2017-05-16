@@ -18,6 +18,8 @@ public:
 	Enemy* GetEnemy(int i);
 	int GetNrOfEnemies() const;
 
+	void RemoveDeadEnemies();
+
 private:
 	std::vector<Enemy*> m_enemies;
 
