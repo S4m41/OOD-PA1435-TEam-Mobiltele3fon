@@ -114,7 +114,7 @@ sf::Vector2f RoomHandler::GetPlayerPosition() const
 {
 	return m_playerHandler->GetPlayerPosition();
 }
-//
+
 void RoomHandler::SetPlayerPosition(sf::Vector2f position)
 {
 	m_playerHandler->SetPlayerPosition(position);
