@@ -20,7 +20,7 @@ void Fight::Update()
 
 	float distance = std::sqrtf(playerToEnemy.x * playerToEnemy.x + playerToEnemy.y * playerToEnemy.y);
 
-	if (distance > m_player->GetRadius() + m_enemy->GetRadius())
+	if (distance > m_player->GetRadius() + m_enemy->GetRadius() && m_enemy->GetHealth()>0)
 	{
 
 		m_enemy->SetMovement(m_player->GetPosition() - m_enemy->GetPosition());
