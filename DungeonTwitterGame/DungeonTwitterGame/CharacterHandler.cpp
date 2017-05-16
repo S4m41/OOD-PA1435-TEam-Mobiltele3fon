@@ -51,8 +51,9 @@ void CharacterHandler::SetInput(Input* input)
 
 void CharacterHandler::Update()
 {
-	m_playerHandler->Update();
+	
 	m_fightHandler->Update();
+	m_playerHandler->Update();
 	m_enemyHandler->Update();
 }
 

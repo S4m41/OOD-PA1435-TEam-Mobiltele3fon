@@ -8,7 +8,7 @@
 #include <SFML\Graphics\CircleShape.hpp>
 #include <string>
 
-Character::Character(sf::Color color) : Entity()
+Character::Character(sf::Color color,float speed,bool isRanged) : Entity()
 {
 	m_movement = sf::Vector2f(0.0f, 0.0f);
 	m_color = new sf::Color(color);
@@ -21,11 +21,17 @@ Character::Character(sf::Color color) : Entity()
 	else
 	{
 		m_radius = 15.0f;
-		m_walkingSpeed = 1.0f;
+		m_walkingSpeed = speed;
 	}
 
 	m_healthBar = new HealthBar(m_radius * 2);
-	m_activeWeapon = new Weapon("Axe.png");
+	if (isRanged) {
+		m_activeWeapon = new Weapon("Bow.png");
+	}
+	else {
+		m_activeWeapon = new Weapon("Axe.png");
+	}
+	m_timeSinceAttack = 0;
 }
 Character::~Character()
 {
@@ -53,7 +59,7 @@ void Character::Update()
 	m_healthBar->SetPosition(m_position);
 
 	m_activeWeapon->GetSprite()->setPosition(m_position);
-
+	m_timeSinceAttack += 0.1f;
 	// Reset movement
 	m_movement = sf::Vector2f(0.0f, 0.0f);
 }
@@ -89,7 +95,21 @@ float Character::GetRadius() const
 {
 	return m_radius;
 }
-
+Weapon* Character::GetActiveWeapon()const {
+	return m_activeWeapon;
+}
+bool Character::Attack() {
+	bool attackAllowed = false;
+	if(((m_activeWeapon->GetWeaponType()&&m_activeWeapon->GetAmmunition()>0)||!m_activeWeapon->GetWeaponType())
+		&& m_activeWeapon->GetCooldown() < m_timeSinceAttack) {
+		m_timeSinceAttack --;
+		attackAllowed = true;
+		if (m_activeWeapon->GetWeaponType()) {
+			m_activeWeapon->ChangeAmmunition();
+		}
+	}
+	return attackAllowed;
+}
 void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::CircleShape circle(m_radius);
