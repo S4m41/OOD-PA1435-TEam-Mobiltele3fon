@@ -30,13 +30,12 @@ void Fight::Update()
 		distance = std::sqrtf(playerToEnemy.x * playerToEnemy.x + playerToEnemy.y * playerToEnemy.y);
 
 	}
-	if (m_player->Attack()) {
-		if (distance < m_enemy->GetRadius() + m_player->GetRadius() + m_player->GetActiveWeapon()->GetRange())
-		{
-			m_enemy->ChangeHealth(-(m_player->GetActiveWeapon()->GetDamage()));
-		}
+	  
+	if (m_enemy->GetHealth()>0&& distance < m_enemy->GetRadius() + m_player->GetRadius() + m_player->GetActiveWeapon()->GetRange() && m_player->Attack())
+	{
+		m_enemy->ChangeHealth(-(m_player->GetActiveWeapon()->GetDamage()));
 	}
-	if (distance < m_enemy->GetRadius() + m_player->GetRadius() + m_enemy->GetActiveWeapon()->GetRange()&& m_enemy->Attack())
+	if (m_player->GetHealth()>0 && distance < m_enemy->GetRadius() + m_player->GetRadius() + m_enemy->GetActiveWeapon()->GetRange()&& m_enemy->Attack())
 	{
 		m_player->ChangeHealth(-(m_enemy->GetActiveWeapon()->GetDamage()));
 	}

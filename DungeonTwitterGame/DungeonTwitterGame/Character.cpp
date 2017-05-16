@@ -54,7 +54,7 @@ void Character::Update()
 	m_healthBar->SetPosition(m_position);
 
 	m_activeWeapon->GetSprite()->setPosition(m_position);
-	m_timeSinceAttack += 4.1f;
+	m_timeSinceAttack += 0.1f;
 	// Reset movement
 	m_movement = sf::Vector2f(0.0f, 0.0f);
 }
