@@ -14,19 +14,19 @@ RoomHandler::RoomHandler(std::wstring seedName)
 
 	// New
 	m_playerHandler = new PlayerHandler;
-	m_enemyHandler = new EnemyHandler;
+	//m_enemyHandler = new EnemyHandler;
 	m_fightHandler = new FightHandler;
 
 	m_playerHandler->CreatePlayer();
 
-	for (int i = 0; i < 5; i++)
+	/*for (int i = 0; i < 5; i++)
 	{
 		m_enemyHandler->CreateEnemy();
 	}
-
-	for (unsigned int i = 0; i < m_enemyHandler->GetNrOfEnemies(); i++)
+*/
+	for (unsigned int i = 0; i < m_currentRoom->GetNrOfEnemiesInRoom(); i++)
 	{
-		m_fightHandler->StartFight(m_playerHandler->GetPlayer(), m_enemyHandler->GetEnemy(i));
+		m_fightHandler->StartFight(m_playerHandler->GetPlayer(), m_currentRoom->GetEnemyInRoom(i));
 	}
 }
 
@@ -38,11 +38,11 @@ RoomHandler::~RoomHandler()
 		delete m_playerHandler;
 		m_playerHandler = nullptr;
 	}
-	if (m_enemyHandler)
+	/*if (m_enemyHandler)
 	{
 		delete m_enemyHandler;
 		m_enemyHandler = nullptr;
-	}
+	}*/
 	if (m_fightHandler)
 	{
 		delete m_fightHandler;
@@ -113,7 +113,7 @@ void RoomHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(*m_currentRoom, states);
 	}
-	target.draw(*m_enemyHandler, states);
+	//target.draw(*m_enemyHandler, states);
 	target.draw(*m_playerHandler, states);
 }
 
@@ -129,7 +129,8 @@ void RoomHandler::Update()
 {
 	m_playerHandler->Update();
 	m_fightHandler->Update();
-	m_enemyHandler->Update();
+	m_currentRoom->Update();
+	//m_enemyHandler->Update();
 }
 
 sf::Vector2f RoomHandler::GetPlayerPosition() const

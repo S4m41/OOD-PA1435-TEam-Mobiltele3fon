@@ -2,6 +2,7 @@
 #include "Room.hpp"
 //#include "Item.hpp"
 #include "Weapon.hpp"
+#include "EnemyHandler.hpp"
 
 #include "SystemSettings.hpp"
 #include "ItemEntity.hpp"
@@ -20,6 +21,14 @@ Room::Room(std::wstring seedName) : Room(new Door(seedName, nullptr))
 //		Will just be random in the first iteration
 Room::Room(Door* door)
 {
+	m_enemyHandler = new EnemyHandler;
+
+	for (int i = 0; i < 5; i++)
+	{
+		m_enemyHandler->CreateEnemy();
+	}
+
+
 	int entryPos = door->m_doorPositionIndex;
 
 	door->m_toRoom = this;
@@ -53,7 +62,11 @@ void Room::ResetDoorColors(int doorEnteredArrayIndex)
 // TODO: Recursively delete the entire tree of rooms
 Room::~Room()
 {
-
+	if (m_enemyHandler)
+	{
+		delete m_enemyHandler;
+		m_enemyHandler = nullptr;
+	}
 }
 
 
@@ -96,6 +109,22 @@ Door* Room::GetDoor(int doorPositionIndex) const
 	return m_doors[doorArrayIndex];
 }
 
+int Room::GetNrOfEnemiesInRoom() const
+{
+	return m_enemyHandler->GetNrOfEnemies();
+}
+
+Enemy* Room::GetEnemyInRoom(int i)
+{
+	return m_enemyHandler->GetEnemy(i);
+}
+
+void Room::Update()
+{
+	m_enemyHandler->Update();
+}
+
+
 
 // ------------------ Private -------------------
 
@@ -119,4 +148,6 @@ void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 			target.draw(*m_doors[i], states);
 		}
 	}
+	target.draw(*m_enemyHandler, states);
+
 }

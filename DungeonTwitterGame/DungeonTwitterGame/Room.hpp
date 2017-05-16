@@ -28,10 +28,11 @@ static const sf::Vector2f DoorPositionArray[4] =
 	DoorPosition::DOOR_POS_RIGHT 
 };
 
+class Enemy;
 class Room;
 class Item;
 class ItemEntity;
-
+class EnemyHandler;
 
 struct Door : public sf::Drawable
 {
@@ -85,6 +86,9 @@ public:
 	void SpawnItem(Item* item);
 
 	bool IsLegal(/*m_position*/) const;
+	void Update();
+	int GetNrOfEnemiesInRoom() const;
+	Enemy* GetEnemyInRoom(int i);
 
 	std::wstring GetRoomName() const;
 	int Room::GetDoorArrayIndex(int doorPositionIndex) const;
@@ -95,6 +99,7 @@ private:
 	Door* m_doors[4] = { nullptr };
 
 	std::vector<ItemEntity> m_itemsInRoom;
+	EnemyHandler* m_enemyHandler;
 
 	const sf::Color m_roomColor = sf::Color::Color(140, 54, 1);
 	const sf::Color m_roomOutlineColor = sf::Color::Color(255, 255, 255);

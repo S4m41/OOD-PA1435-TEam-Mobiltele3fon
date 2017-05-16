@@ -32,7 +32,7 @@ private:
 	Room* m_currentRoom;
 
 	PlayerHandler* m_playerHandler;
-	EnemyHandler* m_enemyHandler;
+	//EnemyHandler* m_enemyHandler;
 	FightHandler* m_fightHandler;
 
 
