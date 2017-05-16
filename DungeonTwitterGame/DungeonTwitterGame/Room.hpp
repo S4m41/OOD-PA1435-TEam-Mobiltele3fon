@@ -27,6 +27,7 @@ class Enemy;
 class Room;
 class Item;
 class ItemEntity;
+
 class EnemyHandler;
 class FightHandler;
 class PlayerHandler;
@@ -74,6 +75,8 @@ struct Door : public sf::Drawable
 	}
 };
 
+class Player;
+
 class Room : public sf::Drawable
 {
 public:
@@ -81,7 +84,7 @@ public:
 	Room(Door* door);
 	~Room();
 
-	void SpawnItem(Item* item);
+	void SpawnItem(Item* item, sf::Vector2f pos);
 
 	void Update();
 
@@ -91,11 +94,13 @@ public:
 	int Room::GetDoorArrayIndex(int doorPositionIndex) const;
 	Door* GetDoor(int doorPositionIndex) const;
 	void ResetDoorColors(int doorEnteredArrayIndex);
+	void CheckItemPickUp(Player* player);
+
 private:
 	// 0: Entry, 1: left, 2: opposite, 3: right
 	Door* m_doors[4] = { nullptr };
 
-	std::vector<ItemEntity> m_itemsInRoom;
+	std::vector<ItemEntity*> m_itemsInRoom;
 
 	EnemyHandler* m_enemyHandler;
 	FightHandler* m_fightHandler;

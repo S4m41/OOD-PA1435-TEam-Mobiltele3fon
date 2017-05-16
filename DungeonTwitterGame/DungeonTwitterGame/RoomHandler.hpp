@@ -9,6 +9,7 @@ struct Door;
 class Room;
 class Input;
 class PlayerHandler;
+class Player;
 
 class RoomHandler : public sf::Drawable
 {
@@ -23,8 +24,9 @@ public:
 	void Update();
 
 	// Maybe not needed
-	sf::Vector2f GetPlayerPosition() const;
-	void SetPlayerPosition(sf::Vector2f position);
+	Player* GetPlayer();
+	void CheckItemPickUp(Player* player);
+
 private:
 	bool TestDoor(Door* door) const;
 	void DisplayDoorLockedMessage() const;

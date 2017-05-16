@@ -3,6 +3,8 @@
 #include "EnemyHandler.hpp"
 #include "FightHandler.hpp"
 #include "PlayerHandler.hpp"
+#include "Player.hpp"
+
 #include "SystemSettings.hpp"
 #include "ItemEntity.hpp"
 
@@ -44,8 +46,12 @@ Room::Room(Door* door)
 
 
 	// Spawn an item
-	Weapon testItem("Axe.png");
-	SpawnItem(&testItem);
+	Weapon* testItem = new Weapon("Axe.png");
+	Weapon* testItem2 = new Weapon("Bow.png");
+
+	SpawnItem(testItem, sf::Vector2f(50,50));
+	SpawnItem(testItem2, sf::Vector2f(450, 50));
+
 }
 
 void Room::ResetDoorColors(int doorEnteredArrayIndex)
@@ -94,14 +100,38 @@ Room::~Room()
 	}
 }
 
+void Room::CheckItemPickUp(Player * player)
+{
+	ItemEntity* closestItem = nullptr;
+	float minDist = -1;
+	int Itemindex = -1;
+	float dist;
 
-void Room::SpawnItem(Item* item)
+	for (int i = 0; i < m_itemsInRoom.size(); i++)
+	{
+		sf::Vector2f distVec = player->GetPosition() - m_itemsInRoom.at(i)->GetPosition();
+
+		dist = sqrt(pow(distVec.x, 2) - pow(distVec.y, 2));
+		if (dist < 50 && (dist < minDist || Itemindex == -1)) {
+			closestItem = m_itemsInRoom.at(i);
+			Itemindex = i;
+			minDist = dist;
+		}
+	}
+
+	if (closestItem != nullptr) {
+		if (player->GiveItem(closestItem->GetItem())) {
+			m_itemsInRoom.erase(m_itemsInRoom.begin() + Itemindex);
+		}
+	}
+}
+
+
+void Room::SpawnItem(Item* item, sf::Vector2f pos)
 {
 	// TODO: make these values random within the boundries of the room
-	int xLocation = 0;
-	int yLocation = 0;
-	ItemEntity newItem = ItemEntity(item);
-	newItem.SetPosition(sf::Vector2f(xLocation, yLocation));
+	ItemEntity* newItem = new ItemEntity(item);
+	newItem->SetPosition(pos);
 
 	m_itemsInRoom.push_back(newItem);
 }
@@ -163,6 +193,13 @@ void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 			target.draw(*m_doors[i], states);
 		}
 	}
+
 	target.draw(*m_enemyHandler, states);
+
+	/*Draw Items*/
+	for (int i = 0; i < m_itemsInRoom.size(); i++)
+	{
+		target.draw(*m_itemsInRoom.at(i), states);
+	}
 
 }

@@ -3,6 +3,8 @@
 #include "Room.hpp"
 
 #include <SFML\Window\Keyboard.hpp>
+#include "Player.hpp"
+
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
 
@@ -71,6 +73,16 @@ Room* RoomHandler::GetCurrentRoom() const
 	return m_currentRoom;
 }
 
+Player * RoomHandler::GetPlayer()
+{
+	return m_playerHandler->GetPlayer();
+}
+
+void RoomHandler::CheckItemPickUp(Player * player)
+{
+	m_currentRoom->CheckItemPickUp(player);
+}
+
 // -------- Private -----------
 
 bool RoomHandler::TestDoor(Door* door) const
@@ -108,14 +120,4 @@ void RoomHandler::Update()
 {
 	m_playerHandler->Update();
 	m_currentRoom->Update();
-}
-
-sf::Vector2f RoomHandler::GetPlayerPosition() const
-{
-	return m_playerHandler->GetPlayerPosition();
-}
-
-void RoomHandler::SetPlayerPosition(sf::Vector2f position)
-{
-	m_playerHandler->SetPlayerPosition(position);
 }

@@ -14,9 +14,9 @@ Inventory::Inventory()
 Inventory::~Inventory()
 {
 	for (int i = 0; i < Storageinfo.vectormax; i++) {
-		delete items[i];
+		//delete items[i];//TODO: FIX!
 	}
-	delete items;
+	delete [] items;
 }
 
 int Inventory::addItem(Item * itemToAdd)
@@ -25,7 +25,7 @@ int Inventory::addItem(Item * itemToAdd)
 
 	int i = 0;
 	for (; items[i] != nullptr; i++) {
-		if (i < Storageinfo.vectormax) {
+		if (i == Storageinfo.vectormax) {
 			if (!expand()) {
 				index = -2;//cant expand
 			}

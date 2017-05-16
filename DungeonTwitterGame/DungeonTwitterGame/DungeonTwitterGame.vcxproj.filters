@@ -124,7 +124,7 @@
       <Filter>Source Files\Unsorted</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Items</Filter>
     </ClCompile>
     <ClCompile Include="RoomHandler.cpp">
       <Filter>Source Files\Entities\Handlers</Filter>

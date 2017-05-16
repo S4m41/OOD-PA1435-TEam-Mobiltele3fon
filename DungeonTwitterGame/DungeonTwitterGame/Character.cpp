@@ -1,6 +1,8 @@
 #include "Character.hpp"
 #include "HealthBar.hpp"
 #include "Weapon.hpp"
+#include "Inventory.hpp"
+
 #include <SFML\Graphics\Color.hpp>
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
@@ -11,6 +13,8 @@
 
 Character::Character(sf::Color color,float speed,bool isRanged) : Entity()
 {
+	m_inventory = new Inventory;
+
 	m_movement = sf::Vector2f(0.0f, 0.0f);
 	m_color = new sf::Color(color);
 
@@ -26,13 +30,18 @@ Character::Character(sf::Color color,float speed,bool isRanged) : Entity()
 	}
 
 	m_healthBar = new HealthBar(m_radius * 2);
+	
 	if (isRanged) {
-		m_activeWeapon = new Weapon("Bow.png");
+		m_inventory->addItem(new Weapon("Bow.png"));
 	}
 	else {
-		m_activeWeapon = new Weapon("Axe.png");
+		m_inventory->addItem(new Weapon("Axe.png"));
 	}
+
+	m_activeWeaponIndex = 0;
+	m_activeWeapon = dynamic_cast<Weapon*>(m_inventory->itemInSlot(m_activeWeaponIndex));
 	m_timeSinceAttack = 0;
+
 }
 Character::~Character()
 {
@@ -46,10 +55,10 @@ Character::~Character()
 		delete m_healthBar;
 		m_healthBar = nullptr;
 	}
-	if (m_activeWeapon)
-	{
-		delete m_activeWeapon;
-		m_activeWeapon = nullptr;
+
+	if (m_inventory) {
+		delete m_inventory;
+		m_inventory = nullptr;
 	}
 }
 
@@ -61,7 +70,10 @@ void Character::Update()
 
 	m_healthBar->SetPosition(m_position);
 
-	m_activeWeapon->GetSprite()->setPosition(m_position);
+	if (m_activeWeapon) {
+		m_activeWeapon->GetSprite()->setPosition(m_position);
+	}
+	
 	m_timeSinceAttack += 0.1f;
 	// Reset movement
 	m_movement = sf::Vector2f(0.0f, 0.0f);
@@ -104,6 +116,9 @@ Weapon* Character::GetActiveWeapon()const {
 bool Character::Attack() {
 	bool attackAllowed = false;
 
+	if (!m_activeWeapon)
+		return false;
+
 	bool isMelee = !m_activeWeapon->GetWeaponType();
 	bool rangedWeaponCanShoot =!isMelee && m_activeWeapon->GetAmmunition() > 0;
 	bool isNotOnCooldown = m_activeWeapon->GetCooldown() < m_timeSinceAttack;
@@ -117,6 +132,21 @@ bool Character::Attack() {
 	}
 	return attackAllowed;
 }
+
+bool Character::GiveItem(Item * item)
+{
+	if (m_inventory->addItem(item) == -1)
+		return false;//if Failed to give.
+	
+	return true;
+}
+
+void Character::SetActiveItem(int i)
+{
+	m_activeWeaponIndex = i;
+	m_activeWeapon = dynamic_cast<Weapon*>(m_inventory->itemInSlot(i));
+}
+
 void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::CircleShape circle(m_radius);

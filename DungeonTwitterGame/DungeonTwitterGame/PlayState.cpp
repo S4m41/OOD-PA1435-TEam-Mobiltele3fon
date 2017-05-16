@@ -3,6 +3,8 @@
 #include "RoomHandler.hpp"
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
+#include "Player.hpp"
+
 #include <SFML\Window\Keyboard.hpp>
 #include <SFML\Graphics\CircleShape.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
@@ -49,22 +51,44 @@ void PlayState::Update()
 	{
 		std::cout << "E pressed" << std::endl;
 
-		sf::Vector2f currentPosition = m_RoomHandler->GetPlayerPosition();
-		for (unsigned int i = 0; i < 4; i++)
+
+		sf::Vector2f currentPosition = m_RoomHandler->GetPlayer()->GetPosition();
+		bool roomEntered = false;
+
+		for (unsigned int i = 0; i < 4 && !roomEntered; i++)
 		{
+			//std::cout << "Failed To Enter" << std::endl;
 			sf::Vector2f distance = currentPosition - DoorPositionArray[i];
 			if (abs(distance.x) < 50.0f && abs(distance.y) < 50.0f)
 			{
 				if (m_RoomHandler->EnterRoom(i))
 				{
-					m_RoomHandler->SetPlayerPosition(DoorPositionArray[(i + 2) % 4]);
+					m_RoomHandler->GetPlayer()->SetPosition(DoorPositionArray[(i + 2) % 4]);
+					roomEntered = true;
 				}
 			}
 		}
+
+		if (!roomEntered) {
+			m_RoomHandler->CheckItemPickUp(m_RoomHandler->GetPlayer());
+		}
 	}
+
+	if(m_input->IsKeyPressed(sf::Keyboard::Num1)) {
+		std::cout << "Inventory Slot 1 Selected" << std::endl;
+		m_RoomHandler->GetPlayer()->SetActiveItem(0);
+	}
+	else if (m_input->IsKeyPressed(sf::Keyboard::Num2)) {
+		std::cout << "Inventory Slot 2 Selected" << std::endl;
+		m_RoomHandler->GetPlayer()->SetActiveItem(1);
+	}
+	else if (m_input->IsKeyPressed(sf::Keyboard::Num3)) {
+		std::cout << "Inventory Slot 3 Selected" << std::endl;
+		m_RoomHandler->GetPlayer()->SetActiveItem(2);
+	}
+
 	m_RoomHandler->Update();
 }
-
 
 void PlayState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {

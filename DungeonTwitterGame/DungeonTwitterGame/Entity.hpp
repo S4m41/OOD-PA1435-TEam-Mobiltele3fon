@@ -10,7 +10,7 @@ public:
 
 	virtual void Update() = 0;
 
-	void SetPosition(sf::Vector2f position);
+	virtual void SetPosition(sf::Vector2f position);
 	sf::Vector2f GetPosition() const;
 
 protected:
