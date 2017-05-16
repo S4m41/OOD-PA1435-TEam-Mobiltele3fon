@@ -4,6 +4,8 @@
 #include "RoomHandler.hpp"
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
+#include "Player.hpp"
+
 #include <SFML\Window\Keyboard.hpp>
 #include <SFML\Graphics\CircleShape.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
@@ -51,17 +53,25 @@ void PlayState::Update()
 	{
 		std::cout << "E pressed" << std::endl;
 
-		sf::Vector2f currentPosition = m_characterHandler->GetPlayerPosition();
-		for (unsigned int i = 0; i < 4; i++)
+		sf::Vector2f currentPosition = m_characterHandler->GetPlayer()->GetPosition();
+		bool roomEntered = false;
+
+		for (unsigned int i = 0; i < 4 && !roomEntered; i++)
 		{
+			//std::cout << "Failed To Enter" << std::endl;
 			sf::Vector2f distance = currentPosition - DoorPositionArray[i];
 			if (abs(distance.x) < 50.0f && abs(distance.y) < 50.0f)
 			{
 				if (m_RoomHandler->EnterRoom(i))
 				{
-					m_characterHandler->SetPlayerPosition(DoorPositionArray[(i + 2) % 4]);
+					m_characterHandler->GetPlayer()->SetPosition(DoorPositionArray[(i + 2) % 4]);
+					roomEntered = true;
 				}
 			}
+		}
+
+		if (!roomEntered) {
+			m_RoomHandler->CheckItemPickUp(m_characterHandler->GetPlayer());
 		}
 	}
 	m_characterHandler->Update();

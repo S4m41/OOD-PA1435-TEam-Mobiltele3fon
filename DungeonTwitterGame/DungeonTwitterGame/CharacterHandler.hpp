@@ -6,6 +6,7 @@ class Input;
 class PlayerHandler;
 class EnemyHandler;
 class FightHandler;
+class Player;
 
 class CharacterHandler final : public sf::Drawable
 {
@@ -18,8 +19,8 @@ public:
 	void Update();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates) const override;
-	sf::Vector2f GetPlayerPosition() const;
-	void SetPlayerPosition(sf::Vector2f position);
+
+	Player* GetPlayer();
 private:
 	PlayerHandler* m_playerHandler;
 	EnemyHandler* m_enemyHandler;

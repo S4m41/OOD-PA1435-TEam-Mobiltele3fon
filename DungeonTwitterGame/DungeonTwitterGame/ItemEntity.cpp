@@ -28,6 +28,11 @@ void ItemEntity::SetPosition(sf::Vector2f position)
 	m_sprite->setPosition(position);
 }
 
+Item * ItemEntity::GetItem()
+{
+	return m_containedItem;
+}
+
 void ItemEntity::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(*m_sprite, states);

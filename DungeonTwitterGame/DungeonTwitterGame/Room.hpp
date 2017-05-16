@@ -74,6 +74,8 @@ struct Door : public sf::Drawable
 	}
 };
 
+class Player;
+
 class Room : public sf::Drawable
 {
 public:
@@ -89,11 +91,13 @@ public:
 	int Room::GetDoorArrayIndex(int doorPositionIndex) const;
 	Door* GetDoor(int doorPositionIndex) const;
 	void ResetDoorColors(int doorEnteredArrayIndex);
+	void CheckItemPickUp(Player* player);
+
 private:
 	// 0: Entry, 1: left, 2: opposite, 3: right
 	Door* m_doors[4] = { nullptr };
 
-	std::vector<ItemEntity> m_itemsInRoom;
+	std::vector<ItemEntity*> m_itemsInRoom;
 
 	const sf::Color m_roomColor = sf::Color::Color(140, 54, 1);
 	const sf::Color m_roomOutlineColor = sf::Color::Color(255, 255, 255);

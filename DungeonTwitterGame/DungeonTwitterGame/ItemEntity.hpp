@@ -17,6 +17,7 @@ public:
 	void Update() {};
 	void SetPosition(sf::Vector2f position) override;
 
+	Item* GetItem();
 protected:
 	Item* m_containedItem;
 	sf::Texture* m_texture;

@@ -1,4 +1,6 @@
 #include "RoomHandler.hpp"
+#include "Player.hpp"
+
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
 // ------ public ---------
@@ -48,6 +50,11 @@ bool RoomHandler::EnterRoom(int doorPositionIndex)
 Room* RoomHandler::GetCurrentRoom() const
 {
 	return m_currentRoom;
+}
+
+void RoomHandler::CheckItemPickUp(Player * player)
+{
+	m_currentRoom->CheckItemPickUp(player);
 }
 
 // -------- Private -----------

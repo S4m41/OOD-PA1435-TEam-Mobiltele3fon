@@ -4,6 +4,7 @@
 #include "Room.hpp"
 #include <SFML\Graphics\Drawable.hpp>
 
+class Player;
 
 class RoomHandler : public sf::Drawable
 {
@@ -13,6 +14,8 @@ public:
 
 	bool EnterRoom(int doorPositionIndex);
 	Room* GetCurrentRoom() const;
+	void CheckItemPickUp(Player* player);
+
 private:
 	bool TestDoor(Door* door) const;
 	void DisplayDoorLockedMessage() const;

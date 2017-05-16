@@ -16,7 +16,7 @@ Inventory::~Inventory()
 	for (int i = 0; i < Storageinfo.vectormax; i++) {
 		delete items[i];
 	}
-	delete items;
+	delete [] items;
 }
 
 int Inventory::addItem(Item * itemToAdd)

@@ -2,6 +2,7 @@
 #include "Room.hpp"
 //#include "Item.hpp"
 #include "Weapon.hpp"
+#include "Player.hpp"
 
 #include "SystemSettings.hpp"
 #include "ItemEntity.hpp"
@@ -50,18 +51,50 @@ void Room::ResetDoorColors(int doorEnteredArrayIndex)
 	}
 }
 
+void Room::CheckItemPickUp(Player * player)
+{
+	ItemEntity* closestItem = nullptr;
+	float minDist = -1;
+	int Itemindex = -1;
+	float dist;
+
+	for (int i = 0; i < m_itemsInRoom.size(); i++)
+	{
+		sf::Vector2f distVec = player->GetPosition() - m_itemsInRoom.at(i)->GetPosition();
+
+		dist = sqrt(pow(distVec.x,2)- pow(distVec.y, 2));
+		if (dist < 50 && (dist < minDist || Itemindex == -1)) {
+			closestItem = m_itemsInRoom.at(i);
+			Itemindex = i;
+			minDist = dist;
+		}
+	}
+
+	if (closestItem != nullptr) {
+		if (player->GiveItem(closestItem->GetItem())) {
+			m_itemsInRoom.erase(m_itemsInRoom.begin() + Itemindex);
+		}
+	}
+}
+
 // TODO: Recursively delete the entire tree of rooms
 Room::~Room()
 {
+	while (!m_itemsInRoom.empty())
+	{
+		ItemEntity* item = m_itemsInRoom.at(0);
+		m_itemsInRoom.pop_back();
 
+		delete item;
+	}
 }
 
 
 void Room::SpawnItem(Item* item, sf::Vector2f pos)
 {
 	// TODO: make these values random within the boundries of the room
-	ItemEntity newItem = ItemEntity(item);
-	newItem.SetPosition(pos);
+	ItemEntity* newItem = new ItemEntity(item);
+	newItem->SetPosition(pos);
 
 	m_itemsInRoom.push_back(newItem);
 }
@@ -121,6 +154,6 @@ void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	/*Draw Items*/
 	for (int i = 0; i < m_itemsInRoom.size(); i++)
 	{
-		target.draw(m_itemsInRoom.at(i), states);
+		target.draw(*m_itemsInRoom.at(i), states);
 	}
 }

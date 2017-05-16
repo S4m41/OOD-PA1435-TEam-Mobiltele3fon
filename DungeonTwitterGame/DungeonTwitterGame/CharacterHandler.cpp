@@ -41,7 +41,7 @@ CharacterHandler::~CharacterHandler()
 	{
 		delete m_fightHandler;
 		m_fightHandler = nullptr;
-	}
+	}	
 }
 
 void CharacterHandler::SetInput(Input* input)
@@ -63,11 +63,7 @@ void CharacterHandler::draw(sf::RenderTarget& target, sf::RenderStates states) c
 	target.draw(*m_playerHandler, states);
 }
 
-sf::Vector2f CharacterHandler::GetPlayerPosition() const
+Player * CharacterHandler::GetPlayer()
 {
-	return sf::Vector2f();
-}
-
-void CharacterHandler::SetPlayerPosition(sf::Vector2f position)
-{
+	return m_playerHandler->GetPlayer();
 }

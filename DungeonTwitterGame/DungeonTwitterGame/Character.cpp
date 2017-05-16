@@ -1,6 +1,8 @@
 #include "Character.hpp"
 #include "HealthBar.hpp"
 #include "Weapon.hpp"
+#include "Inventory.hpp"
+
 #include <SFML\Graphics\Color.hpp>
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
@@ -32,6 +34,8 @@ Character::Character(sf::Color color,float speed,bool isRanged) : Entity()
 		m_activeWeapon = new Weapon("Axe.png");
 	}
 	m_timeSinceAttack = 0;
+
+	m_inventory = new Inventory;
 }
 Character::~Character()
 {
@@ -49,6 +53,10 @@ Character::~Character()
 	{
 		delete m_activeWeapon;
 		m_activeWeapon = nullptr;
+	}
+	if (m_inventory) {
+		delete m_inventory;
+		m_inventory = nullptr;
 	}
 }
 
@@ -114,6 +122,15 @@ bool Character::Attack() {
 	}
 	return attackAllowed;
 }
+
+bool Character::GiveItem(Item * item)
+{
+	if (m_inventory->addItem(item) == -1)
+		return false;//if Failed to give.
+	
+	return true;
+}
+
 void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::CircleShape circle(m_radius);
