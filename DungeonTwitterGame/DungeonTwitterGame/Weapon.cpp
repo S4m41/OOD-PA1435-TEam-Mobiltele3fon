@@ -11,14 +11,18 @@ Weapon::Weapon(char* textureName) : Item(textureName)
 		m_damage = 10;
 		m_attackCooldown = 1.0f;
 		m_range = 3.0f;
+		m_isRangedWeapon = false;
 		GetSprite()->setOrigin(GetSprite()->getTextureRect().width * 0.5f, GetSprite()->getTextureRect().height);
 		GetSprite()->setScale(0.2f, 0.1f);
+		m_ammunition = 0;
 	}
 	else
 	{
 		m_damage = 10;
 		m_attackCooldown = 1.0f;
 		m_range = 2.0f;
+		m_isRangedWeapon = true;
+		m_ammunition = 50;
 	}
 }
 Weapon::~Weapon()
@@ -36,4 +40,13 @@ float Weapon::GetCooldown() const
 float Weapon::GetRange() const
 {
 	return m_range;
+}
+bool Weapon::GetWeaponType() const {
+	return m_isRangedWeapon;
+}
+int Weapon::GetAmmunition()const {
+	return m_ammunition;
+}
+void Weapon::ChangeAmmunition(int change) {
+	m_ammunition += change;
 }

@@ -95,9 +95,13 @@ Weapon* Character::GetActiveWeapon()const {
 }
 bool Character::Attack() {
 	bool attackAllowed = false;
-	if (m_activeWeapon->GetCooldown() < m_timeSinceAttack) {
+	if(((m_activeWeapon->GetWeaponType()&&m_activeWeapon->GetAmmunition()>0)||!m_activeWeapon->GetWeaponType())
+		&& m_activeWeapon->GetCooldown() < m_timeSinceAttack) {
 		m_timeSinceAttack --;
 		attackAllowed = true;
+		if (m_activeWeapon->GetWeaponType()) {
+			m_activeWeapon->ChangeAmmunition();
+		}
 	}
 	return attackAllowed;
 }
