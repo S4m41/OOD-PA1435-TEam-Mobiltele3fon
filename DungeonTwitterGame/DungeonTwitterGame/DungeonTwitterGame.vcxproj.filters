@@ -96,9 +96,6 @@
     <ClCompile Include="Room.cpp">
       <Filter>Source Files\Unsorted</Filter>
     </ClCompile>
-    <ClCompile Include="RoomHandler.cpp">
-      <Filter>Source Files\Unsorted</Filter>
-    </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
@@ -110,9 +107,6 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Entities\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterHandler.cpp">
-      <Filter>Source Files\Entities\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="EnemyHandler.cpp">
       <Filter>Source Files\Entities\Handlers</Filter>
@@ -126,14 +120,17 @@
     <ClCompile Include="Fight.cpp">
       <Filter>Source Files\Unsorted</Filter>
     </ClCompile>
-    <ClCompile Include="FightHandler.cpp">
-      <Filter>Source Files\Unsorted</Filter>
-    </ClCompile>
     <ClCompile Include="HealthBar.cpp">
       <Filter>Source Files\Unsorted</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomHandler.cpp">
+      <Filter>Source Files\Entities\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="FightHandler.cpp">
+      <Filter>Source Files\Entities\Handlers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -173,9 +170,6 @@
     <ClInclude Include="Room.hpp">
       <Filter>Header Files\UnSorted</Filter>
     </ClInclude>
-    <ClInclude Include="RoomHandler.hpp">
-      <Filter>Header Files\UnSorted</Filter>
-    </ClInclude>
     <ClInclude Include="Entity.hpp">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -184,9 +178,6 @@
     </ClInclude>
     <ClInclude Include="Player.hpp">
       <Filter>Header Files\Entities\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterHandler.hpp">
-      <Filter>Header Files\Entities\Handlers</Filter>
     </ClInclude>
     <ClInclude Include="PlayerHandler.hpp">
       <Filter>Header Files\Entities\Handlers</Filter>
@@ -206,14 +197,20 @@
     <ClInclude Include="Fight.hpp">
       <Filter>Header Files\UnSorted</Filter>
     </ClInclude>
-    <ClInclude Include="FightHandler.hpp">
-      <Filter>Header Files\UnSorted</Filter>
-    </ClInclude>
     <ClInclude Include="HealthBar.hpp">
       <Filter>Header Files\UnSorted</Filter>
     </ClInclude>
     <ClInclude Include="Weapon.hpp">
       <Filter>Header Files\Items</Filter>
     </ClInclude>
+    <ClInclude Include="FightHandler.hpp">
+      <Filter>Header Files\Entities\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomHandler.hpp">
+      <Filter>Header Files\Entities\Handlers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

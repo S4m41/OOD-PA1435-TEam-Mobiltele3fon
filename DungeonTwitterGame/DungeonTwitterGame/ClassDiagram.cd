@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FiniteStateMachine" Collapsed="true">
+    <Position X="12.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAEAAAAAABAAAAAAACAAAAAAAAAAABACAA=</HashCode>
+      <FileName>FiniteStateMachine.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuState" Collapsed="true">
+    <Position X="1.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQBAAAAAAEAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayState">
+    <Position X="0.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAAAAAAAAAAIAAAAAAAAAQAIAAAAAAAAwAAA=</HashCode>
+      <FileName>PlayState.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_RoomHandler" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GameState" Collapsed="true">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAABAAAgAAAAQAAAAAAAQIAA=</HashCode>
+      <FileName>GameState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuState" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAEABgAAACIAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>MainMenuState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PauseMenuState" Collapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAEAAgAAAAIAAAAIAAAAAAAAAAAAAAAAAIQ=</HashCode>
+      <FileName>PauseMenuState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Input">
+    <Position X="17" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgEAABAAAAAAAAAAAAAAAAEAAAAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Input.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System" Collapsed="true">
+    <Position X="14.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAIAAAQAAAAAAAABAAAAAgAAQAAAAAAAAAAI=</HashCode>
+      <FileName>System.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alternative" Collapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alternative.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fight" Collapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAAAAQAAEAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Fight.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FightHandler" Collapsed="true">
+    <Position X="14.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAIAQAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>FightHandler.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthBar" Collapsed="true">
+    <Position X="16" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAIAAAIAAAAgAAAAggAAABAAACAAAAA=</HashCode>
+      <FileName>HealthBar.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Room" Collapsed="true">
+    <Position X="17.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACEQBIIAAggIAIAAEIAAAAAABAAAAA=</HashCode>
+      <FileName>Room.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomHandler">
+    <Position X="6.5" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAQTAAAAAAAAAIAAAQAAAIAAAAAAAABAAAYAAE=</HashCode>
+      <FileName>RoomHandler.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAACAAAAAAAAIAAAAAACAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemEntity" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAABAAAAAAIAAAAAAAAAAAAACAAAAAAAACA=</HashCode>
+      <FileName>ItemEntity.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character" Collapsed="true">
+    <Position X="3.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAgIAAAIAAAAAAMAQAAgBIAAAAAAAAAEACgALAA=</HashCode>
+      <FileName>Character.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAABAAAAEAAEAAAAAAAAAAAABAAAAQQIEFA=</HashCode>
+      <FileName>Player.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyHandler">
+    <Position X="14" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAACAAAgAAAIIAAAgAAAAAAAgAAAAAAAEAAAA=</HashCode>
+      <FileName>EnemyHandler.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_enemies" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerHandler">
+    <Position X="14.5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAECAAAAAAAAAAsEAAAAAAAIAAAQAAAAAAAQAAA=</HashCode>
+      <FileName>PlayerHandler.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_input" />
+      <Field Name="m_player" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Inventory" Collapsed="true">
+    <Position X="10.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAEAQAAACABEAAiAAAAAAAAAAAAAAAAAAgAgAAA=</HashCode>
+      <FileName>Inventory.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAACAAEAAAAAIAAAAkAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Item.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Weapon" Collapsed="true">
+    <Position X="8.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAEAAAAAAQgAAAAEACCAQEAAAAAAAAgAAAgAAAAAAAA=</HashCode>
+      <FileName>Weapon.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::Text" Collapsed="true">
+    <Position X="16" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAhGJCAIAADABAIAAABAAAQAgAAIAAECiAhIAAA=</HashCode>
+      <FileName>c:\Users\nalo\Source\Repos\OOD-PA1435-TEam-Mobiltele3fon\DungeonTwitterGame\SFML-2.3.2\include\SFML\Graphics\Text.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::Font" Collapsed="true">
+    <Position X="14.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAAAAAAAGAAAgEAAAAIAEBC4AAAAAAIQEAwEAAmRAE=</HashCode>
+      <FileName>c:\Users\nalo\Source\Repos\OOD-PA1435-TEam-Mobiltele3fon\DungeonTwitterGame\SFML-2.3.2\include\SFML\Graphics\Font.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::RenderTarget" Collapsed="true">
+    <Position X="5.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkQAAIAAAIEBSAAAIAMAQgAAABAAAIEAAAIAABAIQEA=</HashCode>
+      <FileName>c:\Users\nalo\Source\Repos\OOD-PA1435-TEam-Mobiltele3fon\DungeonTwitterGame\SFML-2.3.2\include\SFML\Graphics\RenderTarget.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::RenderStates" Collapsed="true">
+    <Position X="16" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAIAAAAAAEIgAAAAAAAEAAAAA=</HashCode>
+      <FileName>c:\Users\nalo\Source\Repos\OOD-PA1435-TEam-Mobiltele3fon\DungeonTwitterGame\SFML-2.3.2\include\SFML\Graphics\RenderStates.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::RenderWindow" Collapsed="true">
+    <Position X="5.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIBAAAAAAAAAQASAAAAAEAAgAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\nalo\Source\Repos\OOD-PA1435-TEam-Mobiltele3fon\DungeonTwitterGame\SFML-2.3.2\include\SFML\Graphics\RenderWindow.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::RectangleShape" Collapsed="true">
+    <Position X="14.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAACI=</HashCode>
+      <FileName>c:\Users\nalo\Source\Repos\OOD-PA1435-TEam-Mobiltele3fon\DungeonTwitterGame\SFML-2.3.2\include\SFML\Graphics\RectangleShape.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::Color" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAGAEQAAAAAAgAAABAAAAAABAAAAAAoAQABgDAAAAA=</HashCode>
+      <FileName>c:\Users\nalo\Source\Repos\OOD-PA1435-TEam-Mobiltele3fon\DungeonTwitterGame\SFML-2.3.2\include\SFML\Graphics\Color.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::Sprite" Collapsed="true">
+    <Position X="12.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQACBEAIAgACAAIAAAAAAAAAACAwAAAAgAIIAAA=</HashCode>
+      <FileName>c:\Users\nalo\Source\Repos\OOD-PA1435-TEam-Mobiltele3fon\DungeonTwitterGame\SFML-2.3.2\include\SFML\Graphics\Sprite.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::Texture" Collapsed="true">
+    <Position X="17.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEQAAYMAAgABCACAIAgAAABBAAAAAAAJwBAIEAIg=</HashCode>
+      <FileName>c:\Users\nalo\Source\Repos\OOD-PA1435-TEam-Mobiltele3fon\DungeonTwitterGame\SFML-2.3.2\include\SFML\Graphics\Texture.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="std::vector&lt;_Ty, _Alloc&gt;">
+    <Position X="22.25" Y="13" Width="1.5" />
+    <NestedTypes>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::reference" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::const_iterator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::difference_type" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::_Mybase" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::_Myt" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::allocator_type" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::pointer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::const_pointer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::size_type" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::const_reference" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::reverse_iterator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::_Alty" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::iterator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::value_type" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="std::vector&lt;_Ty, _Alloc&gt;::const_reverse_iterator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IUoEEIEqCLBMUEBAAKMIAgISAgUESAIAxQMwgwAEQgI=</HashCode>
+      <FileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\vector</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::Drawable" Collapsed="true">
+    <Position X="13.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\nalo\Source\Repos\OOD-PA1435-TEam-Mobiltele3fon\DungeonTwitterGame\SFML-2.3.2\include\SFML\Graphics\Drawable.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Door" Collapsed="true">
+    <Position X="10.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAACAAAAAAAAgAIAIAAgAAAAAAAAAAAAAAEAIAAAA=</HashCode>
+      <FileName>Room.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

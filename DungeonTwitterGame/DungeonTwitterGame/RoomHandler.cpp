@@ -1,21 +1,58 @@
+#include "PlayerHandler.hpp"
+#include "EnemyHandler.hpp"
+#include "FightHandler.hpp"
 #include "RoomHandler.hpp"
+#include <SFML\Window\Keyboard.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
+
 // ------ public ---------
 
 RoomHandler::RoomHandler(std::wstring seedName)
 {
 	m_currentRoom = m_root = new Room(seedName);
+
+	// New
+	m_playerHandler = new PlayerHandler;
+	m_enemyHandler = new EnemyHandler;
+	m_fightHandler = new FightHandler;
+
+	m_playerHandler->CreatePlayer();
+
+	for (int i = 0; i < 5; i++)
+	{
+		m_enemyHandler->CreateEnemy();
+	}
+
+	for (unsigned int i = 0; i < m_enemyHandler->GetNrOfEnemies(); i++)
+	{
+		m_fightHandler->StartFight(m_playerHandler->GetPlayer(), m_enemyHandler->GetEnemy(i));
+	}
 }
 
 //TODO: Recursively delete all Rooms and doors
 RoomHandler::~RoomHandler()
 {
+	if (m_playerHandler)
+	{
+		delete m_playerHandler;
+		m_playerHandler = nullptr;
+	}
+	if (m_enemyHandler)
+	{
+		delete m_enemyHandler;
+		m_enemyHandler = nullptr;
+	}
+	if (m_fightHandler)
+	{
+		delete m_fightHandler;
+		m_fightHandler = nullptr;
+	}
 
+	//TODO: Remove Rooms and stuff
 }
 
-//TODO: Implement a way to select a door
-//TODO: Update player m_position and comment
+//TODO: comment
 bool RoomHandler::EnterRoom(int doorPositionIndex)
 {
 	Door* door = m_currentRoom->GetDoor(doorPositionIndex);
@@ -76,4 +113,31 @@ void RoomHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(*m_currentRoom, states);
 	}
+	target.draw(*m_enemyHandler, states);
+	target.draw(*m_playerHandler, states);
+}
+
+
+// New functions as of room-v2.1
+
+void RoomHandler::SetInput(Input* input)
+{
+	m_playerHandler->SetInput(input);
+}
+
+void RoomHandler::Update()
+{
+	m_playerHandler->Update();
+	m_fightHandler->Update();
+	m_enemyHandler->Update();
+}
+
+sf::Vector2f RoomHandler::GetPlayerPosition() const
+{
+	return m_playerHandler->GetPlayerPosition();
+}
+//
+void RoomHandler::SetPlayerPosition(sf::Vector2f position)
+{
+	m_playerHandler->SetPlayerPosition(position);
 }

@@ -1,6 +1,5 @@
 #include "PlayState.hpp"
 #include "PauseMenuState.hpp"
-#include "CharacterHandler.hpp"
 #include "RoomHandler.hpp"
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
@@ -11,23 +10,22 @@
 
 PlayState::PlayState(FiniteStateMachine* fsm) : GameState(fsm)
 {
-	m_characterHandler = new CharacterHandler;
 	m_RoomHandler = new RoomHandler(L"seedName");
 }
 
 PlayState::~PlayState()
 {
-	if (m_characterHandler)
+	if (m_RoomHandler)
 	{
-		delete m_characterHandler;
-		m_characterHandler = nullptr;
+		delete m_RoomHandler;
+		m_RoomHandler = nullptr;
 	}
 }
 
 void PlayState::SetInput(Input* input)
 {
 	GameState::SetInput(input);
-	m_characterHandler->SetInput(input);
+	m_RoomHandler->SetInput(input);
 }
 
 //bool GamePlayState::Initialize()
@@ -51,7 +49,7 @@ void PlayState::Update()
 	{
 		std::cout << "E pressed" << std::endl;
 
-		sf::Vector2f currentPosition = m_characterHandler->GetPlayerPosition();
+		sf::Vector2f currentPosition = m_RoomHandler->GetPlayerPosition();
 		for (unsigned int i = 0; i < 4; i++)
 		{
 			sf::Vector2f distance = currentPosition - DoorPositionArray[i];
@@ -59,17 +57,16 @@ void PlayState::Update()
 			{
 				if (m_RoomHandler->EnterRoom(i))
 				{
-					m_characterHandler->SetPlayerPosition(DoorPositionArray[(i + 2) % 4]);
+					m_RoomHandler->SetPlayerPosition(DoorPositionArray[(i + 2) % 4]);
 				}
 			}
 		}
 	}
-	m_characterHandler->Update();
+	m_RoomHandler->Update();
 }
 
 
 void PlayState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(*m_RoomHandler, states);
-	target.draw(*m_characterHandler, states);
 }
