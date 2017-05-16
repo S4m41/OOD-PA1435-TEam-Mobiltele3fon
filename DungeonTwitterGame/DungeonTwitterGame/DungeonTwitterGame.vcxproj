@@ -187,7 +187,6 @@
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Alternative.hpp" />
     <ClInclude Include="Character.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="EnemyHandler.hpp" />

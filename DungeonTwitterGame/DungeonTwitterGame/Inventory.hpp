@@ -1,5 +1,6 @@
 #pragma once
 #include "Item.hpp"
+#include <vector>
 class Inventory
 {
 public:
@@ -24,13 +25,14 @@ private:
 	//erases the item on slotID, no delete on item called!! returns false if empty
 	bool removeItem(int slotID);
 
-	Item** items;//storebetter
-	//expand container
-	bool expand();
-	struct 
-	{
-		int vectormax = 10;
-		int _INCREMENT = 5;
-	}Storageinfo;//överflödigt? till information om items arrayen
+	std::vector<Item*> m_items;
+	//Item** items;//storebetter
+	////expand container
+	//bool expand();
+	//struct 
+	//{
+	//	int vectormax = 10;
+	//	int _INCREMENT = 5;
+	//}Storageinfo;//överflödigt? till information om items arrayen
 };
 
