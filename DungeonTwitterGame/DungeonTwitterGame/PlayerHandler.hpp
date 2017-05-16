@@ -18,6 +18,7 @@ public:
 	void Update();
 
 	sf::Vector2f GetPlayerPosition() const;
+	void SetPlayerPosition(sf::Vector2f position) const;
 	Player* GetPlayer() const;
 
 private:

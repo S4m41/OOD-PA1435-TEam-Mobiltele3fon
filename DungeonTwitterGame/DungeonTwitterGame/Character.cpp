@@ -7,6 +7,7 @@
 #include <SFML\Graphics\RenderStates.hpp>
 #include <SFML\Graphics\CircleShape.hpp>
 #include <string>
+#include <algorithm>
 
 Character::Character(sf::Color color,float speed,bool isRanged) : Entity()
 {
@@ -55,6 +56,8 @@ Character::~Character()
 void Character::Update()
 {
 	m_position += m_movement * m_walkingSpeed;
+	m_position.x = std::max(std::min(m_position.x, 482.0f), 30.0f);
+	m_position.y = std::max(std::min(m_position.y, 482.0f), 30.0f);
 
 	m_healthBar->SetPosition(m_position);
 

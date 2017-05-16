@@ -20,7 +20,7 @@ EnemyHandler::~EnemyHandler()
 
 void EnemyHandler::CreateEnemy()
 {
-	m_enemies.push_back(new Enemy((rand()%10)/10+0.1f*(m_enemies.size()+1)));
+	m_enemies.push_back(new Enemy((rand() % 10) / 10 + 0.1f*(m_enemies.size() + 1)));
 	m_enemies.back()->SetPosition(sf::Vector2f(float(rand() % 20), float(rand() % 20)) * 20.0f);
 }
 

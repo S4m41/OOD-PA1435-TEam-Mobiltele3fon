@@ -11,7 +11,7 @@ public:
 	~ItemEntity();
 	void Update() {};
 protected:
-	Item* m_containedItem;
+	Item* m_containedItem = nullptr;
 
 private:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

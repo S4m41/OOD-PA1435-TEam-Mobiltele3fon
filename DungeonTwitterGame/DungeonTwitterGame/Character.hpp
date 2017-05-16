@@ -20,7 +20,7 @@ public:
 	//bool TryMoveCharacter(sf::Vector2f* direction);
 	//Alternative* Interact();//TODO change return type
 	//Alternative SelectAlternative(Alternative* alternative);
-	//void Die();//TODO remove this? should be in characterhandler
+	//void Die();//TODO remove this?
 
 	void SetMovement(sf::Vector2f movement);
 	void SetWalkingSpeed(float speed);

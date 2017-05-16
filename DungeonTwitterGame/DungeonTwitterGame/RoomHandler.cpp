@@ -1,45 +1,70 @@
 #include "RoomHandler.hpp"
+#include "PlayerHandler.hpp"
+#include "Room.hpp"
+
+#include <SFML\Window\Keyboard.hpp>
+#include <SFML\Graphics\RenderTarget.hpp>
+#include <SFML\Graphics\RenderStates.hpp>
+
+#include <iostream>
 
 // ------ public ---------
 
 RoomHandler::RoomHandler(std::wstring seedName)
 {
 	m_currentRoom = m_root = new Room(seedName);
+
+	m_playerHandler = new PlayerHandler;
+	m_playerHandler->CreatePlayer();
+
+	m_currentRoom->StartFightInRoom(m_playerHandler);
 }
 
-//TODO: Recursively delete all Rooms and doors
 RoomHandler::~RoomHandler()
 {
-
+	if (m_playerHandler)
+	{
+		delete m_playerHandler;
+		m_playerHandler = nullptr;
+	}
+	if (m_root)
+	{
+		delete m_root;
+		m_root = nullptr;
+		m_currentRoom = nullptr;
+	}
 }
 
-//TODO: Implement a way to select a door
-//TODO: Update player position and comment
-void RoomHandler::EnterRoom(Door* door)
+//TODO: comment
+bool RoomHandler::EnterRoom(int doorPositionIndex)
 {
+	Door* door = m_currentRoom->GetDoor(doorPositionIndex);
 	if (TestDoor(door)) 
 	{
-		if (door->fromRoom == m_currentRoom)
+		door->MoveDoorToOppositeWall();
+		if (door->m_fromRoom == m_currentRoom)
 		{
-			if (door->toRoom == nullptr) {
-				door->toRoom = new Room(door);
+			if (door->m_toRoom == nullptr) {
+				door->m_toRoom = new Room(door);
+				door->m_toRoom->StartFightInRoom(m_playerHandler);
 			}
-			m_currentRoom = door->toRoom;
+			m_currentRoom = door->m_toRoom;
 		}
 		else
 		{
-			m_currentRoom = door->fromRoom;
+			m_currentRoom = door->m_fromRoom;
 		}
-
-
-		//TODO: Update player position. 
-		//Might make this function return a bool and move the player in another class.
+		int doorArrayIndex = m_currentRoom->GetDoorArrayIndex((doorPositionIndex + 2) % 4);
+		m_currentRoom->ResetDoorColors(doorArrayIndex);
+		return true;
 	}
 	else 
 	{
 		DisplayDoorLockedMessage();
+		return false;
 	}
 }
+
 
 Room* RoomHandler::GetCurrentRoom() const
 {
@@ -48,20 +73,49 @@ Room* RoomHandler::GetCurrentRoom() const
 
 // -------- Private -----------
 
-// 'Should' be done
 bool RoomHandler::TestDoor(Door* door) const
 {
-	if (door->fromRoom == m_currentRoom)
+	if (door->m_fromRoom == m_currentRoom)
 	{
-		return (!door->locked);
+		return (!door->m_locked);
 	}
 	else 
 	{
-		return (door->fromRoom != nullptr);
+		return (door->m_fromRoom != nullptr);
 	}
 }
 
 void RoomHandler::DisplayDoorLockedMessage() const
 {
+	std::cout << "DOOR IS LOCKED" << std::endl;
+}
 
+void RoomHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	if (m_currentRoom)
+	{
+		target.draw(*m_currentRoom, states);
+	}
+	target.draw(*m_playerHandler, states);
+}
+
+void RoomHandler::SetInput(Input* input)
+{
+	m_playerHandler->SetInput(input);
+}
+
+void RoomHandler::Update()
+{
+	m_playerHandler->Update();
+	m_currentRoom->Update();
+}
+
+sf::Vector2f RoomHandler::GetPlayerPosition() const
+{
+	return m_playerHandler->GetPlayerPosition();
+}
+
+void RoomHandler::SetPlayerPosition(sf::Vector2f position)
+{
+	m_playerHandler->SetPlayerPosition(position);
 }

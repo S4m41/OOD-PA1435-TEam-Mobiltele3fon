@@ -1,4 +1,8 @@
 #include "Entity.hpp"
+#include <SFML\Graphics\RenderTarget.hpp>
+#include <SFML\Graphics\RenderStates.hpp>
+#include <SFML\Graphics\CircleShape.hpp>
+
 
 Entity::Entity()
 {

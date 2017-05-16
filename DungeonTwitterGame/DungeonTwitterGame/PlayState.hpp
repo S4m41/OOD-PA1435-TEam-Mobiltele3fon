@@ -4,7 +4,6 @@
 #include "GameState.hpp"
 
 class RoomHandler;
-class CharacterHandler;
 namespace sf
 {
 	class RenderTarget;
@@ -23,7 +22,6 @@ public:
 	void Update() override;
 
 private:
-	CharacterHandler* m_characterHandler;
 	RoomHandler* m_RoomHandler;
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
