@@ -36,7 +36,7 @@ public:
 	Weapon* GetActiveWeapon() const;
 	bool Attack();
 protected:
-	Character(sf::Color color,float speed=1.0f);
+	Character(sf::Color color,float speed=1.0f,bool isRanged=false);
 
 private:
 	sf::Vector2f m_movement;

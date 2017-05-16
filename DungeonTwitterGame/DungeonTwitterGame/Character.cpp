@@ -8,7 +8,7 @@
 #include <SFML\Graphics\CircleShape.hpp>
 #include <string>
 
-Character::Character(sf::Color color,float speed) : Entity()
+Character::Character(sf::Color color,float speed,bool isRanged) : Entity()
 {
 	m_movement = sf::Vector2f(0.0f, 0.0f);
 	m_color = new sf::Color(color);
@@ -25,7 +25,12 @@ Character::Character(sf::Color color,float speed) : Entity()
 	}
 
 	m_healthBar = new HealthBar(m_radius * 2);
-	m_activeWeapon = new Weapon("Axe.png");
+	if (isRanged) {
+		m_activeWeapon = new Weapon("Bow.png");
+	}
+	else {
+		m_activeWeapon = new Weapon("Axe.png");
+	}
 	m_timeSinceAttack = 0;
 }
 Character::~Character()

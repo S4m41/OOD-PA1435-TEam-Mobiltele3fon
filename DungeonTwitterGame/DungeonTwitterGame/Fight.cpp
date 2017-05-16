@@ -34,6 +34,7 @@ void Fight::Update()
 	if (m_enemy->GetHealth()>0&& distance < m_enemy->GetRadius() + m_player->GetRadius() + m_player->GetActiveWeapon()->GetRange() && m_player->Attack())
 	{
 		m_enemy->ChangeHealth(-(m_player->GetActiveWeapon()->GetDamage()));
+		int ammo = m_player->GetActiveWeapon()->GetAmmunition();
 	}
 	if (m_player->GetHealth()>0 && distance < m_enemy->GetRadius() + m_player->GetRadius() + m_enemy->GetActiveWeapon()->GetRange()&& m_enemy->Attack())
 	{
