@@ -1,16 +1,17 @@
-//TODO: remove includes of headers that are already used in Room.hpp
 #include "Room.hpp"
-//#include "Item.hpp"
 #include "Weapon.hpp"
 #include "EnemyHandler.hpp"
-
+#include "FightHandler.hpp"
+#include "PlayerHandler.hpp"
 #include "SystemSettings.hpp"
 #include "ItemEntity.hpp"
+
 #include <SFML\Graphics\RenderTarget.hpp>
-
-#include <SFML\Graphics\Color.hpp>
 #include <SFML\Graphics\RectangleShape.hpp>
+#include <SFML\Graphics\Color.hpp>
 
+#include <vector>
+#include <iostream>
 
 Room::Room(std::wstring seedName) : Room(new Door(seedName, nullptr))
 {
@@ -22,12 +23,13 @@ Room::Room(std::wstring seedName) : Room(new Door(seedName, nullptr))
 Room::Room(Door* door)
 {
 	m_enemyHandler = new EnemyHandler;
+	m_fightHandler = new FightHandler;
+
 
 	for (int i = 0; i < 5; i++)
 	{
 		m_enemyHandler->CreateEnemy();
 	}
-
 
 	int entryPos = door->m_doorPositionIndex;
 
@@ -59,13 +61,36 @@ void Room::ResetDoorColors(int doorEnteredArrayIndex)
 	}
 }
 
-// TODO: Recursively delete the entire tree of rooms
 Room::~Room()
 {
+	for (int i = 1; i < 4; i++)
+	{
+		if (m_doors[i]->m_toRoom)
+		{
+			delete m_doors[i]->m_toRoom;
+			m_doors[i]->m_toRoom = nullptr;
+		}
+		delete m_doors[i];
+		m_doors[i] = nullptr;
+	}
+
 	if (m_enemyHandler)
 	{
 		delete m_enemyHandler;
 		m_enemyHandler = nullptr;
+	}
+	if (m_fightHandler)
+	{
+		delete m_fightHandler;
+		m_fightHandler = nullptr;
+	}
+	if (m_doors[0])
+	{
+		if (!m_doors[0]->m_fromRoom)
+		{
+			delete m_doors[0];
+		}
+		m_doors[0] = nullptr;
 	}
 }
 
@@ -81,13 +106,6 @@ void Room::SpawnItem(Item* item)
 	m_itemsInRoom.push_back(newItem);
 }
 
-// TODO: Remove
-bool Room::IsLegal() const
-{
-	bool legal = true;
-
-	return legal;
-}
 
 std::wstring Room::GetRoomName() const
 {
@@ -96,7 +114,7 @@ std::wstring Room::GetRoomName() const
 
 int Room::GetDoorArrayIndex(int doorPositionIndex) const
 {
-	// % is not modulus but the remainer which means it can have a negative value. Hence + 4
+	// Note: % is not modulus but the remainer which means it can have a negative value. Hence + 4
 	return (doorPositionIndex - m_doors[0]->m_doorPositionIndex + 4) % 4;
 }
 
@@ -109,22 +127,19 @@ Door* Room::GetDoor(int doorPositionIndex) const
 	return m_doors[doorArrayIndex];
 }
 
-int Room::GetNrOfEnemiesInRoom() const
-{
-	return m_enemyHandler->GetNrOfEnemies();
-}
-
-Enemy* Room::GetEnemyInRoom(int i)
-{
-	return m_enemyHandler->GetEnemy(i);
-}
-
 void Room::Update()
 {
 	m_enemyHandler->Update();
+	m_fightHandler->Update();
 }
 
-
+void Room::StartFightInRoom(PlayerHandler* ph)
+{
+	for (unsigned int i = 0; i < m_enemyHandler->GetNrOfEnemies(); i++)
+	{
+		m_fightHandler->StartFight(ph->GetPlayer(), m_enemyHandler->GetEnemy(i));
+	}
+}
 
 // ------------------ Private -------------------
 

@@ -2,15 +2,10 @@
 #define ROOM_HPP
 
 #include <SFML\Graphics\Drawable.hpp>
-#include <SFML\Graphics\Color.hpp>
 #include <SFML\Graphics\RectangleShape.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
-
 #include "SystemSettings.hpp"
-
 #include <string>
-#include <vector>
-#include<iostream>
 
 namespace DoorPosition
 {
@@ -33,6 +28,8 @@ class Room;
 class Item;
 class ItemEntity;
 class EnemyHandler;
+class FightHandler;
+class PlayerHandler;
 
 struct Door : public sf::Drawable
 {
@@ -62,6 +59,7 @@ struct Door : public sf::Drawable
 		m_doorShape.setPosition(DoorPositionArray[m_doorPositionIndex]);
 	}
 
+
 	void MoveDoorToOppositeWall()
 	{
 		m_doorPositionIndex = (m_doorPositionIndex + 2) % 4;
@@ -85,10 +83,9 @@ public:
 
 	void SpawnItem(Item* item);
 
-	bool IsLegal(/*m_position*/) const;
 	void Update();
-	int GetNrOfEnemiesInRoom() const;
-	Enemy* GetEnemyInRoom(int i);
+
+	void StartFightInRoom(PlayerHandler* ph);
 
 	std::wstring GetRoomName() const;
 	int Room::GetDoorArrayIndex(int doorPositionIndex) const;
@@ -99,7 +96,9 @@ private:
 	Door* m_doors[4] = { nullptr };
 
 	std::vector<ItemEntity> m_itemsInRoom;
+
 	EnemyHandler* m_enemyHandler;
+	FightHandler* m_fightHandler;
 
 	const sf::Color m_roomColor = sf::Color::Color(140, 54, 1);
 	const sf::Color m_roomOutlineColor = sf::Color::Color(255, 255, 255);

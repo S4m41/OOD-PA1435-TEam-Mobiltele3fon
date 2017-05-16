@@ -1,10 +1,12 @@
-#include "PlayerHandler.hpp"
-#include "EnemyHandler.hpp"
-#include "FightHandler.hpp"
 #include "RoomHandler.hpp"
+#include "PlayerHandler.hpp"
+#include "Room.hpp"
+
 #include <SFML\Window\Keyboard.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
+
+#include <iostream>
 
 // ------ public ---------
 
@@ -12,25 +14,12 @@ RoomHandler::RoomHandler(std::wstring seedName)
 {
 	m_currentRoom = m_root = new Room(seedName);
 
-	// New
 	m_playerHandler = new PlayerHandler;
-	//m_enemyHandler = new EnemyHandler;
-	m_fightHandler = new FightHandler;
-
 	m_playerHandler->CreatePlayer();
 
-	/*for (int i = 0; i < 5; i++)
-	{
-		m_enemyHandler->CreateEnemy();
-	}
-*/
-	for (unsigned int i = 0; i < m_currentRoom->GetNrOfEnemiesInRoom(); i++)
-	{
-		m_fightHandler->StartFight(m_playerHandler->GetPlayer(), m_currentRoom->GetEnemyInRoom(i));
-	}
+	m_currentRoom->StartFightInRoom(m_playerHandler);
 }
 
-//TODO: Recursively delete all Rooms and doors
 RoomHandler::~RoomHandler()
 {
 	if (m_playerHandler)
@@ -38,18 +27,12 @@ RoomHandler::~RoomHandler()
 		delete m_playerHandler;
 		m_playerHandler = nullptr;
 	}
-	/*if (m_enemyHandler)
+	if (m_root)
 	{
-		delete m_enemyHandler;
-		m_enemyHandler = nullptr;
-	}*/
-	if (m_fightHandler)
-	{
-		delete m_fightHandler;
-		m_fightHandler = nullptr;
+		delete m_root;
+		m_root = nullptr;
+		m_currentRoom = nullptr;
 	}
-
-	//TODO: Remove Rooms and stuff
 }
 
 //TODO: comment
@@ -63,6 +46,7 @@ bool RoomHandler::EnterRoom(int doorPositionIndex)
 		{
 			if (door->m_toRoom == nullptr) {
 				door->m_toRoom = new Room(door);
+				door->m_toRoom->StartFightInRoom(m_playerHandler);
 			}
 			m_currentRoom = door->m_toRoom;
 		}
@@ -89,7 +73,6 @@ Room* RoomHandler::GetCurrentRoom() const
 
 // -------- Private -----------
 
-// 'Should' be done
 bool RoomHandler::TestDoor(Door* door) const
 {
 	if (door->m_fromRoom == m_currentRoom)
@@ -113,12 +96,8 @@ void RoomHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(*m_currentRoom, states);
 	}
-	//target.draw(*m_enemyHandler, states);
 	target.draw(*m_playerHandler, states);
 }
-
-
-// New functions as of room-v2.1
 
 void RoomHandler::SetInput(Input* input)
 {
@@ -128,9 +107,7 @@ void RoomHandler::SetInput(Input* input)
 void RoomHandler::Update()
 {
 	m_playerHandler->Update();
-	m_fightHandler->Update();
 	m_currentRoom->Update();
-	//m_enemyHandler->Update();
 }
 
 sf::Vector2f RoomHandler::GetPlayerPosition() const

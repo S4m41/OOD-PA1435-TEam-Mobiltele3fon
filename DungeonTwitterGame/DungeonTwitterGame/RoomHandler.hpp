@@ -3,11 +3,12 @@
 
 #include "Room.hpp"
 #include <SFML\Graphics\Drawable.hpp>
+#include <string>
 
+struct Door;
+class Room;
 class Input;
 class PlayerHandler;
-class EnemyHandler;
-class FightHandler;
 
 class RoomHandler : public sf::Drawable
 {
@@ -32,8 +33,6 @@ private:
 	Room* m_currentRoom;
 
 	PlayerHandler* m_playerHandler;
-	//EnemyHandler* m_enemyHandler;
-	FightHandler* m_fightHandler;
 
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
