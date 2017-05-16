@@ -1,42 +1,53 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
-#include <SFML\Graphics\Drawable.hpp>
-#include "Alternative.hpp"
-class Character : public sf::Drawable
+#include "Entity.hpp"
+//#include "Alternative.hpp"
+
+class Weapon;
+class HealthBar;
+namespace sf
+{
+	class Color;
+	class RectangleShape;
+}
+
+class Character : public Entity
 {
 public:
 	virtual ~Character();
 
-	virtual void Update();
+	//bool Hit(int damage);
+	//bool TryMoveCharacter(sf::Vector2f* direction);
+	//Alternative* Interact();//TODO change return type
+	//Alternative SelectAlternative(Alternative* alternative);
+	//void Die();//TODO remove this? should be in characterhandler
 
-	bool Hit(int damage);
-	bool TryMoveCharacter(sf::Vector2f* direction);
-	Alternative* Interact();//TODO change return type
-	Alternative SelectAlternative(Alternative* alternative);
+	void SetMovement(sf::Vector2f movement);
+	void SetWalkingSpeed(float speed);
+	void ChangeHealth(int health);
 
-	void SetPosition(sf::Vector2f position);
-	sf::Vector2f GetPosition() const;
+	void Update();
 
-	void SetMoveUp();
-	void SetMoveDown();
-	void SetMoveRight();
-	void SetMoveLeft();
-
-	void SetHealth(int health);
+	sf::Vector2f GetMovement() const;
+	float GetWalkingSpeed() const;
 	int GetHealth() const;
 
+	float GetRadius() const;
+	Weapon* GetActiveWeapon() const;
+	bool Attack();
 protected:
-	Character();
-	void Die();//TODO remove this? should be in characterhandler
-	void MoveCharacter(sf::Vector2f direction);
+	Character(sf::Color color,float speed=1.0f,bool isRanged=false);
 
 private:
-	sf::Vector2f m_position;
+	sf::Vector2f m_movement;
 	float m_walkingSpeed;
-	int m_health;
 
-	bool m_moveUp, m_moveDown, m_moveRight, m_moveLeft;
+	sf::Color* m_color;
+	float m_radius;
 
+	HealthBar* m_healthBar;
+	Weapon* m_activeWeapon;
+	float m_timeSinceAttack;
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 

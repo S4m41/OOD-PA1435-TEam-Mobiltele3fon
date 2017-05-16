@@ -1,9 +1,14 @@
 #include "System.hpp"
-#include "GamePlayState.hpp"
+#include "PlayState.hpp"
+
+#include "MainMenuState.hpp"
+#include "SystemSettings.hpp"
+
 #include "Input.hpp"
 #include "FiniteStateMachine.hpp"
 #include <SFML\Window\Event.hpp>
 #include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML\System\Clock.hpp>
 
 System::System()
 {
@@ -34,10 +39,10 @@ System::~System()
 
 bool System::Initialize()
 {
-	m_window = new sf::RenderWindow(sf::VideoMode(512, 512), "Dungeon Twitter Game");
+	m_window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Dungeon Twitter Game");
 	if (!m_window)
 		return false;
-	
+
 	m_input = new Input;
 	if (!m_input)
 		return false;
@@ -45,7 +50,8 @@ bool System::Initialize()
 	m_FSM = new FiniteStateMachine;
 	if (!m_FSM)
 		return false;
-	m_FSM->Push<GamePlayState>();
+
+	m_FSM->Push<MainMenuState>();
 	m_FSM->Peek()->SetInput(m_input);
 
 	return true;
@@ -53,6 +59,10 @@ bool System::Initialize()
 
 void System::Run()
 {
+	sf::Clock clock;
+	float frameRateDelay = 1.0f / FRAME_RATE;
+	float timePassed = 0.0f;
+
 	while (m_window->isOpen())
 	{
 		sf::Event event;
@@ -66,12 +76,23 @@ void System::Run()
 			}
 		}
 
-		m_input->Update();
+		// Delay program
+		timePassed += clock.restart().asSeconds();
+		if (timePassed < frameRateDelay)
+			continue;	
+		timePassed = 0.0f;
 
+		m_input->Update();
 		m_FSM->Peek()->Update();
 
-		m_window->clear();
-		m_window->draw(*m_FSM->Peek());
-		m_window->display();
+		if (m_FSM->Peek()) {
+			m_window->clear();
+			m_window->draw(*m_FSM->Peek());
+			m_window->display();
+		}
+		else
+		{
+			m_window->close();
+		}
 	}
 }

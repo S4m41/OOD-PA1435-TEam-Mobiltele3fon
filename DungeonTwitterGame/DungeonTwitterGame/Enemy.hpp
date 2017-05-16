@@ -5,13 +5,14 @@
 class Enemy final : public Character
 {
 public:
-	Enemy();
+	Enemy(float speed);
 	~Enemy();
 
-	//UpdateAI();
+	void Update();
 
 private:
 	// AI
+
 };
 
 #endif

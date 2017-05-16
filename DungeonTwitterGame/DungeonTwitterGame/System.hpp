@@ -1,6 +1,9 @@
 #ifndef SYSTEM_HPP
 #define SYSTEM_HPP
 
+#define FRAME_RATE 60
+
+
 class Input;
 class FiniteStateMachine;
 namespace sf
