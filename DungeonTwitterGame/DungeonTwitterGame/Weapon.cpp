@@ -22,7 +22,7 @@ Weapon::Weapon(char* textureName) : Item(textureName)
 		m_attackCooldown = 1.0f;
 		m_range = 100.0f;
 		m_isRangedWeapon = true;
-		m_ammunition = 50;
+		m_ammunition = 100;
 		GetSprite()->setOrigin(GetSprite()->getTextureRect().width * 0.5f, GetSprite()->getTextureRect().height);
 		GetSprite()->setScale(0.2f, 0.1f);
 	}
