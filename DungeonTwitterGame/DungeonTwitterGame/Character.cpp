@@ -100,11 +100,15 @@ Weapon* Character::GetActiveWeapon()const {
 }
 bool Character::Attack() {
 	bool attackAllowed = false;
-	if(((m_activeWeapon->GetWeaponType()&&m_activeWeapon->GetAmmunition()>0)||!m_activeWeapon->GetWeaponType())
-		&& m_activeWeapon->GetCooldown() < m_timeSinceAttack) {
+
+	bool isMelee = !m_activeWeapon->GetWeaponType();
+	bool rangedWeaponCanShoot =!isMelee && m_activeWeapon->GetAmmunition() > 0;
+	bool isNotOnCooldown = m_activeWeapon->GetCooldown() < m_timeSinceAttack;
+
+	if( (rangedWeaponCanShoot||isMelee) && isNotOnCooldown) {
 		m_timeSinceAttack --;
 		attackAllowed = true;
-		if (m_activeWeapon->GetWeaponType()) {
+		if (!isMelee) {
 			m_activeWeapon->ChangeAmmunition();
 		}
 	}
