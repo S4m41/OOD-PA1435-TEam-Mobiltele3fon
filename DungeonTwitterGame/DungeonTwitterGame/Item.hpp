@@ -2,33 +2,7 @@
 #define ITEM_HPP
 #include <SFML\Graphics\Drawable.hpp>
 
-//enum ITEM_EFFECT_TYPE
-//{
-//	HEAL_EFFECT,
-//};
-//
-//
-//struct ItemStats
-//{
-//
-//	ItemStats() {}
-//};
-//
-//struct ItemEffect
-//{
-//	ITEM_EFFECT_TYPE type;
-//	unsigned int value;
-//
-//	ItemEffect() : type(HEAL_EFFECT), value(0) {}
-//};
-//
-//struct ItemInfo
-//{
-//	ItemStats stats;
-//	ItemEffect effect;
-//
-//	ItemInfo() : stats(), effect() {}
-//};
+
 
 namespace sf
 {
@@ -58,4 +32,31 @@ private:
 
 	/*ItemInfo m_info;*/
 };
+//enum ITEM_EFFECT_TYPE
+//{
+//	HEAL_EFFECT,
+//};
+//
+//
+//struct ItemStats
+//{
+//
+//	ItemStats() {}
+//};
+//
+//struct ItemEffect
+//{
+//	ITEM_EFFECT_TYPE type;
+//	unsigned int value;
+//
+//	ItemEffect() : type(HEAL_EFFECT), value(0) {}
+//};
+//
+//struct ItemInfo
+//{
+//	ItemStats stats;
+//	ItemEffect effect;
+//
+//	ItemInfo() : stats(), effect() {}
+//};
 #endif // !ITEM_HPP
