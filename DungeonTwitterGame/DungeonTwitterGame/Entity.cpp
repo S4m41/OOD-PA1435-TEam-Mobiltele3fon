@@ -34,5 +34,6 @@ void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	sf::CircleShape circle(m_radius);
 	circle.setFillColor(*m_color);
 	circle.setPosition(m_position);
+	circle.setOrigin(sf::Vector2f(m_radius, m_radius));
 	target.draw(circle, states);
 }
