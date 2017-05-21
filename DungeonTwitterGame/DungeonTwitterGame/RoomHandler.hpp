@@ -14,7 +14,7 @@ class Player;
 class RoomHandler : public sf::Drawable
 {
 public:
-	RoomHandler(std::wstring seedName = L"seed");
+	RoomHandler();
 	~RoomHandler();
 
 	bool EnterRoom(int doorPositionIndex);
@@ -28,15 +28,12 @@ public:
 	void CheckItemPickUp(Player* player);
 
 private:
-	bool TestDoor(Door* door) const;
-	void DisplayDoorLockedMessage() const;
-
 	Room* m_root;
 	Room* m_currentRoom;
 
 	PlayerHandler* m_playerHandler;
 
-
+	void DisplayDoorLockedMessage() const;
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 

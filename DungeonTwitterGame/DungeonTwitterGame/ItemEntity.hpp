@@ -16,8 +16,11 @@ public:
 	~ItemEntity();
 	void Update() {};
 	void SetPosition(sf::Vector2f position) override;
-
 	Item* GetItem();
+	float GetWidth() const;
+	float GetHeight() const;
+	float GetRadius() const;
+
 protected:
 	Item* m_containedItem;
 	sf::Texture* m_texture;
@@ -27,5 +30,3 @@ private:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 #endif
-
-

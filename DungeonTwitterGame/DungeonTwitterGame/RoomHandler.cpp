@@ -1,25 +1,22 @@
 #include "RoomHandler.hpp"
-#include "PlayerHandler.hpp"
 #include "Room.hpp"
-
-#include <SFML\Window\Keyboard.hpp>
+#include "PlayerHandler.hpp"
 #include "Player.hpp"
 
+#include <SFML\Window\Keyboard.hpp>
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RenderStates.hpp>
 
 #include <iostream>
 
-// ------ public ---------
-
-RoomHandler::RoomHandler(std::wstring seedName)
+RoomHandler::RoomHandler()
 {
-	m_currentRoom = m_root = new Room(seedName);
+	m_currentRoom = m_root = new Room;
 
 	m_playerHandler = new PlayerHandler;
 	m_playerHandler->CreatePlayer();
 
-	m_currentRoom->StartFightInRoom(m_playerHandler);
+	m_currentRoom->StartFightInRoom(m_playerHandler->GetPlayer());
 }
 
 RoomHandler::~RoomHandler()
@@ -36,65 +33,44 @@ RoomHandler::~RoomHandler()
 		m_currentRoom = nullptr;
 	}
 }
+void RoomHandler::SetInput(Input* input)
+{
+	m_playerHandler->SetInput(input);
+}
 
-//TODO: comment
+void RoomHandler::Update()
+{
+	m_playerHandler->Update();
+	m_currentRoom->Update();
+}
+
 bool RoomHandler::EnterRoom(int doorPositionIndex)
 {
-	Door* door = m_currentRoom->GetDoor(doorPositionIndex);
-	if (TestDoor(door)) 
+	if (!m_currentRoom->CreateNeighboringRoom(doorPositionIndex))
 	{
-		door->MoveDoorToOppositeWall();
-		if (door->m_fromRoom == m_currentRoom)
-		{
-			if (door->m_toRoom == nullptr) {
-				door->m_toRoom = new Room(door);
-				door->m_toRoom->StartFightInRoom(m_playerHandler);
-			}
-			m_currentRoom = door->m_toRoom;
-		}
-		else
-		{
-			m_currentRoom = door->m_fromRoom;
-		}
-		int doorArrayIndex = m_currentRoom->GetDoorArrayIndex((doorPositionIndex + 2) % 4);
-		m_currentRoom->ResetDoorColors(doorArrayIndex);
-		return true;
-	}
-	else 
-	{
+		// Locked, or invalid index
 		DisplayDoorLockedMessage();
 		return false;
 	}
+
+	// Neighbor guaranteed not to be a nullptr
+	m_currentRoom = m_currentRoom->GetNeighboringRoom(doorPositionIndex);
+	m_currentRoom->StartFightInRoom(m_playerHandler->GetPlayer());
+
+	return true;
 }
-
-
 Room* RoomHandler::GetCurrentRoom() const
 {
 	return m_currentRoom;
 }
-
-Player * RoomHandler::GetPlayer()
+Player* RoomHandler::GetPlayer()
 {
 	return m_playerHandler->GetPlayer();
 }
 
-void RoomHandler::CheckItemPickUp(Player * player)
+void RoomHandler::CheckItemPickUp(Player* player)
 {
 	m_currentRoom->CheckItemPickUp(player);
-}
-
-// -------- Private -----------
-
-bool RoomHandler::TestDoor(Door* door) const
-{
-	if (door->m_fromRoom == m_currentRoom)
-	{
-		return (!door->m_locked);
-	}
-	else 
-	{
-		return (door->m_fromRoom != nullptr);
-	}
 }
 
 void RoomHandler::DisplayDoorLockedMessage() const
@@ -109,15 +85,4 @@ void RoomHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(*m_currentRoom, states);
 	}
 	target.draw(*m_playerHandler, states);
-}
-
-void RoomHandler::SetInput(Input* input)
-{
-	m_playerHandler->SetInput(input);
-}
-
-void RoomHandler::Update()
-{
-	m_playerHandler->Update();
-	m_currentRoom->Update();
 }

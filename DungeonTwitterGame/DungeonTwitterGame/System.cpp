@@ -53,7 +53,7 @@ bool System::Initialize()
 
 	m_FSM->Push<MainMenuState>();
 	m_FSM->Peek()->SetInput(m_input);
-
+	
 	return true;
 }
 

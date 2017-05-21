@@ -12,7 +12,7 @@
 
 PlayState::PlayState(FiniteStateMachine* fsm) : GameState(fsm)
 {
-	m_RoomHandler = new RoomHandler(L"seedName");
+	m_RoomHandler = new RoomHandler(/*L"seedName"*/);
 }
 
 PlayState::~PlayState()

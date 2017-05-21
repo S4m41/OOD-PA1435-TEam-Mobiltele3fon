@@ -18,6 +18,11 @@ Item::Item(char* textureName)
 }
 Item::~Item()
 {
+	if (m_texture)
+	{
+		delete m_texture;
+		m_texture = nullptr;
+	}
 	if (m_sprite)
 	{
 		delete m_sprite;

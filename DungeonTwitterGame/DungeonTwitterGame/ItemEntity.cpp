@@ -19,7 +19,16 @@ ItemEntity::ItemEntity(Item* item) : Entity()
 
 ItemEntity::~ItemEntity()
 {
-
+	if (m_texture)
+	{
+		delete m_texture;
+		m_texture = nullptr;
+	}
+	if (m_sprite)
+	{
+		delete m_sprite;
+		m_sprite = nullptr;
+	}
 }
 
 void ItemEntity::SetPosition(sf::Vector2f position)
@@ -28,13 +37,29 @@ void ItemEntity::SetPosition(sf::Vector2f position)
 	m_sprite->setPosition(position);
 }
 
-Item * ItemEntity::GetItem()
+Item* ItemEntity::GetItem()
 {
 	return m_containedItem;
+}
+
+float ItemEntity::GetWidth() const
+{
+	return m_sprite->getTextureRect().width * m_sprite->getScale().x;
+}
+
+float ItemEntity::GetHeight() const
+{
+	return m_sprite->getTextureRect().height * m_sprite->getScale().y;
+}
+
+float ItemEntity::GetRadius() const
+{
+	float w = m_sprite->getTextureRect().width * m_sprite->getScale().x * 0.5;
+	float h = m_sprite->getTextureRect().height * m_sprite->getScale().y * 0.5;
+	return std::sqrtf(w * w + h * h);
 }
 
 void ItemEntity::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(*m_sprite, states);
-	//target.draw(*m_containedItem, states);
 }
