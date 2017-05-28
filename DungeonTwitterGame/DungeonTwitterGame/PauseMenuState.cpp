@@ -36,29 +36,62 @@ PauseMenuState::~PauseMenuState()
 	delete m_font;
 }
 
-void PauseMenuState::Update()
+void PauseMenuState::Notify(Event* keyDownEvent)
 {
-	MenuState::Update();//Up and Down key checked in baseClass!
+	MenuState::Notify(keyDownEvent);
 
-	if (m_input->IsKeyPressed(sf::Keyboard::Key::Escape))
+	KeyDownEvent* kde = dynamic_cast<KeyDownEvent*>(keyDownEvent);
+
+	if (kde && kde->m_onlyPressed)
 	{
-		m_FSM->Pop();		// Exit pause state, return to play state
-		return;
-	}
-	else if (m_input->IsKeyPressed(sf::Keyboard::Return)) {
-		switch (m_selectedOption)
+		switch (kde->m_key)
 		{
-		case Resume:
-			m_FSM->Pop();		// Exit pause state, return to play state
-			return;
+		case sf::Keyboard::Key::Escape:
+			m_FSM->Pop();
 			break;
-		case Quit:
-			m_FSM->Pop(2);		// Exit pause state, return to MainMenu state
-			return;
+		case sf::Keyboard::Return:
+			switch (m_selectedOption)
+			{
+			case Resume:
+				m_FSM->Pop();		// Exit pause state, return to play state
+				return;
+				break;
+			case Quit:
+				m_FSM->Pop(2);		// Exit pause state, return to MainMenu state
+				return;
+			default:
+				break;
+			}
+			break;
 		default:
 			break;
 		}
 	}
+}
+
+void PauseMenuState::Update()
+{
+	MenuState::Update();//Up and Down key checked in baseClass!
+
+	//if (m_input->IsKeyPressed(sf::Keyboard::Key::Escape))
+	//{
+	//	m_FSM->Pop();		// Exit pause state, return to play state
+	//	return;
+	//}
+	//else if (m_input->IsKeyPressed(sf::Keyboard::Return)) {
+	//	switch (m_selectedOption)
+	//	{
+	//	case Resume:
+	//		m_FSM->Pop();		// Exit pause state, return to play state
+	//		return;
+	//		break;
+	//	case Quit:
+	//		m_FSM->Pop(2);		// Exit pause state, return to MainMenu state
+	//		return;
+	//	default:
+	//		break;
+	//	}
+	//}
 }
 
 void PauseMenuState::ClampSelecton()

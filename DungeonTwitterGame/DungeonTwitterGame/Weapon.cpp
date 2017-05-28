@@ -52,3 +52,8 @@ int Weapon::GetAmmunition()const {
 void Weapon::ChangeAmmunition(int change) {
 	m_ammunition += change;
 }
+
+void Weapon::Update()
+{
+
+}

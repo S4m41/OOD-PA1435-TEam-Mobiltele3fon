@@ -27,7 +27,7 @@ namespace sf
 }
 
 class Item;
-class ItemEntity;
+//class ItemEntity;
 class EnemyHandler;
 class FightHandler;
 class Player;
@@ -51,7 +51,7 @@ public:
 	void CheckItemPickUp(Player* player);
 
 private:
-	std::vector<ItemEntity*> m_itemsInRoom;
+	std::vector<Item*> m_itemsInRoom;
 
 	EnemyHandler* m_enemyHandler;
 	FightHandler* m_fightHandler;

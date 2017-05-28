@@ -1,7 +1,6 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 #include "Entity.hpp"
-//#include "Alternative.hpp"
 
 class Weapon;
 class HealthBar;
@@ -18,12 +17,6 @@ class Character : public Entity
 {
 public:
 	virtual ~Character();
-
-	//bool Hit(int damage);
-	//bool TryMoveCharacter(sf::Vector2f* direction);
-	//Alternative* Interact();//TODO change return type
-	//Alternative SelectAlternative(Alternative* alternative);
-	//void Die();//TODO remove this?
 
 	void SetMovement(sf::Vector2f movement);
 	void SetWalkingSpeed(float speed);

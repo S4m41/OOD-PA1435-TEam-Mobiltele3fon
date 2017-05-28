@@ -16,7 +16,9 @@ public:
 	PlayState(FiniteStateMachine* fsm);
 	~PlayState();
 
-	void SetInput(Input* input) override;
+	void Notify(Event* keyDownEvent) override;
+
+	//void SetInput(Input* input) override;
 
 	//bool Initialize() override;
 	void Update() override;

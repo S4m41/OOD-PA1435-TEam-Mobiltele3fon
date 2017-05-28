@@ -1,6 +1,7 @@
 #ifndef ITEM_HPP
 #define ITEM_HPP
-#include <SFML\Graphics\Drawable.hpp>
+//#include <SFML\Graphics\Drawable.hpp>
+#include "SpriteEntity.hpp"
 
 //enum ITEM_EFFECT_TYPE
 //{
@@ -36,7 +37,7 @@ namespace sf
 	class Texture;
 }
 
-class Item : public sf::Drawable
+class Item : public SpriteEntity//public sf::Drawable
 {
 public:
 	virtual ~Item();
@@ -45,17 +46,17 @@ public:
 	ItemStats GetItemStats() const;
 	ItemEffect GetItemEffect() const;*/
 
-	sf::Sprite* GetSprite() const;
+	//sf::Sprite* GetSprite() const;
 
 protected:
 	Item(char* textureName);
 
 private:
-	sf::Texture* m_texture;
+	/*sf::Texture* m_texture;
 	sf::Sprite* m_sprite;
 
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;*/
 
 	/*ItemInfo m_info;*/
 };
-#endif // !ITEM_HPP
+#endif

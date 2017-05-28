@@ -23,6 +23,8 @@ public:
 	MainMenuState(FiniteStateMachine* fsm);
 	~MainMenuState();
 
+	void Notify(Event* keyDownEvent) override;
+
 	//bool Initialize() override;
 	void Update() override;
 

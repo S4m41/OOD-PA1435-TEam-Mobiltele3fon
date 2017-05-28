@@ -114,9 +114,6 @@
     <ClCompile Include="PlayerHandler.cpp">
       <Filter>Source Files\Entities\Handlers</Filter>
     </ClCompile>
-    <ClCompile Include="ItemEntity.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="Fight.cpp">
       <Filter>Source Files\Unsorted</Filter>
     </ClCompile>
@@ -131,6 +128,12 @@
     </ClCompile>
     <ClCompile Include="FightHandler.cpp">
       <Filter>Source Files\Entities\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteEntity.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="ObserverPattern.cpp">
+      <Filter>Source Files\Unsorted</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,9 +191,6 @@
     <ClInclude Include="Character.hpp">
       <Filter>Header Files\Entities\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="ItemEntity.hpp">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="Fight.hpp">
       <Filter>Header Files\UnSorted</Filter>
     </ClInclude>
@@ -205,6 +205,12 @@
     </ClInclude>
     <ClInclude Include="RoomHandler.hpp">
       <Filter>Header Files\Entities\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteEntity.hpp">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ObserverPattern.hpp">
+      <Filter>Header Files\UnSorted</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

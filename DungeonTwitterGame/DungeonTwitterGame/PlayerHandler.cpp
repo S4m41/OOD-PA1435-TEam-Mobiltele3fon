@@ -18,10 +18,10 @@ PlayerHandler::~PlayerHandler()
 	}
 }
 
-void PlayerHandler::SetInput(Input* input)
-{
-	m_input = input;
-}
+//void PlayerHandler::SetInput(Input* input)
+//{
+//	m_input = input;
+//}
 
 void PlayerHandler::CreatePlayer()
 {
@@ -34,7 +34,7 @@ void PlayerHandler::Update()
 {
 	if (m_player)
 	{
-		if (m_input->IsKeyDown(sf::Keyboard::Key::W))
+	/*	if (m_input->IsKeyDown(sf::Keyboard::Key::W))
 			m_player->SetMoveUp();
 		if (m_input->IsKeyDown(sf::Keyboard::Key::S))
 			m_player->SetMoveDown();
@@ -42,8 +42,34 @@ void PlayerHandler::Update()
 			m_player->SetMoveRight();
 		if (m_input->IsKeyDown(sf::Keyboard::Key::A))
 			m_player->SetMoveLeft();
-
+*/
 		m_player->Update();
+	}
+}
+
+void PlayerHandler::Notify(Event* keyDownEvent)
+{
+	KeyDownEvent* kde = dynamic_cast<KeyDownEvent*>(keyDownEvent);
+
+	if (kde && m_player)
+	{
+		switch (kde->m_key)
+		{
+		case sf::Keyboard::Key::W:
+			m_player->SetMoveUp();
+			break;
+		case sf::Keyboard::Key::D:
+			m_player->SetMoveRight();
+			break;
+		case sf::Keyboard::Key::S:
+			m_player->SetMoveDown();
+			break;
+		case sf::Keyboard::Key::A:
+			m_player->SetMoveLeft();
+			break;
+		default:
+			break;
+		}
 	}
 }
 

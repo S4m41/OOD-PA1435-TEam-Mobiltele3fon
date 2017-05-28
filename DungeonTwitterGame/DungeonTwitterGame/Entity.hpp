@@ -2,6 +2,12 @@
 #define ENTITY_HPP
 #include <SFML\Graphics\Drawable.hpp>
 
+namespace sf
+{
+	class Sprite;
+	class Texture;
+}
+
 class Entity : public sf::Drawable
 {
 public:
@@ -20,5 +26,3 @@ protected:
 };
 
 #endif
-
-

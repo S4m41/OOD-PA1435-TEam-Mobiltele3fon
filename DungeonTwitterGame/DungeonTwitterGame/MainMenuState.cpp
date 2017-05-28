@@ -36,24 +36,54 @@ MainMenuState::~MainMenuState()
 	delete m_font;
 }
 
-void MainMenuState::Update()
+void MainMenuState::Notify(Event* keyDownEvent)
 {
-	MenuState::Update();
+	MenuState::Notify(keyDownEvent);
 
-	if (m_input->IsKeyPressed(sf::Keyboard::Return)) {
-		switch (m_selectedOption)
+	KeyDownEvent* kde = dynamic_cast<KeyDownEvent*>(keyDownEvent);
+
+	if (kde && kde->m_onlyPressed)
+	{
+		switch (kde->m_key)
 		{
-		case Start:
-			m_FSM->Push<PlayState>();		// Enter GamePlay state
-			m_FSM->Peek()->SetInput(m_input);
-			break;
-		case Quit:
-			m_FSM->Pop();//Close Window
+		case sf::Keyboard::Return:
+			switch (m_selectedOption)
+			{
+			case Start:
+				m_FSM->Push<PlayState>();		// Enter GamePlay state
+				//m_FSM->Peek()->SetInput(m_input);
+				break;
+			case Quit:
+				m_FSM->Pop();//Close Window
+				break;
+			default:
+				break;
+			}
 			break;
 		default:
 			break;
 		}
 	}
+}
+
+void MainMenuState::Update()
+{
+	MenuState::Update();
+
+	//if (m_input->IsKeyPressed(sf::Keyboard::Return)) {
+	//	switch (m_selectedOption)
+	//	{
+	//	case Start:
+	//		m_FSM->Push<PlayState>();		// Enter GamePlay state
+	//		m_FSM->Peek()->SetInput(m_input);
+	//		break;
+	//	case Quit:
+	//		m_FSM->Pop();//Close Window
+	//		break;
+	//	default:
+	//		break;
+	//	}
+	//}
 }
 
 void MainMenuState::ClampSelecton()

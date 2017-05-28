@@ -5,9 +5,9 @@
 #include <SFML\Graphics\Drawable.hpp>
 #include <string>
 
-struct Door;
+//struct Door;
 class Room;
-class Input;
+//class Input;
 class PlayerHandler;
 class Player;
 
@@ -20,7 +20,7 @@ public:
 	bool EnterRoom(int doorPositionIndex);
 	Room* GetCurrentRoom() const;
 
-	void SetInput(Input* input);
+	/*void SetInput(Input* input);*/
 	void Update();
 
 	// Maybe not needed

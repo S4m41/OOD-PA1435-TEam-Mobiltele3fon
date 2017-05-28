@@ -171,9 +171,9 @@
     <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="ItemEntity.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="ObserverPattern.cpp" />
     <ClCompile Include="PauseMenuState.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -183,6 +183,7 @@
     <ClCompile Include="PlayerHandler.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="RoomHandler.cpp" />
+    <ClCompile Include="SpriteEntity.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
@@ -197,9 +198,9 @@
     <ClInclude Include="HealthBar.hpp" />
     <ClInclude Include="Inventory.hpp" />
     <ClInclude Include="Item.hpp" />
-    <ClInclude Include="ItemEntity.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="MenuState.hpp" />
+    <ClInclude Include="ObserverPattern.hpp" />
     <ClInclude Include="PauseMenuState.hpp" />
     <ClInclude Include="PlayState.hpp" />
     <ClInclude Include="Input.hpp" />
@@ -208,6 +209,7 @@
     <ClInclude Include="PlayerHandler.hpp" />
     <ClInclude Include="Room.hpp" />
     <ClInclude Include="RoomHandler.hpp" />
+    <ClInclude Include="SpriteEntity.hpp" />
     <ClInclude Include="System.hpp" />
     <ClInclude Include="SystemSettings.hpp" />
     <ClInclude Include="Weapon.hpp" />

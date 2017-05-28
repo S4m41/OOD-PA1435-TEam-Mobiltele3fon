@@ -33,10 +33,10 @@ RoomHandler::~RoomHandler()
 		m_currentRoom = nullptr;
 	}
 }
-void RoomHandler::SetInput(Input* input)
-{
-	m_playerHandler->SetInput(input);
-}
+//void RoomHandler::SetInput(Input* input)
+//{
+//	m_playerHandler->SetInput(input);
+//}
 
 void RoomHandler::Update()
 {

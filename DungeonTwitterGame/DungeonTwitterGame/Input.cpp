@@ -18,6 +18,12 @@ void Input::Update()
 	{
 		m_keysPrevious[i] = m_keys[i];
 		m_keys[i] = sf::Keyboard::isKeyPressed(sf::Keyboard::Key(i));
+
+		if (m_keys[i])
+		{
+			KeyDownEvent kde(sf::Keyboard::Key(i), IsKeyPressed(i));
+			NotifyObservers(&kde);
+		}
 	}
 }
 

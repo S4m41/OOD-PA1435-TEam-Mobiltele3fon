@@ -18,10 +18,12 @@ namespace sf
 class MenuState : public GameState
 {
 public:
-
 	MenuState(FiniteStateMachine* fsm);
 	virtual ~MenuState();
+	
 	void Update() override;
+
+	virtual void Notify(Event* keyDownEvent) override;
 
 private:
 	virtual void ClampSelecton() = 0;

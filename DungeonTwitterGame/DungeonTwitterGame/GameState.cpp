@@ -9,7 +9,8 @@ GameState::~GameState()
 
 }
 
-void GameState::SetInput(Input* input)
-{
-	m_input = input;
-}
+//
+//void GameState::SetInput(Input* input)
+//{
+//	m_input = input;
+//}

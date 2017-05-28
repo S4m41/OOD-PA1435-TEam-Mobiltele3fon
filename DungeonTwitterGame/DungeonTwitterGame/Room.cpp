@@ -4,12 +4,12 @@
 #include "Player.hpp"
 #include "Enemy.hpp"
 #include "SystemSettings.hpp"
-#include "ItemEntity.hpp"
 #include "Weapon.hpp"
 
 #include <SFML\Graphics\RenderTarget.hpp>
 #include <SFML\Graphics\RectangleShape.hpp>
 #include <SFML\Graphics\Color.hpp>
+#include <SFML\Graphics\Sprite.hpp>
 
 #include <time.h>
 
@@ -37,9 +37,9 @@ Room::Room()
 		m_enemyHandler->CreateEnemy();
 	}
 
-
-	m_itemsInRoom.push_back(new ItemEntity(new Weapon("Axe.png")));
-	m_itemsInRoom.back()->SetPosition(sf::Vector2f(WINDOW_WIDTH * 0.5f, WINDOW_HEIGHT * 0.5f));
+	Item* weapon = new Weapon("Axe.png");
+	weapon->SetPosition(sf::Vector2f(WINDOW_WIDTH * 0.5f, WINDOW_HEIGHT * 0.5f));
+	m_itemsInRoom.push_back(weapon);
 
 	//================================================================================================
 	// Visuals of room
@@ -60,8 +60,7 @@ Room::Room()
 		m_doors[i]->setFillColor(m_neighboringRoom[i].locked ? sf::Color::Red : sf::Color::Green);
 	}
 }
-Room::Room(Room* parent, int parentLocation)
-	: Room()
+Room::Room(Room* parent, int parentLocation) : Room()
 {	
 	m_entryPoint = parentLocation;
 	m_neighboringRoom[m_entryPoint].room = parent;			// The room which created this
@@ -140,7 +139,7 @@ bool Room::IsNeighboringRoomLocked(int location)
 
 void Room::CheckItemPickUp(Player* player)
 {
-	ItemEntity* closestItem = nullptr;
+	Item* closestItem = nullptr;
 	float minDist = 1000000.0f;		// Near infinite
 	int itemindex = -1;
 
@@ -149,7 +148,7 @@ void Room::CheckItemPickUp(Player* player)
 		sf::Vector2f distVec = player->GetPosition() - m_itemsInRoom.at(i)->GetPosition();
 		float dist = sqrtf(pow(distVec.x, 2) + pow(distVec.y, 2));
 
-		if (dist > player->GetRadius() + m_itemsInRoom.at(i)->GetRadius())
+		if (dist > player->GetRadius() + m_itemsInRoom.at(i)->GetSprite()->getLocalBounds().width * 0.5f)
 			continue;
 		if (dist >= minDist)
 			continue;
@@ -167,16 +166,15 @@ void Room::CheckItemPickUp(Player* player)
 	if (!closestItem)
 		return;
 	
-	if (player->GiveItem(closestItem->GetItem()))
+	if (player->GiveItem(closestItem))
 		m_itemsInRoom.erase(m_itemsInRoom.begin() + itemindex);
 }
 void Room::SpawnItem(Item* item, sf::Vector2f pos)
 {
 	// TODO: make these values random within the boundries of the room
-	ItemEntity* newItem = new ItemEntity(item);
-	newItem->SetPosition(pos);
+	item->SetPosition(pos);
 
-	m_itemsInRoom.push_back(newItem);
+	m_itemsInRoom.push_back(item);
 }
 
 void Room::Update()

@@ -15,6 +15,8 @@ public:
 	int GetAmmunition()const;
 	void ChangeAmmunition(int change = -1);
 
+	void Update() override;
+
 private:
 	int m_damage;
 	float m_attackCooldown;

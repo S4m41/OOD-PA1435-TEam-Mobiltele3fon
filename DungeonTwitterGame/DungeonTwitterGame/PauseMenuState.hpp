@@ -23,6 +23,8 @@ public:
 	PauseMenuState(FiniteStateMachine* fsm);
 	~PauseMenuState();
 
+	void Notify(Event* keyDownEvent) override;
+
 	//bool Initialize() override;
 	void Update() override;
 

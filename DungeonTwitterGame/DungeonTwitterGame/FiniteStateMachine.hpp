@@ -1,8 +1,6 @@
 #ifndef FINITE_STATE_MACHINE_HPP
 #define FINITE_STATE_MACHINE_HPP
 
-#include <iostream>
-
 class GameState;
 
 class FiniteStateMachine final

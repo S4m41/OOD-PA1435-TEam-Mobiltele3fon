@@ -1,9 +1,10 @@
 #ifndef INPUT_HPP
 #define INPUT_HPP
+#include "ObserverPattern.hpp"
 
 #define NR_OF_KEYS 101
 
-class Input final
+class Input final : public Subject
 {
 public:
 	Input();
